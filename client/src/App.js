@@ -45,6 +45,7 @@ class App extends Component {
                 </header>
                 <p className="App-intro">{this.state.apiResponse}</p>
                 <p className="App-intro">{this.state.dbResponse}</p>
+                <button type="button" id="_dashboard">Dashboard</button>
             </div>
         );
     }
