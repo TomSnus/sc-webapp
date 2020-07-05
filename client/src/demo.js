@@ -4,6 +4,7 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
+import Avatar from '@material-ui/core/Avatar';
 import { NavLink } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
@@ -11,6 +12,10 @@ const useStyles = makeStyles(theme => ({
     width: "100%",
     maxWidth: 360,
     backgroundColor: theme.palette.background.paper
+  },
+  avatar:{
+    background: 'linear-gradient(to right bottom, #430089, #82ffa1)',
+    boxShadow: "1px 3px 1px #9E9E9E"
   }
 }));
 
@@ -27,7 +32,9 @@ export default function SimpleList({ routes }) {
             <NavLink to={path} key={`route-${index}}`}>
               <ListItem button>
                 <ListItemIcon>
-                  <prop.icon />
+                <Avatar className={classes.avatar}>
+                <prop.icon />
+                    </Avatar>
                 </ListItemIcon>
                 <ListItemText primary={sidebarName} />
               </ListItem>

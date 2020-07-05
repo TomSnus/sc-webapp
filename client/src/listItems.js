@@ -9,6 +9,7 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import PeopleIcon from '@material-ui/icons/People';
 import BarChartIcon from '@material-ui/icons/BarChart';
 import LayersIcon from '@material-ui/icons/Layers';
+import Avatar from '@material-ui/core/Avatar';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import { NavLink } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
@@ -26,8 +27,10 @@ export function mainListItems({ routes }) {
           return (
             <NavLink to={path} key={`route-${index}}`}>
               <ListItem button>
-                <ListItemIcon>
-                  <prop.icon />
+                <ListItemIcon >
+                <Avatar className={classes.avatar} style={{ backgroundColor: "#ff6f00" }}>
+                <prop.icon />
+                    </Avatar>
                 </ListItemIcon>
                 <ListItemText primary={sidebarName} />
               </ListItem>

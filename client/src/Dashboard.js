@@ -49,6 +49,10 @@ const useStyles = makeStyles((theme) => ({
   },
   toolbar: {
     paddingRight: 24, // keep right padding when drawer closed
+    background: 'linear-gradient(to right bottom, #430089, #82ffa1)',
+  },
+  avatar: {
+    background: 'linear-gradient(to right bottom, #430089, #82ffa1)',
   },
   toolbarIcon: {
     display: 'flex',

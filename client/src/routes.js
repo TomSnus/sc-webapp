@@ -1,12 +1,14 @@
-import Dashboard from "@material-ui/icons/Dashboard";
-import InboxIcon from "@material-ui/icons/Inbox";
+import DashboardRoundedIcon from '@material-ui/icons/DashboardRounded';
+import ImageRoundedIcon from '@material-ui/icons/ImageRounded';
 import DraftsIcon from "@material-ui/icons/Drafts";
+import ErrorOutlineRoundedIcon from '@material-ui/icons/ErrorOutlineRounded';
 
 import Home from "./components/Home";
 import Inbox from "./components/Inbox";
 import ResetPassword from "./components/ResetPassword";
 import PageNotFound from "./components/PageNotFound";
 import Register from "./components/Register";
+import { colors } from '@material-ui/core';
 
 const pathIds = {
   home: "home",
@@ -28,13 +30,15 @@ const pageRoutes = {
   [pathIds.home]: {
     path: pathRouting.home,
     sidebarName: "Homepage",
-    icon: Dashboard,
-    component: Home
+    icon: DashboardRoundedIcon,
+    component: Home,
+    color: 'red',
   },
   [pathIds.inbox]: {
     path: pathRouting.inbox,
     sidebarName: "Inbox",
-    icon: InboxIcon,
+    icon: ImageRoundedIcon,
+    color: 'blue',
     component: Inbox
   },
   [pathIds.resetPassword]: {
@@ -42,13 +46,15 @@ const pageRoutes = {
     sidebarName: "Reset Password",
     icon: DraftsIcon,
     noRender: false,
-    component: ResetPassword
+    component: ResetPassword,
+    color: 'yellow',
   },
   [pathIds.error404]: {
     path: pathRouting.pageNotFound,
     sidebarName: "Page Not Found",
-    icon: Dashboard,
-    component: PageNotFound
+    icon: ErrorOutlineRoundedIcon,
+    component: PageNotFound, 
+    color: 'grey',
   },
   [pathIds.register]: {
     path: pathRouting.register,
