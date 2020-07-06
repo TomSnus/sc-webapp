@@ -15,7 +15,8 @@ class App extends Component {
         super(props);
         this.state = {
             apiResponse: "",
-            dbResponse: ""
+            dbResponse: "", 
+            listContainersResponse: "",
         };
     }
 
@@ -23,10 +24,19 @@ class App extends Component {
         fetch("http://localhost:9000/testAPI")
             .then(res => res.text())
             .then(res => this.setState({
-                apiResponse: res
+              listContainersResponse: res
             }))
             .catch(err => err);
     }
+
+    callListContainers() {
+      fetch("http://localhost:9000/listContainers")
+          .then(res => res.text())
+          .then(res => this.setState({
+              apiResponse: res
+          }))
+          .catch(err => err);
+  }
 
     callDB() {
         fetch("http://localhost:9000/testDB")
@@ -40,6 +50,7 @@ class App extends Component {
     componentDidMount() {
         this.callAPI();
         this.callDB();
+        this.callListContainers();
     }
 
     render() {

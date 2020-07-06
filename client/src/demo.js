@@ -1,6 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
+import Divider from '@material-ui/core/Divider';
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -13,7 +14,7 @@ const useStyles = makeStyles(theme => ({
     maxWidth: 360,
     backgroundColor: theme.palette.background.paper
   },
-  avatar:{
+  avatar: {
     background: 'linear-gradient(to right bottom, #430089, #82ffa1)',
     boxShadow: "1px 3px 1px #9E9E9E"
   }
@@ -21,7 +22,11 @@ const useStyles = makeStyles(theme => ({
 
 export default function SimpleList({ routes }) {
   const classes = useStyles();
+  const [selectedIndex, setSelectedIndex] = React.useState(1);
 
+  const handleListItemClick = (event, index) => {
+    setSelectedIndex(index);
+  };
   return (
     <div className={classes.root}>
       <List component="nav" aria-label="main mailbox folders">
@@ -30,14 +35,17 @@ export default function SimpleList({ routes }) {
 
           return (
             <NavLink to={path} key={`route-${index}}`}>
-              <ListItem button>
+              <ListItem button
+                selected={selectedIndex === index}
+                onClick={(event) => handleListItemClick(event, index)}>
                 <ListItemIcon>
-                <Avatar className={classes.avatar}>
-                <prop.icon />
-                    </Avatar>
+                  <Avatar className={classes.avatar}>
+                    <prop.icon />
+                  </Avatar>
                 </ListItemIcon>
-                <ListItemText primary={sidebarName} />
+                <ListItemText className={classes.sidebarTitle} primary={sidebarName} />
               </ListItem>
+              <Divider />
             </NavLink>
           );
         })}
