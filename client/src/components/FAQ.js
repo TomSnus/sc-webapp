@@ -15,7 +15,7 @@ function Copyright() {
         </Typography>
     );
 }
-const Register = () => (
+const FAQ = () => (
     <main className='register'>
     <Container>
     <div>
@@ -28,4 +28,4 @@ const Register = () => (
     </main>
 );
 
-export default Register;
+export default FAQ;

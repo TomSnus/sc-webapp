@@ -15,8 +15,11 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.background.paper
   },
   avatar: {
-    background: 'linear-gradient(to right bottom, #430089, #82ffa1)',
+    background: 'white',
     boxShadow: "1px 3px 1px #9E9E9E"
+  },
+  sidebarTitle: {
+    color: 'white',
   }
 }));
 

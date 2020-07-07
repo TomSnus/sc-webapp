@@ -2,66 +2,69 @@ import DashboardRoundedIcon from '@material-ui/icons/DashboardRounded';
 import ImageRoundedIcon from '@material-ui/icons/ImageRounded';
 import DraftsIcon from "@material-ui/icons/Drafts";
 import ErrorOutlineRoundedIcon from '@material-ui/icons/ErrorOutlineRounded';
+import ListAltRoundedIcon from '@material-ui/icons/ListAltRounded';
+import LiveHelpRoundedIcon from '@material-ui/icons/LiveHelpRounded';
 
 import Home from "./components/Home";
-import Inbox from "./components/Inbox";
-import ResetPassword from "./components/ResetPassword";
+import Images from "./components/Images";
+import Containers from "./components/Containers";
 import PageNotFound from "./components/PageNotFound";
-import Register from "./components/Register";
+import FAQ from "./components/FAQ";
 import { colors } from '@material-ui/core';
 
 const pathIds = {
   home: "home",
-  inbox: "inbox",
-  resetPassword: "reset-password",
+  images: "images",
+  containers: "containers",
   error404: "error-404",
-  register: "register"
+  faq: "faq"
 };
 
 const pathRouting = {
   home: "/home",
-  inbox: "/inbox",
-  resetPassword: "/reset-password",
+  images: "/images",
+  containers: "/containers",
   pageNotFound: "/page-not-found",
-  register: "/register"
+  faq: "/faq"
 };
 
 const pageRoutes = {
   [pathIds.home]: {
     path: pathRouting.home,
-    sidebarName: "Homepage",
+    sidebarName: "Dashboard",
     icon: DashboardRoundedIcon,
     component: Home,
     color: 'red',
   },
-  [pathIds.inbox]: {
-    path: pathRouting.inbox,
-    sidebarName: "Inbox",
+  [pathIds.images]: {
+    path: pathRouting.images,
+    sidebarName: "Images",
     icon: ImageRoundedIcon,
     color: 'blue',
-    component: Inbox
+    component: Images
   },
-  [pathIds.resetPassword]: {
-    path: pathRouting.resetPassword,
-    sidebarName: "Reset Password",
-    icon: DraftsIcon,
+  [pathIds.containers]: {
+    path: pathRouting.containers,
+    sidebarName: "Containers",
+    icon: ListAltRoundedIcon,
     noRender: false,
-    component: ResetPassword,
+    component: Containers,
     color: 'yellow',
   },
   [pathIds.error404]: {
     path: pathRouting.pageNotFound,
     sidebarName: "Page Not Found",
     icon: ErrorOutlineRoundedIcon,
-    component: PageNotFound, 
+    component: PageNotFound,
+    noRender: true,
     color: 'grey',
   },
-  [pathIds.register]: {
-    path: pathRouting.register,
-    sidebarName: "Register",
-    icon: DraftsIcon,
-    noRender: true,
-    component: Register
+  [pathIds.faq]: {
+    path: pathRouting.faq,
+    sidebarName: "FAQ",
+    icon: LiveHelpRoundedIcon,
+    noRender: false,
+    component: FAQ
   }
 };
 

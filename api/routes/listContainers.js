@@ -44,8 +44,8 @@ var router = express.Router();
 //     res.send('API is working properly');
 // });
 
-router.get('/listContainers',(req, res) => {
-    res.send('docker.listContainers');
+router.get('/',(req, res) => {
+    res.send('test');
 });
 
 module.exports = router;

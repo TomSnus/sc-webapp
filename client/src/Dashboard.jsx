@@ -25,7 +25,7 @@ import Deposits from './Deposits';
 import Orders from './Orders';
 import { pathIds, pageRoutes } from "./routes";
 import Demo from "./demo";
-
+import { withRouter } from 'react-router-dom';
 
 const routeArray = Object.values(pageRoutes);
 function Copyright() {
@@ -49,10 +49,9 @@ const useStyles = makeStyles((theme) => ({
   },
   toolbar: {
     paddingRight: 24, // keep right padding when drawer closed
-    background:  'linear-gradient(to right top, #494c46, #434841, #3d443d, #374039, #313c35, #35413a, #384740, #3c4c46, #4b5c57, #5b6c69, #6c7d7b, #7d8e8d)',
+    background: 'linear-gradient(to right top, #494c46, #434841, #3d443d, #374039, #313c35, #35413a, #384740, #3c4c46, #4b5c57, #5b6c69, #6c7d7b, #7d8e8d)',
   },
   avatar: {
-    background: 'linear-gradient(to right top, #494c46, #434841, #3d443d, #374039, #313c35, #35413a, #384740, #3c4c46, #4b5c57, #5b6c69, #6c7d7b, #7d8e8d)',
   },
   sidebarTitle: {
     color: '#fffff',
@@ -155,7 +154,7 @@ export default function Dashboard() {
             <MenuIcon />
           </IconButton>
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-            Dashboard
+            Time Control High Performance Cluster
           </Typography>
           <IconButton color="inherit">
             <Badge badgeContent={4} color="secondary">
