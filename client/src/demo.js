@@ -15,12 +15,12 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.background.paper
   },
   avatar: {
-    background: 'white',
+    background: theme.palette.primary.main,
     boxShadow: "1px 3px 1px #9E9E9E"
   },
   sidebarTitle: {
-    color: 'white',
-  }
+    color: theme.palette.primary.main,
+  },
 }));
 
 export default function SimpleList({ routes }) {

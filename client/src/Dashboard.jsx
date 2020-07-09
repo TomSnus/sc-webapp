@@ -26,7 +26,6 @@ import Orders from './Orders';
 import { pathIds, pageRoutes } from "./routes";
 import Demo from "./demo";
 import { withRouter } from 'react-router-dom';
-
 const routeArray = Object.values(pageRoutes);
 function Copyright() {
   return (
@@ -49,12 +48,13 @@ const useStyles = makeStyles((theme) => ({
   },
   toolbar: {
     paddingRight: 24, // keep right padding when drawer closed
-    background: 'linear-gradient(to right top, #494c46, #434841, #3d443d, #374039, #313c35, #35413a, #384740, #3c4c46, #4b5c57, #5b6c69, #6c7d7b, #7d8e8d)',
+    background: theme.palette.primary.main,
   },
   avatar: {
+    background: theme.palette.primary.main['600'],
   },
   sidebarTitle: {
-    color: '#fffff',
+    background: theme.palette.primary.main,
   },
   toolbarIcon: {
     display: 'flex',

@@ -1,53 +1,61 @@
 import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import clsx from 'clsx';
+import { makeStyles } from '@material-ui/core/styles';
 import React from "react";
+import Paper from '@material-ui/core/Paper';
+import ImageList from '../imageComponents/ImageList'
+import clsx from 'clsx';
 import Chart from '../Chart';
-import Deposits from '../Deposits';
 import Orders from '../Orders';
-import Styles from '../style';
-import { withStyles } from 'material-ui/styles';
+import ImageListNew from '../imageComponents/ImageListNew';
 
-<Images classes={Styles.useStyles()} />
-<Images foo={clsx(classes.paper, classes.fixedHeight)} />
-class Images extends React.Component {
-  render() {
-    return (
-      <main className={classes.content}>
-        <div className={classes.appBarSpacer} />
-        <Container maxWidth="lg" className={classes.container}>
-          <Grid container spacing={3}>
-            {/* Chart */}
-            <Grid item xs={12} md={8} lg={9}>
-              <Paper className={fixedHeightPaper}>
-                <Chart />
-              </Paper>
-            </Grid>
-            {/* Recent Deposits */}
-            <Grid item xs={12} md={4} lg={3}>
-              <Paper className={fixedHeightPaper}>
-                <Deposits />
-              </Paper>
-            </Grid>
-            {/* Recent Orders */}
-            <Grid item xs={12}>
-              <Paper className={classes.paper}>
-                <Orders />
-              </Paper>
-            </Grid>
+const useStyles = makeStyles((theme) => ({
+  container: {
+    paddingTop: theme.spacing(4),
+    paddingBottom: theme.spacing(4),
+  },
+  paper: {
+    padding: theme.spacing(2),
+    display: 'flex',
+    overflow: 'auto',
+    flexDirection: 'column',
+  },
+  fixedHeight: {
+    height: 240,
+  },
+  appBarSpacer: theme.mixins.toolbar,
+  content: {
+    flexGrow: 1,
+    height: '100vh',
+    overflow: 'auto',
+  },
+}));
+export default function Image() {
+  const classes = useStyles();
+  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+  return (
+    <main className={classes.content}>
+      <div className={classes.appBarSpacer} />
+      <Container maxWidth="lg" className={classes.container}>
+        <Grid container spacing={3}>
+          <Grid item xs={12} md={8} lg={9}>
+            <Paper className={fixedHeightPaper}>
+              <Chart />
+            </Paper>
           </Grid>
-          <Box pt={4}>
-          </Box>
-        </Container>
-      </main>
-    );
-  }
-}
-
-Images.propTypes = {
-  classes: Styles.useStyles(),
-  fixedHeightPaper:clsx(classes.paper, classes.fixedHeight)
+          <Grid item justify={'space-evenly'} xs={12} md={12} lg={3}>
+            <Paper className={fixedHeightPaper}>
+              <ImageListNew />
+            </Paper>
+          </Grid>
+          <Grid item xs={12}>
+            <Paper className={classes.paper}>
+              <Orders />
+            </Paper>
+          </Grid>
+        </Grid>
+      </Container>
+    </main>
+  )
 };
-export default withStyles (Images);

@@ -13,19 +13,19 @@ import Orders from '../Orders';
 const drawerWidth = 240;
 
 function Copyright() {
-    return (
-      <Typography variant="body2" color="textSecondary" align="center">
-        {'Copyright © '}
-        <Link color="inherit" href="https://material-ui.com/">
-          Your Website
+  return (
+    <Typography variant="body2" color="textSecondary" align="center">
+      {'Copyright © '}
+      <Link color="inherit" href="https://material-ui.com/">
+        Your Website
         </Link>{' '}
-        {new Date().getFullYear()}
-        {'.'}
-      </Typography>
-    );
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
 }
 
-  const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
   },
@@ -104,36 +104,36 @@ function Copyright() {
   },
 }));
 export default function Home() {
-    const classes = useStyles();
-    const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
-    return(
+  const classes = useStyles();
+  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+  return (
     <main className={classes.content}>
-    <div className={classes.appBarSpacer} />
-    <Container maxWidth="lg" className={classes.container}>
-      <Grid container spacing={3}>
-        {/* Chart */}
-        <Grid item xs={12} md={8} lg={9}>
-          <Paper className={fixedHeightPaper}>
-            <Chart />
-          </Paper>
+      <div className={classes.appBarSpacer} />
+      <Container maxWidth="lg" className={classes.container}>
+        <Grid container spacing={3}>
+          {/* Chart */}
+          <Grid item xs={12} md={8} lg={9}>
+            <Paper className={fixedHeightPaper}>
+              <Chart />
+            </Paper>
+          </Grid>
+          {/* Recent Deposits */}
+          <Grid item xs={12} md={4} lg={3}>
+            <Paper className={fixedHeightPaper}>
+              <Deposits />
+            </Paper>
+          </Grid>
+          {/* Recent Orders */}
+          <Grid item xs={12}>
+            <Paper className={classes.paper}>
+              <Orders />
+            </Paper>
+          </Grid>
         </Grid>
-        {/* Recent Deposits */}
-        <Grid item xs={12} md={4} lg={3}>
-          <Paper className={fixedHeightPaper}>
-            <Deposits />
-          </Paper>
-        </Grid>
-        {/* Recent Orders */}
-        <Grid item xs={12}>
-          <Paper className={classes.paper}>
-            <Orders />
-          </Paper>
-        </Grid>
-      </Grid>
-      <Box pt={4}>
-        <Copyright />
-      </Box>
-    </Container>
-  </main>
-    )
+        <Box pt={4}>
+          <Copyright />
+        </Box>
+      </Container>
+    </main>
+  )
 };
