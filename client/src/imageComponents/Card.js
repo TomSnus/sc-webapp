@@ -1,7 +1,6 @@
 import React from 'react';
-
 class Card extends React.Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 		this.state = { hover: false };
 
@@ -9,21 +8,21 @@ class Card extends React.Component {
 		this.handleMouseLeave = this.handleMouseLeave.bind(this);
 	}
 
-	handleMouseEnter () {
+	handleMouseEnter() {
 		this.setState({ hover: true });
 	}
 
-	handleMouseLeave () {
+	handleMouseLeave() {
 		this.setState({ hover: false });
 	}
 
-	handleClick () {
-		const {cardId, cardClicked} = this.props;
+	handleClick() {
+		const { cardId, cardClicked } = this.props;
 		this.props.onClick(cardId, cardClicked);
 		this.setState({ hover: false });
 	}
 
-	render () {
+	render() {
 		const { cardId, cardSelected, topOffset, hoverOffset } = this.props;
 
 		const offset = (cardId !== 0) && this.state.hover && !cardSelected ? hoverOffset : 0;
@@ -31,10 +30,12 @@ class Card extends React.Component {
 
 		const cardStyles = {
 			...styles,
-			background: this.props.background,
+			background: '#DEB226',
 			transform,
 			WebkitTransform: transform,
 			height: this.props.height,
+			border: '3px solid #AF2858'
+			,
 		};
 
 		return (
@@ -43,7 +44,7 @@ class Card extends React.Component {
 				onClick={this.handleClick.bind(this)}
 				onMouseEnter={this.handleMouseEnter}
 				onMouseLeave={this.handleMouseLeave}>
-					{this.props.children}
+				{this.props.children}
 			</li>
 		);
 	}

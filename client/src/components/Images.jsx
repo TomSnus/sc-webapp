@@ -38,13 +38,13 @@ export default function Image() {
     <main className={classes.content}>
       <div className={classes.appBarSpacer} />
       <Container maxWidth="lg" className={classes.container}>
-        <Grid container spacing={3}>
-          <Grid item xs={12} md={8} lg={9}>
+        <Grid container spacing={2}>
+          <Grid item xs={12} md={8} lg={8}>
             <Paper className={fixedHeightPaper}>
               <Chart />
             </Paper>
           </Grid>
-          <Grid item justify={'space-evenly'} xs={12} md={12} lg={3}>
+          <Grid item justify={'space-evenly'} xs={12} md={12} lg={4}>
             <Paper className={fixedHeightPaper}>
               <ImageListNew />
             </Paper>

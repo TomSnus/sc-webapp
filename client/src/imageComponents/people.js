@@ -1,30 +1,75 @@
 const people = [{
-	background: '#2980B9',
-	imgSrc: 'https://s3.amazonaws.com/uifaces/faces/twitter/rem/128.jpg',
-	imgBorderColor: '#015389',
-	name: 'James Stuart',
-	title: 'Training Manager',
-	mobileNo: '0491 570 156',
-	location: 'Sydney, Australia',
-	role: 'Starting the company in sales, James is now responsible for overseeing all staff training. James mainly focuses on getting new employees up to speed with the practices and procedures Hunter & Co has continually refined over the last 50 years.'
+	'Id': 'sha256:e216a057b1cb1efc11f8a268f37ef62083e70b1b38323ba252e25ac88904a7e8',
+	'ParentId': '',
+	'RepoTags':
+		[
+			'ubuntu:12.04',
+			'ubuntu:precise'
+		],
+	'RepoDigests':
+		[
+			'ubuntu@sha256:992069aee4016783df6345315302fa59681aae51a8eeb2f889dea59290f21787'
+		],
+	'Created': 1474925151,
+	'Size': 103579269,
+	'VirtualSize': 103579269,
+	'SharedSize': 0,
+	'Labels': {},
+	'Containers': 2
 }, {
-	background: '#27AE60',
-	imgSrc: 'https://s3.amazonaws.com/uifaces/faces/twitter/glif/128.jpg',
-	imgBorderColor: '#086C32',
-	name: 'Isaac Pullman',
-	title: 'Creative Director',
-	mobileNo: '0491 570 157',
-	location: 'Brisbane, Australia',
-	role: "Isaac has overseen all of Hunter and Co's creative efforts for the last five years. He's ability to generate a shared vision between teams throughout the company has been his biggest achievement."
+	'Id': 'sha256:e216a057b1cb1efc11f8a268f37ef62083e70b1b38323ba252e25ac88904a7e8',
+	'ParentId': '',
+	'RepoTags':
+		[
+			'ubuntu:12.04',
+			'ubuntu:precise'
+		],
+	'RepoDigests':
+		[
+			'ubuntu@sha256:992069aee4016783df6345315302fa59681aae51a8eeb2f889dea59290f21787'
+		],
+	'Created': 1474925151,
+	'Size': 103579269,
+	'VirtualSize': 103579269,
+	'SharedSize': 0,
+	'Labels': {},
+	'Containers': 2
 }, {
-	background: '#9B27AE',
-	imgSrc: 'https://s3.amazonaws.com/uifaces/faces/twitter/kfriedson/128.jpg',
-	imgBorderColor: '#6A067A',
-	name: 'Sarah Oscar',
-	title: 'Sales Rep',
-	mobileNo: '0491 570 158',
-	location: 'Sydney, Australia',
-	role: "In Sarah's short time with the company, she is now a key figure in the sales team for the Sydney and outer region. Her excellent communication skills has opened up the door to let her mentoring any new hires in sales."
+	'Id': 'sha256:e216a057b1cb1efc11f8a268f37ef62083e70b1b38323ba252e25ac88904a7e8',
+	'ParentId': '',
+	'RepoTags':
+		[
+			'ubuntu:12.04',
+			'ubuntu:precise'
+		],
+	'RepoDigests':
+		[
+			'ubuntu@sha256:992069aee4016783df6345315302fa59681aae51a8eeb2f889dea59290f21787'
+		],
+	'Created': 1474925151,
+	'Size': 103579269,
+	'VirtualSize': 103579269,
+	'SharedSize': 0,
+	'Labels': {},
+	'Containers': 2
+}, {
+    'Id': 'sha256:e216a057b1cb1efc11f8a268f37ef62083e70b1b38323ba252e25ac88904a7e8',
+    'ParentId': '',
+    'RepoTags': 
+[
+    'ubuntu:12.04',
+    'ubuntu:precise'
+],
+'RepoDigests': 
+    [
+        'ubuntu@sha256:992069aee4016783df6345315302fa59681aae51a8eeb2f889dea59290f21787'
+    ],
+    'Created': 1474925151,
+    'Size': 103579269,
+    'VirtualSize': 103579269,
+    'SharedSize': 0,
+    'Labels': { },
+    'Containers': 2
 }, {
 	background: '#e67e22',
 	imgSrc: 'https://s3.amazonaws.com/uifaces/faces/twitter/9lessons/128.jpg',

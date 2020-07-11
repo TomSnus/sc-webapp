@@ -56,7 +56,7 @@ const pageRoutes = {
     sidebarName: "Page Not Found",
     icon: ErrorOutlineRoundedIcon,
     component: PageNotFound,
-    noRender: true,
+    noRender: false,
     color: 'grey',
   },
   [pathIds.faq]: {

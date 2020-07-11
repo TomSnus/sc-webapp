@@ -8,14 +8,14 @@ const ImageListNew = (props) => (
     <div>
         <CardStack
             height={500}
-            width={400}
+            width={350}
             background="#f8f8f8"
             hoverOffset={25}>
 
             {people.map((person, i) =>
                 <Card
                     key={i}
-                    background={person.background}>
+                        background='#   '>
                     <TeamMemberCard {...person} />
                 </Card>
             )}
@@ -30,9 +30,11 @@ const ProfilePicture = ({ imgSrc, borderColor }) => (
             width: '60px',
             height: '60px',
             borderRadius: '100%',
-            border: `3px solid ${borderColor}`,
+            backgroundColor: '#AF2858',
+            border: `2px solid #AF2858`,
+            overflow: 'hidden',
         }}
-        src={imgSrc}
+        src={"https://p7.hiclipart.com/preview/632/886/441/mariadb-oracle-database-mysql-open-source-software-zookeeper.jpg"}
     />
 );
 
@@ -67,7 +69,7 @@ const TeamMemberCard = (props) => (
         <header style={styles.cardHeader} className='card-header-details'>
             <ProfilePicture imgSrc={props.imgSrc} borderColor={props.imgBorderColor} />
             <div>
-                <h1 style={styles.headerName}>{props.name}</h1>
+                <h1 style={styles.headerName}>{props.RepoTags[0]}</h1>
                 <h3 style={styles.headerTitle} className='icon ion-ios-arrow-down'>{props.title}</h3>
             </div>
         </header>
@@ -75,18 +77,18 @@ const TeamMemberCard = (props) => (
         <div style={{ color: '#fff' }}>
             <DetailsRow
                 icon='ion-ios-telephone-outline'
-                title={props.mobileNo}
+                title={props.Created}
             />
 
             <DetailsRow
                 icon='ion-ios-location-outline'
-                title={props.location}
+                title={props.Labels[0]}
             />
 
             <DetailsRow
                 icon='icon ion-ios-paper-outline'
-                title='Main Role'
-                summary={props.role}
+                title='Containers'
+                summary={props.Containers}
             />
         </div>
     </div>
@@ -95,11 +97,11 @@ const TeamMemberCard = (props) => (
 const styles = {
     cardHeader: {
         display: 'flex',
-        height: '125px',
+        height: '100px',
         justifyContent: 'space-between',
         alignItems: 'center',
         padding: '10px 20px',
-        color: '#fff',
+        color: '#000000',
     },
     headerName: {
         margin: 0,
