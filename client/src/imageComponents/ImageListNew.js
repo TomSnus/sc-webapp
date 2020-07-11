@@ -3,13 +3,18 @@ import CardStack from './CardStack';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import people from './people';
-import { AccessAlarm, ThreeDRotation } from '@material-ui/icons';
+import { AccessAlarm, ArrowDropDown } from '@material-ui/icons';
+import { Container, Grid } from '@material-ui/core';
+import Paper from '@material-ui/core/Paper';
+import PlayCircleFilledWhiteOutlinedIcon from '@material-ui/icons/PlayCircleFilledWhiteOutlined';
+import StopOutlinedIcon from '@material-ui/icons/StopOutlined';
+import AutorenewOutlinedIcon from '@material-ui/icons/AutorenewOutlined';
+import IconButton from '@material-ui/core/IconButton';
 const ImageListNew = (props) => (
     <div>
         <CardStack
             height={500}
             width={350}
-            background="#f8f8f8"
             hoverOffset={25}>
 
             {people.map((person, i) =>
@@ -54,7 +59,7 @@ const DetailsRow = ({ icon, title, summary }) => {
                 className={`icon ${icon}`}
                 style={{ ...styles.detailsRow.icon, alignSelf: 'flex-start' }}
             /> */}
-            <AccessAlarm/>
+            <AccessAlarm />
             <div style={{ width: '80%' }}>
                 <h2 style={styles.detailsRow.title}>
                     {title}
@@ -71,7 +76,7 @@ const TeamMemberCard = (props) => (
             <ProfilePicture imgSrc={props.imgSrc} borderColor={props.imgBorderColor} />
             <div>
                 <h1 style={styles.headerName}>{props.RepoTags[0]}</h1>
-                <h3 style={styles.headerTitle} className='icon ion-ios-arrow-down'>Details</h3>
+                <h3 style={styles.headerTitle} className='icon ion-ios-arrow-down'><ArrowDropDown />Details</h3>
             </div>
         </header>
 
@@ -91,8 +96,27 @@ const TeamMemberCard = (props) => (
             <DetailsRow
                 icon='icon ion-ios-paper-outline'
                 title='Containers:'
-                summary={props.Containers}
-            />
+                summary={props.Containers} />
+            <Container>
+                Operation:
+                <Grid direction="row"
+                    container spacing={2}>
+                    <Grid item xs={12} lg={4}>
+                        <Paper >
+                            Run
+                            <PlayCircleFilledWhiteOutlinedIcon />
+                        </Paper>
+                    </Grid>
+                    <Grid alignItems="flex-start" item justify={'space-evenly'} xs={12} lg={4}>
+                        <IconButton href="#" onclick="console.log('The link was clicked.'); return false">
+                            <StopOutlinedIcon />
+                        </IconButton>
+                    </Grid>
+                    <Grid item xs={12} lg={4}>
+                    Test
+                    </Grid>
+                </Grid>
+            </Container>
         </div>
     </div>
 );
@@ -104,7 +128,7 @@ const styles = {
         justifyContent: 'space-between',
         alignItems: 'center',
         padding: '10px 20px',
-        color: '#000000',
+        color: '#fff',
     },
     headerName: {
         margin: 0,
@@ -113,11 +137,11 @@ const styles = {
         textAlign: 'right'
     },
     headerTitle: {
-        margin: '4px 0 0',
+        margin: '2px 0 0',
         fontWeight: 300,
         fontSize: '17px',
         opacity: 0.8,
-        textAlign: 'right'
+        textAlign: 'right',
     },
     detailsRow: {
         row: {

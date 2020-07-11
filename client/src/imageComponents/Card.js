@@ -1,4 +1,5 @@
 import React from 'react';
+import { Container } from '@material-ui/core';
 class Card extends React.Component {
 	constructor(props) {
 		super(props);
@@ -30,22 +31,22 @@ class Card extends React.Component {
 
 		const cardStyles = {
 			...styles,
-			background: '#DEB226',
+			background: '#424242',
 			transform,
 			WebkitTransform: transform,
 			height: this.props.height,
-			border: '3px solid #AF2858'
-			,
-		};
+			border: '3px solid #DEB226',
+			borderRadius: 12.5,
+				};
 
 		return (
-			<li
-				style={cardStyles}
-				onClick={this.handleClick.bind(this)}
-				onMouseEnter={this.handleMouseEnter}
-				onMouseLeave={this.handleMouseLeave}>
-				{this.props.children}
-			</li>
+				<Container
+					style={cardStyles}
+					onClick={this.handleClick.bind(this)}
+					onMouseEnter={this.handleMouseEnter}
+					onMouseLeave={this.handleMouseLeave}>
+					{this.props.children}
+				</Container>
 		);
 	}
 }

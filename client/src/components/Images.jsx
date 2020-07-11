@@ -7,7 +7,7 @@ import Paper from '@material-ui/core/Paper';
 import ImageList from '../imageComponents/ImageList'
 import clsx from 'clsx';
 import Chart from '../Chart';
-import Orders from '../Orders';
+import ImageOperation from '../imageComponents/ImageOperation';
 import ImageListNew from '../imageComponents/ImageListNew';
 
 const useStyles = makeStyles((theme) => ({
@@ -22,7 +22,10 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
   },
   fixedHeight: {
-    height: 240,
+    height: 500,
+  },
+  fixedHeight2: {
+    height: 500,
   },
   appBarSpacer: theme.mixins.toolbar,
   content: {
@@ -34,24 +37,27 @@ const useStyles = makeStyles((theme) => ({
 export default function Image() {
   const classes = useStyles();
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+  const fixedHeightPaper2 = clsx(classes.paper, classes.fixedHeight2);
+
   return (
     <main className={classes.content}>
       <div className={classes.appBarSpacer} />
       <Container maxWidth="lg" className={classes.container}>
-        <Grid container spacing={2}>
-          <Grid item xs={12} md={8} lg={8}>
+        <Grid   direction="row"
+          container spacing={2}>
+          <Grid item xs={12} lg={8}>
             <Paper className={fixedHeightPaper}>
               <Chart />
             </Paper>
           </Grid>
-          <Grid item justify={'space-evenly'} xs={12} md={12} lg={4}>
+          <Grid alignItems="flex-start" item justify={'space-evenly'} xs={12} lg={4}>
             <Paper className={fixedHeightPaper}>
               <ImageListNew />
             </Paper>
           </Grid>
-          <Grid item xs={12}>
+          <Grid item xs={12} lg={12}>
             <Paper className={classes.paper}>
-              <Orders />
+              <ImageOperation />
             </Paper>
           </Grid>
         </Grid>
