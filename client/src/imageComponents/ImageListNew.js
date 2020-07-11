@@ -3,7 +3,7 @@ import CardStack from './CardStack';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import people from './people';
-
+import { AccessAlarm, ThreeDRotation } from '@material-ui/icons';
 const ImageListNew = (props) => (
     <div>
         <CardStack
@@ -15,7 +15,7 @@ const ImageListNew = (props) => (
             {people.map((person, i) =>
                 <Card
                     key={i}
-                        background='#   '>
+                    background='#   '>
                     <TeamMemberCard {...person} />
                 </Card>
             )}
@@ -41,7 +41,7 @@ const ProfilePicture = ({ imgSrc, borderColor }) => (
 const DetailsRow = ({ icon, title, summary }) => {
     const renderSummary = () => {
         if (summary) return (
-            <p style={{ fontWeight: 300, lineHeight: 1.45 }}>
+            <p style={{ fontWeight: 250, lineHeight: 1.00 }}>
                 {summary}
             </p>
         );
@@ -50,10 +50,11 @@ const DetailsRow = ({ icon, title, summary }) => {
 
     return (
         <div style={styles.detailsRow.row}>
-            <span
+            {/* <span
                 className={`icon ${icon}`}
                 style={{ ...styles.detailsRow.icon, alignSelf: 'flex-start' }}
-            />
+            /> */}
+            <AccessAlarm/>
             <div style={{ width: '80%' }}>
                 <h2 style={styles.detailsRow.title}>
                     {title}
@@ -70,24 +71,26 @@ const TeamMemberCard = (props) => (
             <ProfilePicture imgSrc={props.imgSrc} borderColor={props.imgBorderColor} />
             <div>
                 <h1 style={styles.headerName}>{props.RepoTags[0]}</h1>
-                <h3 style={styles.headerTitle} className='icon ion-ios-arrow-down'>{props.title}</h3>
+                <h3 style={styles.headerTitle} className='icon ion-ios-arrow-down'>Details</h3>
             </div>
         </header>
 
         <div style={{ color: '#fff' }}>
             <DetailsRow
                 icon='ion-ios-telephone-outline'
-                title={props.Created}
+                title='Created:'
+                summary={props.Created}
             />
 
             <DetailsRow
                 icon='ion-ios-location-outline'
-                title={props.Labels[0]}
+                title='Label:'
+                summary={props.Labels[0]}
             />
 
             <DetailsRow
                 icon='icon ion-ios-paper-outline'
-                title='Containers'
+                title='Containers:'
                 summary={props.Containers}
             />
         </div>
@@ -134,7 +137,7 @@ const styles = {
             fontSize: '22px',
         },
         title: {
-            fontWeight: 500,
+            fontWeight: 250,
             fontSize: '20px',
             margin: 0,
             fontStyle: 'italic',
