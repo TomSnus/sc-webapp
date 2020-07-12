@@ -10,6 +10,7 @@ import PlayCircleFilledWhiteOutlinedIcon from '@material-ui/icons/PlayCircleFill
 import StopOutlinedIcon from '@material-ui/icons/StopOutlined';
 import AutorenewOutlinedIcon from '@material-ui/icons/AutorenewOutlined';
 import IconButton from '@material-ui/core/IconButton';
+import Button1 from './AbortButton';
 const ImageListNew = (props) => (
     <div>
         <CardStack
@@ -69,7 +70,6 @@ const DetailsRow = ({ icon, title, summary }) => {
         </div>
     );
 };
-
 const TeamMemberCard = (props) => (
     <div style={{ position: 'absolute', top: 0 }} onClick={props.onClick}>
         <header style={styles.cardHeader} className='card-header-details'>
@@ -108,17 +108,18 @@ const TeamMemberCard = (props) => (
                         </Paper>
                     </Grid>
                     <Grid alignItems="flex-start" item justify={'space-evenly'} xs={12} lg={4}>
-                        <IconButton href="#" onclick="console.log('The link was clicked.'); return false">
-                            <StopOutlinedIcon />
-                        </IconButton>
-                    </Grid>
-                    <Grid item xs={12} lg={4}>
+                   <Button1  />
+                    <IconButton onClick={props.onClick}>
+                        <StopOutlinedIcon />
+                    </IconButton>
+                </Grid>
+                <Grid item xs={12} lg={4}>
                     Test
                     </Grid>
                 </Grid>
             </Container>
-        </div>
     </div>
+    </div >
 );
 
 const styles = {
