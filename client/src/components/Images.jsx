@@ -4,11 +4,10 @@ import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import React from "react";
 import Paper from '@material-ui/core/Paper';
-import ImageList from '../imageComponents/ImageList'
+import ImageListNew from '../imageComponents/ImageListNew'
 import clsx from 'clsx';
 import Chart from '../Chart';
 import ImageOperation from '../imageComponents/ImageOperation';
-import ImageListNew from '../imageComponents/ImageListNew';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -22,10 +21,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
   },
   fixedHeight: {
-    height: 500,
-  },
-  fixedHeight2: {
-    height: 500,
+    height: 550,
   },
   appBarSpacer: theme.mixins.toolbar,
   content: {

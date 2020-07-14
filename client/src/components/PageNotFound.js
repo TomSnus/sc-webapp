@@ -1,7 +1,7 @@
 import React from "react";
 import { Container } from "@material-ui/core";
 import { WidthProvider, Responsive } from "react-grid-layout";
-import ImageListNew from '../imageComponents/ImageListNew';
+import ImageList from '../imageComponents/ImageList';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
@@ -32,7 +32,7 @@ export default function PageNotFound() {
       <div className={classes.appBarSpacer} />
       <Container maxWidth="lg" className={classes.container}>
         <GridLayout className="layout" cols={12} rowHeight={30} width={1200}>
-          <div key="a" data-grid={{ x: 0, y: 0, w: 9, h:4 }}>
+          <div key="a" data-grid={{ x: 0, y: 0, w: 9, h: 4 }}>
             <Paper className={fixedHeightPaper}>
               <Chart />
             </Paper></div>
