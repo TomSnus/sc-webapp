@@ -17,7 +17,7 @@
     "react-grid-layout": "^0.18.3",
     "react-grid-system": "^7.0.3",
     "react-hooks-lib": "^0.2.0",
-    "react-scripts": "3.4.1",
+    "react-scripts": "^3.4.1",
     "recharts": "^1.8.5"
   },
   "scripts": {

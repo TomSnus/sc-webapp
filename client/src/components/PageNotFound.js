@@ -1,7 +1,6 @@
 import React from "react";
 import { Container } from "@material-ui/core";
 import { WidthProvider, Responsive } from "react-grid-layout";
-import ImageList from '../imageComponents/ImageList';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
