@@ -2,7 +2,6 @@ import Card from './Card';
 import CardStack from './CardStack';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import people from './people';
 import { AccessAlarm, ArrowDropDown } from '@material-ui/icons';
 import { Container, Grid } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
@@ -11,24 +10,37 @@ import StopOutlinedIcon from '@material-ui/icons/StopOutlined';
 import AutorenewOutlinedIcon from '@material-ui/icons/AutorenewOutlined';
 import IconButton from '@material-ui/core/IconButton';
 import Button1 from './AbortButton';
-const ImageListNew = (props) => (
-    <div>
-        <CardStack
-            height={500}
-            width={350}
-            hoverOffset={25}>
 
-            {people.map((person, i) =>
-                <Card
-                    key={i}
-                    background='#   '>
-                    <TeamMemberCard {...person} />
-                </Card>
-            )}
+class ImageListNew extends React.Component {
+    state = { images: [] }
 
-        </CardStack>
-    </div>
-);
+    componentDidMount() {
+        fetch('/listImages')
+            .then(res => res.json())
+            .then(images => this.setState({ images }));
+    }
+
+    render() {
+        return (
+            <div>
+                <CardStack
+                    height={500}
+                    width={350}
+                    hoverOffset={25}>
+
+                    {this.state.images.map((person, i) =>
+                        <Card
+                            key={i}
+                            background='#   '>
+                            <TeamMemberCard {...person} />
+                        </Card>
+                    )}
+
+                </CardStack>
+            </div>
+        );
+    }
+}
 
 const ProfilePicture = ({ imgSrc, borderColor }) => (
     <img
@@ -108,17 +120,17 @@ const TeamMemberCard = (props) => (
                         </Paper>
                     </Grid>
                     <Grid alignItems="flex-start" item justify={'space-evenly'} xs={12} lg={4}>
-                   <Button1  />
-                    <IconButton onClick={props.onClick}>
-                        <StopOutlinedIcon />
-                    </IconButton>
-                </Grid>
-                <Grid item xs={12} lg={4}>
-                    Test
+                        <Button1 />
+                        <IconButton onClick={props.onClick}>
+                            <StopOutlinedIcon />
+                        </IconButton>
+                    </Grid>
+                    <Grid item xs={12} lg={4}>
+                        Test
                     </Grid>
                 </Grid>
             </Container>
-    </div>
+        </div>
     </div >
 );
 

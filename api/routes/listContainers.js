@@ -44,6 +44,7 @@ docker.listContainers(opts, function(err, containers) {
 
 router.get('/', function(req, res, next) {
     res.send('API is working properly');
+    console.log(docker.listContainers().then());
 });
 
 router.get('/',(req, res) => {
