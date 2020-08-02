@@ -28,11 +28,11 @@ class ImageListNew extends React.Component {
                     width={350}
                     hoverOffset={25}>
 
-                    {this.state.images.map((person, i) =>
+                    {this.state.images.map((image, i) =>
                         <Card
                             key={i}
                             background='#   '>
-                            <TeamMemberCard {...person} />
+                            <TeamMemberCard {...image} />
                         </Card>
                     )}
 
@@ -98,6 +98,13 @@ const TeamMemberCard = (props) => (
                 title='Created:'
                 summary={props.Created}
             />
+     <DetailsRow
+                icon='ion-ios-telephone-outline'
+                title='id:'
+                summary={props.Id}
+            />
+            
+
 
             <DetailsRow
                 icon='ion-ios-location-outline'

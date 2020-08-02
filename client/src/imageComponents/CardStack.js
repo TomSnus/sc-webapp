@@ -12,7 +12,7 @@ class CardStack extends React.Component {
 		const childrenLength = children.length || 1;
 		const headerHeight = height / childrenLength;
 
-		if (childrenLength <= 1) throw new Error(errorMessage);
+		//if (childrenLength <= 1) throw new Error(errorMessage);
 
 		this.initialTopOffsets = props.children
 			.map((child, i) => equalsZero(i) ? 0 : headerHeight * i);

@@ -21,7 +21,7 @@ docker.listImages({all: true}, function(err, images) {
   router.get('/', function(req, res, next) {
     res.json(
       [{
-        'Id': 'sha256:e216a057b1cb1efc11f8a268f37ef62083e70b1b38323ba252e25ac88904a7e8',
+        'Id': 'sha256:e216a057b1cb1efc11f8a268f37ef62083e70b1b38323ba252e25ac88904a7e81',
         'ParentId': '',
         'RepoTags':
           [
@@ -39,11 +39,11 @@ docker.listImages({all: true}, function(err, images) {
         'Labels': {},
         'Containers': 2
       }, {
-        'Id': 'sha256:e216a057b1cb1efc11f8a268f37ef62083e70b1b38323ba252e25ac88904a7e8',
+        'Id': 'sha256:e216a057b1cb1efc11f8a268f37ef62083e70b1b38323ba252e25ac88904a7e82',
         'ParentId': '',
         'RepoTags':
           [
-            'ubuntu:12.04',
+            'ubuntu:12.05',
             'ubuntu:precise'
           ],
         'RepoDigests':
@@ -57,11 +57,11 @@ docker.listImages({all: true}, function(err, images) {
         'Labels': {},
         'Containers': 2
       }, {
-        'Id': 'sha256:e216a057b1cb1efc11f8a268f37ef62083e70b1b38323ba252e25ac88904a7e8',
+        'Id': 'sha256:e216a057b1cb1efc11f8a268f37ef62083e70b1b38323ba252e25ac88904a7e83',
         'ParentId': '',
         'RepoTags':
           [
-            'ubuntu:12.04',
+            'ubuntu:12.06',
             'ubuntu:precise'
           ],
         'RepoDigests':
@@ -75,11 +75,11 @@ docker.listImages({all: true}, function(err, images) {
         'Labels': {},
         'Containers': 2
       }, {
-          'Id': 'sha256:e216a057b1cb1efc11f8a268f37ef62083e70b1b38323ba252e25ac88904a7e8',
+          'Id': 'sha256:e216a057b1cb1efc11f8a268f37ef62083e70b1b38323ba252e25ac88904a7e85',
           'ParentId': '',
           'RepoTags': 
       [
-          'ubuntu:12.04',
+          'ubuntu:12.07',
           'ubuntu:precise'
       ],
       'RepoDigests': 
