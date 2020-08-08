@@ -24,6 +24,7 @@ class Card extends React.Component {
 	}
 
 	render() {
+		
 		const { cardId, cardSelected, topOffset, hoverOffset } = this.props;
 
 		const offset = (cardId !== 0) && this.state.hover && !cardSelected ? hoverOffset : 0;

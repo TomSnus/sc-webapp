@@ -2,7 +2,7 @@ import Card from './Card';
 import CardStack from './CardStack';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { AccessAlarm, ArrowDropDown } from '@material-ui/icons';
+import { AccessAlarm, ArrowDropDown, People } from '@material-ui/icons';
 import { Container, Grid } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
 import PlayCircleFilledWhiteOutlinedIcon from '@material-ui/icons/PlayCircleFilledWhiteOutlined';
@@ -10,7 +10,8 @@ import StopOutlinedIcon from '@material-ui/icons/StopOutlined';
 import AutorenewOutlinedIcon from '@material-ui/icons/AutorenewOutlined';
 import IconButton from '@material-ui/core/IconButton';
 import Button1 from './AbortButton';
-
+import ImageCardList from './ImageCardList';
+import people from './people';
 class ImageListNew extends React.Component {
     state = { images: [] }
 
@@ -21,23 +22,11 @@ class ImageListNew extends React.Component {
     }
 
     render() {
+        console.log(this.state.images.length)
         return (
             <div>
-                <CardStack
-                    height={500}
-                    width={350}
-                    hoverOffset={25}>
-
-                    {this.state.images.map((image, i) =>
-                        <Card
-                            key={i}
-                            background='#   '>
-                            <TeamMemberCard {...image} />
-                        </Card>
-                    )}
-
-                </CardStack>
-            </div>
+            <ImageCardList robots={this.state.images} />
+        </div>
         );
     }
 }

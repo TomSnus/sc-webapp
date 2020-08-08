@@ -11,23 +11,23 @@ class CardStack extends React.Component {
 		const { children, height, initialCard } = props;
 		const childrenLength = children.length || 1;
 		const headerHeight = height / childrenLength;
-
-		//if (childrenLength <= 1) throw new Error(errorMessage);
-
+		// if (childrenLength <= 1)
+		// return;
 		this.initialTopOffsets = props.children
 			.map((child, i) => equalsZero(i) ? 0 : headerHeight * i);
-
+		
 		this.state = {
 			topOffsets: this.initialTopOffsets,
 			cardSelected: false,
 		};
 	}
 
-	componentWillMount () {
+	componentDidUpdate () {
 		if (this.props.initialCard >= this.props.children.length)
 			console.warn('prop "initialCard" cannot be equal or greater than children.length');
 		else if (this.props.initialCard >= 0)
 			this.handleCardClick(this.props.initialCard);
+
 	}
 
 	handleCardClick (id, cb) {

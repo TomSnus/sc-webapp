@@ -21,7 +21,7 @@ docker.listImages({all: true}, function(err, images) {
   router.get('/', function(req, res, next) {
     res.json(
       [{
-        'Id': 'sha256:e216a057b1cb1efc11f8a268f37ef62083e70b1b38323ba252e25ac88904a7e81',
+          'Id': 'sha256:e216a057b1cb1efc11f8a268f37ef62083e70b1b38323ba252e25ac88904a7e81',
         'ParentId': '',
         'RepoTags':
           [
