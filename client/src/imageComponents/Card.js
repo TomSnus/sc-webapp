@@ -1,5 +1,7 @@
 import React from 'react';
 import { Container } from '@material-ui/core';
+import { Label } from 'recharts';
+import Title from '../Title';
 class Card extends React.Component {
 	constructor(props) {
 		super(props);
@@ -41,13 +43,17 @@ class Card extends React.Component {
 				};
 
 		return (
-				<Container
-					style={cardStyles}
-					onClick={this.handleClick.bind(this)}
-					onMouseEnter={this.handleMouseEnter}
-					onMouseLeave={this.handleMouseLeave}>
-					{this.props.children}
-				</Container>
+			<React.Fragment>
+				<Title>{this.props.name}</Title>
+				</React.Fragment>
+			// <Container
+			// 		style={cardStyles}
+			// 		onClick={this.handleClick.bind(this)}
+			// 		onMouseEnter={this.handleMouseEnter}
+			// 		onMouseLeave={this.handleMouseLeave}>
+			// 		{this.props.children}
+			// 		<div><Label>{this.props.email}</Label></div>
+			// 	</Container>
 		);
 	}
 }

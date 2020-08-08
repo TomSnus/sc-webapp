@@ -1,13 +1,10 @@
+import CssBaseline from '@material-ui/core/CssBaseline';
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
 import Dashboard from './Dashboard';
+import './index.css';
 import * as serviceWorker from './serviceWorker';
-import { ThemeProvider } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import { colors } from '@material-ui/core';
 const ThemeContext = React.createContext('dark');
 
 const theme = createMuiTheme({

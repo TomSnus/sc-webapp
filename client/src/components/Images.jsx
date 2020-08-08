@@ -4,7 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import React from "react";
 import Paper from '@material-ui/core/Paper';
-import ImageListNew from '../imageComponents/ImageListNew'
+import ImageList from '../imageComponents/ImageList'
 import clsx from 'clsx';
 import Chart from '../Chart';
 import ImageOperation from '../imageComponents/ImageOperation';
@@ -48,7 +48,7 @@ export default function Image() {
           </Grid>
           <Grid alignItems="flex-start" item justify={'space-evenly'} xs={12} lg={4}>
             <Paper className={fixedHeightPaper}>
-              <ImageListNew />
+              <ImageList />
             </Paper>
           </Grid>
           <Grid item xs={12} lg={12}>
