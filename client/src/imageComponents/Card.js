@@ -2,7 +2,10 @@ import React from 'react';
 import { Container } from '@material-ui/core';
 import { Label } from 'recharts';
 import Title from '../Title';
-class Card extends React.Component {
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+class ImageCard extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = { hover: false };
@@ -26,7 +29,7 @@ class Card extends React.Component {
 	}
 
 	render() {
-		
+
 		const { cardId, cardSelected, topOffset, hoverOffset } = this.props;
 
 		const offset = (cardId !== 0) && this.state.hover && !cardSelected ? hoverOffset : 0;
@@ -34,27 +37,38 @@ class Card extends React.Component {
 
 		const cardStyles = {
 			...styles,
-			background: '#424242',
+			background: '#c91a1a',
 			transform,
 			WebkitTransform: transform,
 			height: this.props.height,
 			border: '3px solid #DEB226',
 			borderRadius: 12.5,
-				};
+		};
 
 		return (
+
 			<React.Fragment>
-				<Title>{this.props.name}</Title>
-				</React.Fragment>
-			// <Container
-			// 		style={cardStyles}
-			// 		onClick={this.handleClick.bind(this)}
-			// 		onMouseEnter={this.handleMouseEnter}
-			// 		onMouseLeave={this.handleMouseLeave}>
-			// 		{this.props.children}
-			// 		<div><Label>{this.props.email}</Label></div>
-			// 	</Container>
+				<Card>
+					<CardContent>
+					{this.getTitle()}
+					</CardContent>
+				</Card>
+				<Container
+					style={cardStyles}
+					onClick={this.handleClick.bind(this)}
+					onMouseEnter={this.handleMouseEnter}
+					onMouseLeave={this.handleMouseLeave}>
+					{this.props.email}
+				</Container>
+				<Container>
+					{this.getTitle()}
+				</Container>
+			</React.Fragment>
 		);
+	}
+
+	getTitle() {
+		return <Title>{this.props.name}</Title>;
 	}
 }
 
@@ -67,4 +81,4 @@ const styles = {
 	WebkitTransition: '-webkit-transform 0.5s ease',
 };
 
-export default Card;
+export default ImageCard;

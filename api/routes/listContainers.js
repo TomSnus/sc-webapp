@@ -16,39 +16,8 @@ if (!stats.isSocket()) {
 
 var docker = new Docker({ socketPath: socket });
 
-docker.listContainers({all: true}, function(err, containers) {
-  console.log('ALL: ' + containers.length);
-});
-
-docker.listContainers({all: false}, function(err, containers) {
-  console.log('!ALL: ' + containers.length);
-});
-
-// filter by labels
-var opts = {
-  "limit": 3,
-  "filters": '{"label": ["staging","env=green"]}'
-};
-
-// maps are also supported (** requires docker-modem 0.3+ **)
-opts["filters"] = {
-  "label": [
-    "staging",
-    "env=green"
-  ]
-};
-
-docker.listContainers(opts, function(err, containers) {
-  console.log('Containers labeled staging + env=green : ' + containers.length);
-});
-
 router.get('/', function(req, res, next) {
-    res.send('API is working properly');
-    console.log(docker.listContainers().then());
-});
-
-router.get('/',(req, res) => {
-    res.send('test');
+  docker.listContainers().then(res.send.bind(res));
 });
 
 module.exports = router;

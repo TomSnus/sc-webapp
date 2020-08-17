@@ -1,7 +1,9 @@
 
-import Card from './Card';
+// import Card from './Card';
 import React, { Component, PropTypes } from 'react';
 import equal from 'fast-deep-equal'
+import ImageCard from './Card';
+
 
 class CardList extends React.Component {
     state = { cardsArray: [] }
@@ -17,8 +19,7 @@ class CardList extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (!equal(this.props.images, prevProps.images)) 
-        {
+        if (!equal(this.props.images, prevProps.images)) {
             this.updateCards();
         }
     };
@@ -27,7 +28,7 @@ class CardList extends React.Component {
         // this.props.dispatch(actions.fetchAllSites())
         this.setState({
             cardsArray: this.props.images.map(robot => (
-                <Card
+                <ImageCard
                     name={robot.Id}
                     email={robot.Created}
                     id={robot.Labels} />
