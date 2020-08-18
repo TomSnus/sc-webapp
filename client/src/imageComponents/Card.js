@@ -1,84 +1,152 @@
-import React from 'react';
-import { Container } from '@material-ui/core';
-import { Label } from 'recharts';
-import Title from '../Title';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
+/* eslint-disable no-tabs */
+/* eslint-disable react/prop-types */
+import React from 'react'
+import { withStyles } from '@material-ui/core/styles'
+import clsx from 'clsx'
+import Card from '@material-ui/core/Card'
+import CardHeader from '@material-ui/core/CardHeader'
+import CardMedia from '@material-ui/core/CardMedia'
+import CardContent from '@material-ui/core/CardContent'
+import CardActions from '@material-ui/core/CardActions'
+import Collapse from '@material-ui/core/Collapse'
+import Avatar from '@material-ui/core/Avatar'
+import IconButton from '@material-ui/core/IconButton'
+import Typography from '@material-ui/core/Typography'
+import { red } from '@material-ui/core/colors'
+import FavoriteIcon from '@material-ui/icons/Favorite'
+import ShareIcon from '@material-ui/icons/Share'
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
+import MoreVertIcon from '@material-ui/icons/MoreVert'
+import ImageIcon from '@material-ui/icons/Image'
+import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline'
+import TextTruncate from 'react-text-truncate'
+const useStyles = theme => ({
+  root: {
+    maxWidth: 345,
+    border: '1px solid red'
+  },
+  media: {
+    height: 0,
+    paddingTop: '56.25%' // 16:9
+  },
+  expand: {
+    transform: 'rotate(0deg)',
+    marginLeft: 'auto',
+    transition: theme.transitions.create('transform', {
+      duration: theme.transitions.duration.shortest
+    })
+  },
+  expandOpen: {
+    transform: 'rotate(180deg)'
+  },
+  avatar: {
+    backgroundColor: red[500]
+  }
+})
+
 class ImageCard extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = { hover: false };
+  constructor (props) {
+    super(props)
+    this.state = { hover: false }
+    this.expanded = false
+    this.handleMouseEnter = this.handleMouseEnter.bind(this)
+    this.handleMouseLeave = this.handleMouseLeave.bind(this)
+  }
 
-		this.handleMouseEnter = this.handleMouseEnter.bind(this);
-		this.handleMouseLeave = this.handleMouseLeave.bind(this);
-	}
+  handleMouseEnter () {
+    this.setState({ hover: true })
+  }
 
-	handleMouseEnter() {
-		this.setState({ hover: true });
-	}
+  handleMouseLeave () {
+    this.setState({ hover: false })
+  }
 
-	handleMouseLeave() {
-		this.setState({ hover: false });
-	}
+  handleClick () {
+    const { cardId, cardClicked } = this.props
+    this.props.onClick(cardId, cardClicked)
+    this.setState({ hover: false })
+  }
 
-	handleClick() {
-		const { cardId, cardClicked } = this.props;
-		this.props.onClick(cardId, cardClicked);
-		this.setState({ hover: false });
-	}
+  getIdFormatted (id) {
+    return id.substring(id.indexOf(':') + 1, id.indexOf(':') + 13)
+  }
 
-	render() {
-
-		const { cardId, cardSelected, topOffset, hoverOffset } = this.props;
-
-		const offset = (cardId !== 0) && this.state.hover && !cardSelected ? hoverOffset : 0;
-		const transform = `translate3d(0,${topOffset - offset}px,0)`;
-
-		const cardStyles = {
-			...styles,
-			background: '#c91a1a',
-			transform,
-			WebkitTransform: transform,
-			height: this.props.height,
-			border: '3px solid #DEB226',
-			borderRadius: 12.5,
-		};
-
-		return (
-
-			<React.Fragment>
-				<Card>
-					<CardContent>
-					{this.getTitle()}
-					</CardContent>
-				</Card>
-				<Container
-					style={cardStyles}
-					onClick={this.handleClick.bind(this)}
-					onMouseEnter={this.handleMouseEnter}
-					onMouseLeave={this.handleMouseLeave}>
-					{this.props.email}
-				</Container>
-				<Container>
-					{this.getTitle()}
-				</Container>
-			</React.Fragment>
-		);
-	}
-
-	getTitle() {
-		return <Title>{this.props.name}</Title>;
-	}
+  render () {
+    const { classes } = this.props
+    const handleExpandClick = () => {
+      this.setState({
+        expanded: !this.state.expanded
+      })
+    }
+    var t = new Date(this.props.created * 1000)
+    var formattedDate = t.toISOString()
+    return (
+      <Card className={classes.root}>
+        <CardHeader
+          avatar={
+            <Avatar aria-label="recipe" className={classes.avatar}>
+              <ImageIcon />
+            </Avatar>
+          }
+          action={
+            <IconButton aria-label="settings">
+              <MoreVertIcon />
+            </IconButton>
+          }
+          title={this.getIdFormatted(this.props.id)}
+          subheader={formattedDate}
+        />
+        <CardContent>
+          <Typography variant="body2" color="textSecondary" component="p">
+            <b>RepoTags:</b> {this.props.repoTags}
+          </Typography>
+        </CardContent>
+        <CardActions disableSpacing>
+          <IconButton aria-label="add to favorites">
+            <FavoriteIcon />
+          </IconButton>
+          <IconButton aria-label="share">
+            <PlayCircleOutlineIcon />
+          </IconButton>
+          <IconButton
+            className={clsx(classes.expand, {
+              [classes.expandOpen]: true
+            })}
+            onClick={handleExpandClick}
+            aria-expanded={this.state.expanded}
+            aria-label="show more"
+          >
+            <ExpandMoreIcon />
+          </IconButton>
+        </CardActions>
+        <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
+          <CardContent>
+            <Typography paragraph>Additional Information:</Typography>
+            <Typography paragraph>
+              <Typography variant="body2" color="textSecondary" component="p">
+                <b>Parent Id:</b> {this.props.parentId}
+              </Typography>
+              <Typography variant="body2" color="textSecondary" component="p">
+                <b>Labels:</b> {this.props.labels}
+              </Typography>
+              <Typography variant="body2" color="textSecondary" component="p">
+                <b>Repo digests:</b> {this.props.repoDigests}
+              </Typography>
+              <Typography variant="body2" color="textSecondary" component="p">
+                <b>Size:</b> {this.props.size}
+              </Typography>
+              <Typography variant="body2" color="textSecondary" component="p">
+                <b>Virual size:</b> {this.props.virtualSize}
+              </Typography>
+              <Typography variant="body2" color="textSecondary" component="p">
+                <b>Containers:</b> {this.props.containers}
+              </Typography>
+            </Typography>
+          </CardContent>
+        </Collapse>
+      </Card>
+    )
+  }
 }
 
-const styles = {
-	position: 'absolute',
-	top: 0,
-	width: '100%',
-	cursor: 'pointer',
-	transition: '0.5s transform ease',
-	WebkitTransition: '-webkit-transform 0.5s ease',
-};
-
-export default ImageCard;
+export default withStyles(useStyles)(ImageCard)
