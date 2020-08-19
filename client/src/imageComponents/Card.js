@@ -1,25 +1,22 @@
 /* eslint-disable no-tabs */
 /* eslint-disable react/prop-types */
-import React from 'react'
-import { withStyles } from '@material-ui/core/styles'
-import clsx from 'clsx'
-import Card from '@material-ui/core/Card'
-import CardHeader from '@material-ui/core/CardHeader'
-import CardMedia from '@material-ui/core/CardMedia'
-import CardContent from '@material-ui/core/CardContent'
-import CardActions from '@material-ui/core/CardActions'
-import Collapse from '@material-ui/core/Collapse'
 import Avatar from '@material-ui/core/Avatar'
-import IconButton from '@material-ui/core/IconButton'
-import Typography from '@material-ui/core/Typography'
+import Card from '@material-ui/core/Card'
+import CardActions from '@material-ui/core/CardActions'
+import CardContent from '@material-ui/core/CardContent'
+import CardHeader from '@material-ui/core/CardHeader'
+import Collapse from '@material-ui/core/Collapse'
 import { red } from '@material-ui/core/colors'
-import FavoriteIcon from '@material-ui/icons/Favorite'
-import ShareIcon from '@material-ui/icons/Share'
+import IconButton from '@material-ui/core/IconButton'
+import { withStyles } from '@material-ui/core/styles'
+import Typography from '@material-ui/core/Typography'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
-import MoreVertIcon from '@material-ui/icons/MoreVert'
+import FavoriteIcon from '@material-ui/icons/Favorite'
 import ImageIcon from '@material-ui/icons/Image'
+import MoreVertIcon from '@material-ui/icons/MoreVert'
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline'
-import TextTruncate from 'react-text-truncate'
+import clsx from 'clsx'
+import React from 'react'
 const useStyles = theme => ({
   root: {
     maxWidth: 345,
@@ -67,6 +64,10 @@ class ImageCard extends React.Component {
     this.setState({ hover: false })
   }
 
+  runContainer (id) {
+    fetch('/operations/createContainer/?id='+id)
+  }
+
   getIdFormatted (id) {
     return id.substring(id.indexOf(':') + 1, id.indexOf(':') + 13)
   }
@@ -106,7 +107,9 @@ class ImageCard extends React.Component {
             <FavoriteIcon />
           </IconButton>
           <IconButton aria-label="share">
-            <PlayCircleOutlineIcon />
+            <PlayCircleOutlineIcon
+            onClick={this.runContainer(this.props.id)}
+             />
           </IconButton>
           <IconButton
             className={clsx(classes.expand, {
