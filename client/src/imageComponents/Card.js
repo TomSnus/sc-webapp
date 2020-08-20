@@ -17,10 +17,14 @@ import MoreVertIcon from '@material-ui/icons/MoreVert'
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline'
 import clsx from 'clsx'
 import React from 'react'
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
+
+
 const useStyles = theme => ({
   root: {
     maxWidth: 345,
-    border: '1px solid red'
+    border: '2px solid '+theme.palette.secondary.main,
   },
   media: {
     height: 0,
@@ -37,12 +41,12 @@ const useStyles = theme => ({
     transform: 'rotate(180deg)'
   },
   avatar: {
-    backgroundColor: red[500]
+    backgroundColor: theme.palette.secondary.main
   }
 })
 
 class ImageCard extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = { hover: false }
     this.expanded = false
@@ -50,29 +54,41 @@ class ImageCard extends React.Component {
     this.handleMouseLeave = this.handleMouseLeave.bind(this)
   }
 
-  handleMouseEnter () {
+  handleMouseEnter() {
     this.setState({ hover: true })
   }
 
-  handleMouseLeave () {
+  handleMouseLeave() {
     this.setState({ hover: false })
   }
 
-  handleClick () {
+  handleClick() {
     const { cardId, cardClicked } = this.props
     this.props.onClick(cardId, cardClicked)
     this.setState({ hover: false })
   }
 
-  runContainer (id) {
-    fetch('/operations/createContainer/?id='+id)
+  runContainer(image) {
+    confirmAlert({
+      title: 'Confirm',
+      message: 'Do you want to start container: ' + image.repoTags,
+      buttons: [
+        {
+          label: 'Yes',
+          onClick: () => fetch('/operations/createContainer/?id=' + Image.id)
+        },
+        {
+          label: 'No',
+        }
+      ]
+    });
   }
 
-  getIdFormatted (id) {
+  getIdFormatted(id) {
     return id.substring(id.indexOf(':') + 1, id.indexOf(':') + 13)
   }
 
-  render () {
+  render() {
     const { classes } = this.props
     const handleExpandClick = () => {
       this.setState({
@@ -106,10 +122,11 @@ class ImageCard extends React.Component {
           <IconButton aria-label="add to favorites">
             <FavoriteIcon />
           </IconButton>
-          <IconButton aria-label="share">
+          <IconButton aria-label="share"
+            onClick={() => this.runContainer(this.props)}
+          >
             <PlayCircleOutlineIcon
-            onClick={this.runContainer(this.props.id)}
-             />
+            />
           </IconButton>
           <IconButton
             className={clsx(classes.expand, {

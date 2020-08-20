@@ -78,24 +78,30 @@ export function mainListItems({ routes }) {
 
 export const secondaryListItems = (
   <div>
-    <ListSubheader inset>Saved reports</ListSubheader>
+    <ListSubheader inset>Additional references</ListSubheader>
     <ListItem button>
       <ListItemIcon>
         <AssignmentIcon />
       </ListItemIcon>
-      <ListItemText primary="Current month" />
+      <ListItemText primary="FAQ" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
         <AssignmentIcon />
       </ListItemIcon>
-      <ListItemText primary="Last quarter" />
+      <ListItemText primary="Documentation" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
         <AssignmentIcon />
       </ListItemIcon>
-      <ListItemText primary="Year-end sale" />
+      <ListItemText primary="Help" />
+    </ListItem>
+    <ListItem button>
+      <ListItemIcon>
+        <AssignmentIcon />
+      </ListItemIcon>
+      <ListItemText primary="Feature request" />
     </ListItem>
   </div>
 );

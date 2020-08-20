@@ -31,7 +31,7 @@ export default function SimpleList({ routes }) {
     setSelectedIndex(index);
   };
   return (
-    <div className={classes.root}>
+    <div backgroundColor='red' className={classes.root}>
       <List component="nav" aria-label="main mailbox folders">
         {routes.map(({ path, noRender, sidebarName, ...prop }, index) => {
           if (noRender) return null;
@@ -40,6 +40,7 @@ export default function SimpleList({ routes }) {
             <NavLink to={path} key={`route-${index}}`}>
               <ListItem button
                 selected={selectedIndex === index}
+                x
                 onClick={(event) => handleListItemClick(event, index)}>
                 <ListItemIcon>
                   <Avatar className={classes.avatar}>

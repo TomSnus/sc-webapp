@@ -10,7 +10,6 @@ class ImageList extends React.Component {
   }
 
   render() {
-    console.log(this.state.images.length)
     return (
       <div>
         <CardList images={this.state.images} />

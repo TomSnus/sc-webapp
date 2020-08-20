@@ -146,7 +146,7 @@ export default function Dashboard() {
             <MenuIcon />
           </IconButton>
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-            Time Control High Performance Cluster
+            Time Control High Performance Cluster (Beta)
           </Typography>
           <IconButton color="inherit">
             <Badge badgeContent={4} color="secondary">

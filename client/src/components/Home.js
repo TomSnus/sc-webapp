@@ -9,17 +9,22 @@ import clsx from 'clsx';
 import React from 'react';
 import Chart from '../Chart';
 import Deposits from '../Deposits';
-import Orders from '../Orders';
+import ReleaseNotes from '../ReleaseNotes';
+import containerPicture from '../resources/container.jpg'
+import Resizer from 'react-image-file-resizer';
+
 const drawerWidth = 240;
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+      <Link color="inherit" href="https://gandalf/">
+        ATC
         </Link>{' '}
       {new Date().getFullYear()}
+      <br></br>
+      For Support contact: Tom Stelzer
       {'.'}
     </Typography>
   );
@@ -111,22 +116,22 @@ export default function Home() {
       <div className={classes.appBarSpacer} />
       <Container maxWidth="lg" className={classes.container}>
         <Grid container spacing={3}>
-          {/* Chart */}
-          <Grid item xs={12} md={8} lg={9}>
-            <Paper className={fixedHeightPaper}>
-              <Chart />
-            </Paper>
-          </Grid>
-          {/* Recent Deposits */}
-          <Grid item xs={12} md={4} lg={3}>
+        <Grid item xs={12} md={4} lg={3}>
             <Paper className={fixedHeightPaper}>
               <Deposits />
             </Paper>
           </Grid>
+          {/* Chart */}
+          <Grid item xs={12} md={8} lg={9}>
+            <Paper className={fixedHeightPaper}>
+            <img src={containerPicture} height='200px' alt="containerPicture" />
+            </Paper>
+          </Grid>
+          
           {/* Recent Orders */}
           <Grid item xs={12}>
             <Paper className={classes.paper}>
-              <Orders />
+              <ReleaseNotes />
             </Paper>
           </Grid>
         </Grid>

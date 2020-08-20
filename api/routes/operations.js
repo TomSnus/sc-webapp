@@ -24,13 +24,6 @@ router.get('/createContainer', function (req, res, next) {
     var auxContainer;
         docker.createContainer({
         Image: req.query.id,
-        AttachStdin: true,
-        AttachStdout: true,
-        AttachStderr: true,
-        Tty: true,
-        Cmd: ['/bin/bash', '-c', 'tail -f /var/log/dmesg'],
-        OpenStdin: true,
-        StdinOnce: false
         }).then(function(container) {
         auxContainer = container;
         return auxContainer.start();
