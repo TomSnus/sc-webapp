@@ -9,7 +9,8 @@ import clsx from 'clsx';
 import React from 'react';
 import Chart from '../Chart';
 import Deposits from '../Deposits';
-import Orders from '../Orders';
+import ContainerList from './containerComponents/ContainerList';
+import ContainerOperation from './containerComponents/ContainerOperation';
 const drawerWidth = 240;
 
 function Copyright() {
@@ -103,37 +104,32 @@ function Copyright() {
     height: 240,
   },
 }));
-export default function Images() {
+export default function Containers() {
     const classes = useStyles();
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
     return(
-    <main className={classes.content}>
-    <div className={classes.appBarSpacer} />
-    <Container maxWidth="lg" className={classes.container}>
-      <Grid container spacing={3}>
-        {/* Chart */}
-        <Grid item xs={12} md={8} lg={9}>
-          <Paper className={fixedHeightPaper}>
-            <Chart />
-          </Paper>
+      <main className={classes.content}>
+      <div className={classes.appBarSpacer} />
+      <Container maxWidth="lg" className={classes.container}>
+        <Grid   direction="row"
+          container spacing={2}>
+          <Grid item xs={12} lg={8}>
+            <Paper className={fixedHeightPaper}>
+              <Chart />
+            </Paper>
+          </Grid>
+          <Grid alignItems="flex-start" item justify={'space-evenly'} xs={12} lg={4}>
+            <Paper className={fixedHeightPaper}>
+              <ContainerList />
+            </Paper>
+          </Grid>
+          <Grid item xs={12} lg={12}>
+            <Paper className={classes.paper}>
+              <ContainerOperation />
+            </Paper>
+          </Grid>
         </Grid>
-        {/* Recent Deposits */}
-        <Grid item xs={12} md={4} lg={3}>
-          <Paper className={fixedHeightPaper}>
-            <Deposits />
-          </Paper>
-        </Grid>
-        {/* Recent Orders */}
-        <Grid item xs={12}>
-          <Paper className={classes.paper}>
-            <Orders />
-          </Paper>
-        </Grid>
-      </Grid>
-      <Box pt={4}>
-        <Copyright />
-      </Box>
-    </Container>
-  </main>
+      </Container>
+    </main>
     )
 };
