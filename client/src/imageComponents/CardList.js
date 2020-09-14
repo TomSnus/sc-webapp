@@ -25,17 +25,17 @@ class CardList extends React.Component {
     updateCards () {
       // this.props.dispatch(actions.fetchAllSites())
       this.setState({
-        cardsArray: this.props.images.map(robot => (
+        cardsArray: this.props.images.map(container => (
           <ImageCard
-            id={robot.Id}
-            created={robot.Created}
-            labels={robot.Labels}
-            repoTags={robot.RepoTags}
-            size={robot.Size}
-            container={robot.Containers}
-            repoDigests={robot.RepoDigests}
-            virtualSize={robot.VirtualSize}
-            parentId={robot.ParentId}
+            id={container.Id}
+            created={container.Created}
+            labels={container.Labels}
+            repoTags={container.RepoTags}
+            size={container.Size}
+            container={container.Containers}
+            repoDigests={container.RepoDigests}
+            virtualSize={container.VirtualSize}
+            parentId={container.ParentId}
           />
         ))
       })
