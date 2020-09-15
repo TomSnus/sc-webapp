@@ -18,6 +18,7 @@ import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline'
 import clsx from 'clsx'
 import React from 'react'
 import { confirmAlert } from 'react-confirm-alert';
+import {formatJSON}  from '../util/StringFormatter.jsx'
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
 
@@ -147,7 +148,7 @@ class ImageCard extends React.Component {
                 <b>Parent Id:</b> {this.props.parentId}
               </Typography>
               <Typography variant="body2" color="textSecondary" component="p">
-                <b>Labels:</b> {this.props.labels}
+                <b>Labels:</b>{formatJSON(this.props.labels)}
               </Typography>
               <Typography variant="body2" color="textSecondary" component="p">
                 <b>Repo digests:</b> {this.props.repoDigests}

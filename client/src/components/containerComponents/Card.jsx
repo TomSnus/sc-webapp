@@ -17,9 +17,12 @@ import MoreVertIcon from '@material-ui/icons/MoreVert'
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline'
 import clsx from 'clsx'
 import React from 'react'
+import {formatJSON}  from '../../util/StringFormatter.jsx'
 import { confirmAlert } from 'react-confirm-alert';
+import SaveOutlinedIcon from '@material-ui/icons/SaveOutlined';
 import 'react-confirm-alert/src/react-confirm-alert.css';
-
+import CommitDialog from './CommitDialog'
+import Button from '@material-ui/core/Button';
 
 const useStyles = theme => ({
   root: {
@@ -45,13 +48,15 @@ const useStyles = theme => ({
   }
 })
 
-class ImageCard extends React.Component {
+class ContainerCard extends React.Component {
   constructor(props) {
     super(props)
     this.state = { hover: false }
+    this.state = { showComponent: false };
     this.expanded = false
     this.handleMouseEnter = this.handleMouseEnter.bind(this)
     this.handleMouseLeave = this.handleMouseLeave.bind(this)
+    this._onCommitClick = this._onCommitClick.bind(this);
   }
 
   handleMouseEnter() {
@@ -68,26 +73,15 @@ class ImageCard extends React.Component {
     this.setState({ hover: false })
   }
 
-  runContainer(image) {
-    confirmAlert({
-      title: 'Confirm',
-      message: 'Do you want to start container: ' + image.repoTags,
-      buttons: [
-        {
-          label: 'Yes',
-          onClick: () => fetch('/operations/createContainer/?id=' + image.id)
-        },
-        {
-          label: 'No',
-        }
-      ]
-    });
-  }
-
   getIdFormatted(id) {
     return id.substring(id.indexOf(':') + 1, id.indexOf(':') + 13)
   }
 
+  _onCommitClick() {
+    this.setState({
+      showComponent: true,
+    });
+  }
   render() {
     const { classes } = this.props
     const handleExpandClick = () => {
@@ -115,19 +109,21 @@ class ImageCard extends React.Component {
         />
         <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">
-            <b>RepoTags:</b> {this.props.repoTags}
+            <b>Image:</b> {this.props.image}
           </Typography>
         </CardContent>
         <CardActions disableSpacing>
           <IconButton aria-label="add to favorites">
             <FavoriteIcon />
           </IconButton>
-          <IconButton aria-label="share"
-            onClick={() => this.runContainer(this.props)}
-          >
-            <PlayCircleOutlineIcon
-            />
-          </IconButton>
+          <div>
+        <IconButton onClick={this._onCommitClick}><SaveOutlinedIcon /></IconButton>
+          {this.state.showComponent ?
+             <CommitDialog
+             container={this.props}  /> :
+            null
+        }
+        </div>
           <IconButton
             className={clsx(classes.expand, {
               [classes.expandOpen]: true
@@ -144,22 +140,25 @@ class ImageCard extends React.Component {
             <Typography paragraph>Additional Information:</Typography>
             <Typography paragraph>
               <Typography variant="body2" color="textSecondary" component="p">
-                <b>Parent Id:</b> {this.props.parentId}
+                <b>Command:</b> {this.props.command}
               </Typography>
               <Typography variant="body2" color="textSecondary" component="p">
-                <b>Labels:</b> {this.props.labels}
+                <b>Labels:</b> {formatJSON(this.props.labels)}
               </Typography>
               <Typography variant="body2" color="textSecondary" component="p">
-                <b>Repo digests:</b> {this.props.repoDigests}
+                <b>State:</b> {this.props.state}
               </Typography>
               <Typography variant="body2" color="textSecondary" component="p">
-                <b>Size:</b> {this.props.size}
+                <b>Status:</b> {this.props.status}
               </Typography>
               <Typography variant="body2" color="textSecondary" component="p">
-                <b>Virual size:</b> {this.props.virtualSize}
+                <b>Ports:</b> {formatJSON(this.props.ports)}
               </Typography>
               <Typography variant="body2" color="textSecondary" component="p">
-                <b>Containers:</b> {this.props.containers}
+                <b>Host config:</b> {formatJSON(this.props.hostconfig)}
+              </Typography>
+              <Typography variant="body2" color="textSecondary" component="p">
+                <b>Network settings:</b> {formatJSON(this.props.networksettings)}
               </Typography>
             </Typography>
           </CardContent>
@@ -169,4 +168,5 @@ class ImageCard extends React.Component {
   }
 }
 
-export default withStyles(useStyles)(ImageCard)
+export default withStyles(useStyles)(ContainerCard
+)

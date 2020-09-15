@@ -2,7 +2,7 @@
 // import Card from './Card';
 import React, { PropTypes } from 'react'
 import equal from 'fast-deep-equal'
-import ImageCard from './Card'
+import ContainerCard from './Card.jsx'
 
 class CardList extends React.Component {
     state = { cardsArray: [] }
@@ -17,7 +17,7 @@ class CardList extends React.Component {
     }
 
     componentDidUpdate (prevProps) {
-      if (!equal(this.props.images, prevProps.images)) {
+      if (!equal(this.props.containers, prevProps.containers)) {
         this.updateCards()
       }
     }
@@ -25,17 +25,20 @@ class CardList extends React.Component {
     updateCards () {
       // this.props.dispatch(actions.fetchAllSites())
       this.setState({
-        cardsArray: this.props.images.map(image => (
-          <ImageCard
-            id={image.Id}
-            created={image.Created}
-            labels={image.Labels}
-            repoTags={image.RepoTags}
-            size={image.Size}
-            container={image.Containers}
-            repoDigests={image.RepoDigests}
-            virtualSize={image.VirtualSize}
-            parentId={image.ParentId}
+        cardsArray: this.props.containers.map(container => (
+          <ContainerCard
+            id={container.Id}
+            image={container.Image}
+            imageId={container.ImageID} 
+            names={container.Names}
+            command={container.Command}
+            created={container.Created}
+            state={container.State}
+            status={container.Status}
+            ports={container.Ports}
+            labels={container.Labels}
+            hostconfig={container.HostConfig}
+            networksettings={container.NetworkSettings}
           />
         ))
       })

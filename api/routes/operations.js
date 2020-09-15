@@ -14,7 +14,7 @@ if (!stats.isSocket()) {
 }
 
 router.get('/createContainer', function (req, res, next) {
-    console.log('test' + req.query.id)
+    console.log('image id ' + req.query.id)
    // docker.container.start(req.query.id);
     // docker.createContainer({ Image: req.query.id, Cmd: ['/bin/bash'], name: req.query.id }, function (err, container) {
     //     container.start(function (err, data) {
@@ -28,6 +28,26 @@ router.get('/createContainer', function (req, res, next) {
         auxContainer = container;
         return auxContainer.start();
          });
+});
+
+router.get('/commit', function (req, res, next) {
+    console.log('container id ' + req.query.id)
+   // docker.container.start(req.query.id);
+    // docker.createContainer({ Image: req.query.id, Cmd: ['/bin/bash'], name: req.query.id }, function (err, container) {
+    //     container.start(function (err, data) {
+    //         //...
+    //     });
+    // });
+    var auxContainer;
+        docker.getContainer(req.query.id).commit({
+        container: req.query.id,
+        repo: "test:repo",
+        tag: "test",
+        comment: "test:comment",
+        author: "test:author"
+        }).then(function(data) {
+            console.log('Image created');
+        });
 });
 
 module.exports = router;
