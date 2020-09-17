@@ -13,25 +13,37 @@ if (!stats.isSocket()) {
     throw new Error('Are you sure the docker is running?');
 }
 
-router.get('/createContainer', function (req, res, next) {
-    console.log('image id ' + req.query.id)
-   // docker.container.start(req.query.id);
-    // docker.createContainer({ Image: req.query.id, Cmd: ['/bin/bash'], name: req.query.id }, function (err, container) {
-    //     container.start(function (err, data) {
-    //         //...
-    //     });
-    // });
+//router.get('/createContainer', function (req, res, next) {
+router.get('/createContainer/:id/:domainname/:hostname/:ports', function (req, res, next) {
+    console.log('image id ' + req.params.id)
+    console.log('domainname ' + req.params.domainname)
+    console.log('hostname ' + req.params.hostname)
+    console.log('ports ' + req.params.ports)
+
+    // var auxContainer;
+    //     docker.createContainer({
+    //     Image: req.query.id,
+    //     }).then(function(container) {
+    //     auxContainer = container;
+    //     return auxContainer.start();
+    //      });
+
     var auxContainer;
-        docker.createContainer({
-        Image: req.query.id,
-        }).then(function(container) {
-        auxContainer = container;
-        return auxContainer.start();
-         });
+         docker.createContainer({
+         Image: req.params.id,
+         Domainname: req.params.domainname,
+         Hostname: req.params.hostname,
+         ExposedPorts: {"22/tcp": {} }
+         }).then(function(container) {
+         auxContainer = container;
+         return auxContainer.start();
+          });
 });
 
-router.get('/commit', function (req, res, next) {
-    console.log('container id ' + req.query.id)
+router.get('/commit/:id/:repo/:tag/:comment/:author', function (req, res, next) {
+    console.log('container id ' + req.params.id)
+    console.log('container tag ' + req.params.repo)
+
    // docker.container.start(req.query.id);
     // docker.createContainer({ Image: req.query.id, Cmd: ['/bin/bash'], name: req.query.id }, function (err, container) {
     //     container.start(function (err, data) {
@@ -39,12 +51,12 @@ router.get('/commit', function (req, res, next) {
     //     });
     // });
     var auxContainer;
-        docker.getContainer(req.query.id).commit({
-        container: req.query.id,
-        repo: "test:repo",
-        tag: "test",
-        comment: "test:comment",
-        author: "test:author"
+        docker.getContainer(req.params.id).commit({
+        container: req.params.id,
+        repo: req.params.repo,
+        tag: req.params.tag,
+        comment: req.params.comment,
+        author: req.params.author
         }).then(function(data) {
             console.log('Image created');
         });
