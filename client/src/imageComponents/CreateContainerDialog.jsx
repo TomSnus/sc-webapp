@@ -6,79 +6,66 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import TextField from '@material-ui/core/TextField';
 import React, { useState} from 'react' 
-export default function CommitDialog(props) {
+export default function CreateContainerDialog(props) {
 
   const [open,  setOpen] = React.useState(false);
   const [ severity,  setSeverity] = React.useState("success");
-  const [tag, setTag] = useState('');
-  const [comment, setComment] = useState('');
-  const [author, setAuthor] = useState('');
-  const [repo, setRepo] = useState('');
+  const [hostname, setHostname] = useState('');
+  const [domainname, setDomainname] = useState('');
+  const [ports, setPorts] = useState('');
 
-  const handleCommit = () => {
-    console.log('Tag ' +{tag} )
-    fetch('/operations/commit/'+ props.container.id+'/'+repo+'/'+tag+'/'+comment+'/'+author )
+  const handleCreate = () => {
+    fetch('/operations/createContainer/'+ props.image.id+'/'+hostname+'/'+domainname+'/'+ports )
     setSeverity("success");
     setOpen(true);
   };
 
   return (
     <div>
-      <Dialog open={true} onClose={() =>{props.handleClose("info", "Commit aborted") } } aria-labelledby="form-dialog-title">
+      <Dialog open={true} onClose={() =>{props.handleClose("info", "Container creation aborted") } } aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Commit</DialogTitle>
         <DialogContent>
           <DialogContentText>
-          Do you want to commit the current container state? 🐳️
+          Specify container 🔥️:
           <br/>
-          <b>Container:</b>{props.container.id}
           </DialogContentText>
           <TextField
             autoFocus
             margin="dense"
-            id="tag"
-            label="Tag"
+            id="Hostname"
+            label="Hostname"
             type="text"
-            value={tag}
-            onChange={(e) => setTag(e.target.value)}
+            value={hostname}
+            onChange={(e) => setHostname(e.target.value)}
             fullWidth
           />
            <TextField
             margin="dense"
-            id="comment"
-            label="Comment"
+            id="Domainname"
+            label="Domainname"
             type="text"
-            value={comment}
-            onChange={(e) => setComment(e.target.value)}
+            value={domainname}
+            onChange={(e) => setDomainname(e.target.value)}
             fullWidth
           />
           <TextField
             margin="dense"
-            id="author"
-            label="Author"
+            id="ports"
+            label="Ports"
             type="text"
-            value={author}
-            onChange={(e) => setAuthor(e.target.value)}
-            fullWidth
-          />
-          <TextField
-            autoFocus
-            margin="dense"
-            id="tag"
-            label="Repo"
-            type="text"
-            value={repo}
-            onChange={(e) => setRepo(e.target.value)}
+            value={ports}
+            onChange={(e) => setPorts(e.target.value)}
             fullWidth
           />
         </DialogContent>
         <DialogActions>
           <Button onClick={() => {
-            props.handleClose("info", "Commit aborted");
+            props.handleClose("info", "Container creation aborted");
           }} color="primary">
             Cancel
           </Button>
           <Button onClick={() => {
-            handleCommit(); props.handleClose("success", "Container commited");
+            handleCreate(); props.handleClose("success", "Container created");
           }} color="primary">
             Commit
           </Button>

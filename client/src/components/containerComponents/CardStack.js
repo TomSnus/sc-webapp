@@ -15,7 +15,6 @@ class CardStack extends React.Component {
 		// return;
 		this.initialTopOffsets = props.children
 			.map((child, i) => equalsZero(i) ? 0 : headerHeight * i);
-		
 		this.state = {
 			topOffsets: this.initialTopOffsets,
 			cardSelected: false,

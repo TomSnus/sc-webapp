@@ -18,14 +18,14 @@ import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline'
 import clsx from 'clsx'
 import React from 'react'
 import { confirmAlert } from 'react-confirm-alert';
-import {formatJSON}  from '../util/StringFormatter.jsx'
+import { formatJSON } from '../util/StringFormatter.jsx'
 import 'react-confirm-alert/src/react-confirm-alert.css';
-
+import CreateContainerDialog from './CreateContainerDialog'
 
 const useStyles = theme => ({
   root: {
     maxWidth: 345,
-    border: '2px solid '+theme.palette.secondary.main,
+    border: '2px solid ' + theme.palette.secondary.main,
   },
   media: {
     height: 0,
@@ -53,6 +53,8 @@ class ImageCard extends React.Component {
     this.expanded = false
     this.handleMouseEnter = this.handleMouseEnter.bind(this)
     this.handleMouseLeave = this.handleMouseLeave.bind(this)
+    this.onStartClick = this.onStartClick.bind(this);
+    this.closeDialog = this.closeDialog.bind(this);
   }
 
   handleMouseEnter() {
@@ -68,6 +70,21 @@ class ImageCard extends React.Component {
     this.props.onClick(cardId, cardClicked)
     this.setState({ hover: false })
   }
+  onStartClick() {
+    this.setState({
+      showComponent: true,
+    });
+  }
+
+  closeDialog = (severity, message) => {
+    console.log(severity)
+    this.setState({
+      showComponent: false,
+      severity:severity,
+      open:true,
+      snackMessage:message,
+    });
+  };
 
   runContainer(image) {
     confirmAlert({
@@ -123,12 +140,21 @@ class ImageCard extends React.Component {
           <IconButton aria-label="add to favorites">
             <FavoriteIcon />
           </IconButton>
-          <IconButton aria-label="share"
+          {/* <IconButton aria-label="share"
             onClick={() => this.runContainer(this.props)}
           >
             <PlayCircleOutlineIcon
             />
-          </IconButton>
+          </IconButton> */}
+          <div>
+            <IconButton onClick={this.onStartClick} onClose={this.showSnack} ><PlayCircleOutlineIcon /></IconButton>
+            {this.state.showComponent ?
+              <CreateContainerDialog
+                image={this.props}
+                handleClose={this.closeDialog} /> :
+              null
+            }
+          </div>
           <IconButton
             className={clsx(classes.expand, {
               [classes.expandOpen]: true

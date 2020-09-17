@@ -23,6 +23,8 @@ import SaveOutlinedIcon from '@material-ui/icons/SaveOutlined';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import CommitDialog from './CommitDialog'
 import Button from '@material-ui/core/Button';
+import Snackbar from '@material-ui/core/Snackbar';
+import SnackAlert from '../../util/SnackBarUtil'
 
 const useStyles = theme => ({
   root: {
@@ -53,10 +55,13 @@ class ContainerCard extends React.Component {
     super(props)
     this.state = { hover: false }
     this.state = { showComponent: false };
+    this.state = { open: false };
+    this.state = {snackMessage: ""}
     this.expanded = false
     this.handleMouseEnter = this.handleMouseEnter.bind(this)
     this.handleMouseLeave = this.handleMouseLeave.bind(this)
     this._onCommitClick = this._onCommitClick.bind(this);
+    this.closeDialog = this.closeDialog.bind(this);
   }
 
   handleMouseEnter() {
@@ -82,6 +87,22 @@ class ContainerCard extends React.Component {
       showComponent: true,
     });
   }
+
+  closeDialog = (severity, message) => {
+    console.log(severity)
+    this.setState({
+      showComponent: false,
+      severity:severity,
+      open:true,
+      snackMessage:message,
+    });
+  };
+
+  handleSnackClose = () => {
+    this.setState({
+      open:false,
+    });  };
+
   render() {
     const { classes } = this.props
     const handleExpandClick = () => {
@@ -117,13 +138,19 @@ class ContainerCard extends React.Component {
             <FavoriteIcon />
           </IconButton>
           <div>
-        <IconButton onClick={this._onCommitClick}><SaveOutlinedIcon /></IconButton>
+        <IconButton onClick={this._onCommitClick} onClose={this.showSnack} ><SaveOutlinedIcon /></IconButton>
           {this.state.showComponent ?
              <CommitDialog
-             container={this.props}  /> :
+             container={this.props}
+             handleClose={this.closeDialog} /> :
             null
         }
         </div>
+        <Snackbar open={this.state.open} autoHideDuration={6000} onClose={this.handleSnackClose} >
+          <SnackAlert severity={this.state.severity}  onClose={this.handleSnackClose}>
+            {this.state.snackMessage}
+          </SnackAlert>
+        </Snackbar>
           <IconButton
             className={clsx(classes.expand, {
               [classes.expandOpen]: true
