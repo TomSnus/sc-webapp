@@ -14,7 +14,7 @@ if (!stats.isSocket()) {
 }
 
 //router.get('/createContainer', function (req, res, next) {
-router.get('/createContainer/:id/:domainname/:hostname/:ports', function (req, res, next) {
+router.get('/createContainer/:id/:name/:domainname/:hostname/:ports', function (req, res, next) {
     console.log('image id ' + req.params.id)
     console.log('domainname ' + req.params.domainname)
     console.log('hostname ' + req.params.hostname)
@@ -31,6 +31,7 @@ router.get('/createContainer/:id/:domainname/:hostname/:ports', function (req, r
     var auxContainer;
          docker.createContainer({
          Image: req.params.id,
+         Name: req.params.name,
          Domainname: req.params.domainname,
          Hostname: req.params.hostname,
          ExposedPorts: {"22/tcp": {} }

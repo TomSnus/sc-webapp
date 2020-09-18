@@ -12,7 +12,7 @@ import { withStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import FavoriteIcon from '@material-ui/icons/Favorite'
-import ImageIcon from '@material-ui/icons/Image'
+import GraphicEqOutlinedIcon from '@material-ui/icons/GraphicEqOutlined';
 import MoreVertIcon from '@material-ui/icons/MoreVert'
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline'
 import clsx from 'clsx'
@@ -117,7 +117,7 @@ class ContainerCard extends React.Component {
         <CardHeader
           avatar={
             <Avatar aria-label="recipe" className={classes.avatar}>
-              <ImageIcon />
+              <GraphicEqOutlinedIcon />
             </Avatar>
           }
           action={

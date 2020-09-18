@@ -4,7 +4,7 @@ class ImageList extends React.Component {
   state = { images: [] }
 
   componentDidMount() {
-    fetch('/listImages')
+    fetch('/listImages/*')
       .then(res => res.json())
       .then(images => this.setState({ images }));
   }

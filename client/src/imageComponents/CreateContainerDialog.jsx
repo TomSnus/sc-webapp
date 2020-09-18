@@ -10,12 +10,13 @@ export default function CreateContainerDialog(props) {
 
   const [open,  setOpen] = React.useState(false);
   const [ severity,  setSeverity] = React.useState("success");
+  const [name, setName] = useState('');
   const [hostname, setHostname] = useState('');
   const [domainname, setDomainname] = useState('');
   const [ports, setPorts] = useState('');
 
   const handleCreate = () => {
-    fetch('/operations/createContainer/'+ props.image.id+'/'+hostname+'/'+domainname+'/'+ports )
+    fetch('/operations/createContainer/'+ props.image.id+'/'+name+'/'+hostname+'/'+domainname+'/'+ports )
     setSeverity("success");
     setOpen(true);
   };
@@ -23,12 +24,22 @@ export default function CreateContainerDialog(props) {
   return (
     <div>
       <Dialog open={true} onClose={() =>{props.handleClose("info", "Container creation aborted") } } aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Commit</DialogTitle>
+        <DialogTitle id="form-dialog-title">Create Container 🐳️</DialogTitle>
         <DialogContent>
           <DialogContentText>
           Specify container 🔥️:
           <br/>
           </DialogContentText>
+          <TextField
+            autoFocus
+            margin="dense"
+            id="Name"
+            label="Name"
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            fullWidth
+          />
           <TextField
             autoFocus
             margin="dense"
