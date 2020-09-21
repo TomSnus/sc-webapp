@@ -121,14 +121,11 @@ export default function Home() {
               <Deposits />
             </Paper>
           </Grid>
-          {/* Chart */}
           <Grid item xs={12} md={8} lg={9}>
             <Paper className={fixedHeightPaper}>
             <img src={containerPicture} height='200px' alt="containerPicture" />
             </Paper>
           </Grid>
-          
-          {/* Recent Orders */}
           <Grid item xs={12}>
             <Paper className={classes.paper}>
               <ReleaseNotes />

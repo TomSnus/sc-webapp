@@ -74,11 +74,12 @@ class CardStack extends React.Component {
 			background: this.props.background,
 			height: this.props.height,
 			width: this.props.width,
+			display: inline,
 		};
 		return (
-			<ul style={stackStyles}>
+			<div style={stackStyles}>
 				{this.renderCards()}
-			</ul>
+			</div>
 		);
 	}
 }
@@ -101,7 +102,7 @@ CardStack.propTypes = {
 };
 
 CardStack.defaultProps = {
-	width: 350,
+	width: 600,
 	height: 600,
 	bgColor: 'f8f8f8',
 	hoverOffset: 30,

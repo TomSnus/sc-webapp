@@ -8,6 +8,7 @@ import ImageList from '../imageComponents/ImageList'
 import clsx from 'clsx';
 import Chart from '../Chart';
 import ImageOperation from '../imageComponents/ImageOperation';
+import ImageBoard from '../imageComponents/ImageBoard'
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -43,7 +44,7 @@ export default function Image() {
           container spacing={2}>
           <Grid item xs={12} lg={8}>
             <Paper className={fixedHeightPaper}>
-              <Chart />
+              <ImageBoard />
             </Paper>
           </Grid>
           <Grid alignItems="flex-start" item justify={'space-evenly'} xs={12} lg={4}>
