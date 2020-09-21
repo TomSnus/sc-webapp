@@ -11,7 +11,7 @@ class ImageBoard extends React.Component {
 
   render() {
     return (
-      <div>
+      <div float='right' display='inline'>
         <CardBoard images={this.state.images} />
       </div>
     );
