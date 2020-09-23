@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import CardBoard from './CardBoard'
+
 class ImageBoard extends React.Component {
   state = { images: [] }
 
@@ -11,7 +12,7 @@ class ImageBoard extends React.Component {
 
   render() {
     return (
-      <div float='right' display='inline'>
+      <div>
         <CardBoard images={this.state.images} />
       </div>
     );

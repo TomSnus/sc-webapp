@@ -21,6 +21,8 @@ export default function CreateContainerDialog(props) {
     setOpen(true);
   };
 
+
+
   return (
     <div>
       <Dialog open={true} onClose={() =>{props.handleClose("info", "Container creation aborted") } } aria-labelledby="form-dialog-title">

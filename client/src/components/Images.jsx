@@ -54,7 +54,7 @@ export default function Image() {
           </Grid>
           <Grid item xs={12} lg={12}>
             <Paper className={classes.paper}>
-              <ImageOperation />
+            <ImageOperation />
             </Paper>
           </Grid>
         </Grid>

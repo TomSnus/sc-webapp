@@ -3,7 +3,7 @@
 import React, { PropTypes } from 'react'
 import equal from 'fast-deep-equal'
 import ImageCard from './Card'
-
+import Title from './../Title'
 class CardList extends React.Component {
     state = { cardsArray: [] }
 
@@ -42,7 +42,15 @@ class CardList extends React.Component {
     }
 
     render () {
-      return (<div>{this.state.cardsArray}</div>)
+      return (<div>
+        <Title>All Images </Title>
+          <div >
+          {this.state.cardsArray.map(col =>
+         <div><div key={col.name}>{col}</div><br/></div>
+               )}
+          </div>
+        </div>
+      )
     }
 }
 export default CardList

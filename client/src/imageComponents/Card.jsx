@@ -24,7 +24,7 @@ import CreateContainerDialog from './CreateContainerDialog'
 
 const useStyles = theme => ({
   root: {
-    maxWidth: 345,
+    //maxWidth: 345,
     border: '2px solid ' + theme.palette.secondary.main,
   },
   media: {
@@ -35,7 +35,7 @@ const useStyles = theme => ({
     transform: 'rotate(0deg)',
     marginLeft: 'auto',
     transition: theme.transitions.create('transform', {
-      duration: theme.transitions.duration.shortest
+      duration: theme.transitions.duration.highest
     })
   },
   expandOpen: {
@@ -106,7 +106,7 @@ class ImageCard extends React.Component {
     return id.substring(id.indexOf(':') + 1, id.indexOf(':') + 13)
   }
 
-  render() {
+    render() {
     const { classes } = this.props
     const handleExpandClick = () => {
       this.setState({
@@ -116,7 +116,8 @@ class ImageCard extends React.Component {
     var t = new Date(this.props.created * 1000)
     var formattedDate = t.toISOString()
     return (
-      <Card className={classes.root}>
+      <div>
+       <Card className={classes.root}>
         <CardHeader
           avatar={
             <Avatar aria-label="recipe" className={classes.avatar}>
@@ -192,8 +193,10 @@ class ImageCard extends React.Component {
           </CardContent>
         </Collapse>
       </Card>
+      </div>
     )
   }
 }
 
 export default withStyles(useStyles)(ImageCard)
+

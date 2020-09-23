@@ -30,18 +30,7 @@ export default function Convert() {
     <main className={classes.content}>
       <div className={classes.appBarSpacer} />
       <Container maxWidth="lg" className={classes.container}>
-        <GridLayout className="layout" cols={12} rowHeight={30} width={1200}>
-          <div key="a" data-grid={{ x: 0, y: 0, w: 9, h: 4 }}>
-            <Paper className={fixedHeightPaper}>
-              <Chart />
-            </Paper></div>
-          <div key="b" data-grid={{ x: 0, y: 6, w: 3, h: 4 }}><Paper className={fixedHeightPaper}>
-            <Deposits />
-          </Paper></div>
-          <div key="c" data-grid={{ x: 0, y: 6, w: 12, h: 4 }}><Paper className={classes.paper}>
-            <Orders />
-          </Paper></div>
-        </GridLayout>
+<Paper>Test</Paper>
       </Container>
     </main >
   )
