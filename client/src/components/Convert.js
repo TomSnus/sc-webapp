@@ -8,6 +8,7 @@ import GridLayout from 'react-grid-layout';
 import Chart from '../Chart';
 import Deposits from '../Deposits';
 import Orders from '../Orders';
+import ConvertComponent from './convertComponents/ConvertComponent';
 
 const useStyles = makeStyles((theme) => ({
   appBarSpacer: theme.mixins.toolbar,
@@ -27,11 +28,15 @@ export default function Convert() {
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   return (
-    <main className={classes.content}>
-      <div className={classes.appBarSpacer} />
-      <Container maxWidth="lg" className={classes.container}>
-<Paper>Test</Paper>
-      </Container>
-    </main >
+    <ConvertComponent />
+
+    // <main className={classes.content}>
+    //   <div className={classes.appBarSpacer} />
+    //   <Container maxWidth="lg" className={classes.container}>
+    //     <Paper>
+    //       <ConvertComponent />
+    //     </Paper>
+    //   </Container>
+    // </main >
   )
 }

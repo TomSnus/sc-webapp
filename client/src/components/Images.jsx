@@ -31,6 +31,7 @@ const useStyles = makeStyles((theme) => ({
     overflow: 'auto',
   },
 }));
+
 export default function Image() {
   const classes = useStyles();
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
