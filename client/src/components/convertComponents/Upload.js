@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Dropzone from "./dropzone/Dropzone";
 import "./Upload.css";
 import Progress from "./Progress";
+import Title from '../../Title';
 
 class Upload extends Component {
   constructor(props) {
@@ -36,7 +37,6 @@ class Upload extends Component {
 
       this.setState({ successfullUploaded: true, uploading: false });
     } catch (e) {
-      // Not Production ready! Do some error handling here instead...
       this.setState({ successfullUploaded: true, uploading: false });
     }
   }
@@ -87,7 +87,7 @@ class Upload extends Component {
           <img
             className="CheckIcon"
             alt="done"
-            src="baseline-check_circle_outline-24px.svg"
+            src="../../resources/check_circle-white-18dp.svg"
             style={{
               opacity:
                 uploadProgress && uploadProgress.state === "done" ? 0.5 : 0
@@ -124,7 +124,7 @@ class Upload extends Component {
   render() {
     return (
       <div className="Upload">
-        <span className="Title">Upload Files</span>
+        <Title>Upload Files</Title>
         <div className="Content">
           <div>
             <Dropzone

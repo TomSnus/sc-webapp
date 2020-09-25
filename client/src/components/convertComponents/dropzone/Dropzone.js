@@ -81,9 +81,9 @@ class Dropzone extends Component {
         <img
           alt="upload"
           className="Icon"
-          src="baseline-cloud_upload-24px.svg"
+          src={require("../../../resources/cloud_upload-white-18dp.svg")}
         />
-        <span>Upload Files</span>
+        <span backgroundColor='white'>  Upload Files</span>
       </div>
     );
   }

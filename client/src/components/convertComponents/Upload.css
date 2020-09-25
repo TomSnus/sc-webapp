@@ -38,20 +38,21 @@
   }
 
   .App {
-    text-align: center;
-    background-color: rgb(206, 213, 223);
-    min-height: 100vh;
+    /*text-align: center; */
+    background-color:#303030;
+    /*min-height: 100vh; */
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    flex-direction: row;
+    /*align-items: center;
+    justify-content: center; */
     font-size: calc(10px + 2vmin);
   }
   
   .Card {
-    background-color: white;
-    padding: 32px;
+    background-color: #424242;
+    padding: 32px; 
     width: 100%;
+    margin: 5px;
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
@@ -121,9 +122,9 @@
     -ms-user-select: none;
     user-select: none;
     border: 0;
-    border-radius: 2px;
-    background: rgba(103, 58, 183, 1);
-    color: #fff;
+    border-radius: 12px;
+    background: #DEB226;
+    color: #424242;
     outline: 0;
   }
   
