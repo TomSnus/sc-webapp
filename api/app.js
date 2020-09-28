@@ -12,7 +12,7 @@ var testDBRouter = require('./routes/testDB');
 var listContainersRouter = require('./routes/listContainers');
 var listImagesRoute = require('./routes/listImages');
 var operations = require('./routes/operations');
-
+var uploadRouter = require('./routes/upload')
 var app = express();
 
 // view engine setup
@@ -31,6 +31,7 @@ app.use("/testDB", testDBRouter);
 app.use("/listContainers", listContainersRouter);
 app.use("/listImages", listImagesRoute);
 app.use("/operations", operations);
+app.use("/upload", uploadRouter);
 
 
 // catch 404 and forward to error handler

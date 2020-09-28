@@ -3,6 +3,7 @@ import Dropzone from "./dropzone/Dropzone";
 import "./Upload.css";
 import Progress from "./Progress";
 import Title from '../../Title';
+import TargetDB from "./TargetDB";
 
 class Upload extends Component {
   constructor(props) {
@@ -73,7 +74,7 @@ class Upload extends Component {
       const formData = new FormData();
       formData.append("file", file, file.name);
 
-      req.open("POST", "http://localhost:8000/upload");
+      req.open("POST", "http://localhost:9000/upload");
       req.send(formData);
     });
   }
@@ -87,7 +88,7 @@ class Upload extends Component {
           <img
             className="CheckIcon"
             alt="done"
-            src="../../resources/check_circle-white-18dp.svg"
+            src={require("../../resources/check_circle-white-18dp.svg")}
             style={{
               opacity:
                 uploadProgress && uploadProgress.state === "done" ? 0.5 : 0
@@ -123,27 +124,32 @@ class Upload extends Component {
 
   render() {
     return (
-      <div className="Upload">
-        <Title>Upload Files</Title>
-        <div className="Content">
-          <div>
-            <Dropzone
-              onFilesAdded={this.onFilesAdded}
-              disabled={this.state.uploading || this.state.successfullUploaded}
-            />
+      <div className="ConvertComp">
+        <div className="Upload">
+          <Title>Upload Files</Title>
+          <div className="Content">
+            <div>
+              <Dropzone
+                onFilesAdded={this.onFilesAdded}
+                disabled={this.state.uploading || this.state.successfullUploaded}
+              />
+            </div>
+            <div className="Files">
+              {this.state.files.map(file => {
+                return (
+                  <div key={file.name} className="Row">
+                    <span className="Filename">{file.name}</span>
+                    {this.renderProgress(file)}
+                  </div>
+                );
+              })}
+            </div>
           </div>
-          <div className="Files">
-            {this.state.files.map(file => {
-              return (
-                <div key={file.name} className="Row">
-                  <span className="Filename">{file.name}</span>
-                  {this.renderProgress(file)}
-                </div>
-              );
-            })}
-          </div>
+          <div className="Actions">{this.renderActions()}</div>
+        </div >
+        <div className="targetDb">
+          <TargetDB />
         </div>
-        <div className="Actions">{this.renderActions()}</div>
       </div>
     );
   }

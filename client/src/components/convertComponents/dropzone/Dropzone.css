@@ -14,7 +14,7 @@
     opacity: 0.3;
     height: 64px;
     width: 64px;
-  }
+    filter: invert(63%) sepia(57%) saturate(530%) hue-rotate(8deg) brightness(220%) contrast(99%);    }
   
   .FileInput {
     display: none;
