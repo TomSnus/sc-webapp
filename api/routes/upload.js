@@ -13,7 +13,8 @@ var docker = new Docker({ socketPath: socket });
 
 const options = {
     uploadDir: os.tmpdir(),
-    autoClean: false
+    autoClean: true
+
   };
 
 router.use(formData.parse(options));
@@ -30,7 +31,20 @@ router.get('/', function (req, res, next) {
 });
 
 router.post('/', function (req, res) {
-    res.send('POST request to the homepage');
-    console.log(req.files)
+    res.send('POST request');
+    console.log(req.files.formData.path)
+    var path = req.files.formData.path+': /tmp';
+    var auxContainer;
+         docker.createContainer({
+         Image: 'c26440cd79ea',
+         Name: 'maria-demo',
+         Domainname: 'domain',
+         Volumes: {path: { }  },
+         Hostname: 'hostname',
+         ExposedPorts: {"43306/tcp": {} }
+         }).then(function(container) {
+         auxContainer = container;
+         return auxContainer.start();
+          });
   });
 module.exports = router;
