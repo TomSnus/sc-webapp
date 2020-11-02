@@ -1,19 +1,13 @@
-import React from 'react';
+import Avatar from '@material-ui/core/Avatar';
 import List from "@material-ui/core/List";
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListSubheader from '@material-ui/core/ListSubheader';
-import DashboardIcon from '@material-ui/icons/Dashboard';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import PeopleIcon from '@material-ui/icons/People';
-import BarChartIcon from '@material-ui/icons/BarChart';
-import LayersIcon from '@material-ui/icons/Layers';
-import Avatar from '@material-ui/core/Avatar';
 import AssignmentIcon from '@material-ui/icons/Assignment';
+import React from 'react';
 import { NavLink } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
-import Dashboard from './Dashboard'
+import Dashboard from './Dashboard';
 
 
 export function mainListItems({ routes }) {
@@ -23,7 +17,6 @@ export function mainListItems({ routes }) {
       <List component="nav" aria-label="main mailbox folders">
         {routes.map(({ path, noRender, sidebarName, ...prop }, index) => {
           if (noRender) return null;
-
           return (
             <NavLink to={path} key={`route-${index}}`}>
               <ListItem button>

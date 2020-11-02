@@ -7,11 +7,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import clsx from 'clsx';
 import React from 'react';
-import Chart from '../Chart';
-import Deposits from '../Deposits';
+import WelcomeComp from '../WelcomeComp';
 import ReleaseNotes from '../ReleaseNotes';
-import containerPicture from '../resources/container.jpg'
-import Resizer from 'react-image-file-resizer';
+import containerPicture from '../resources/container.jpg';
 
 const drawerWidth = 240;
 
@@ -118,7 +116,7 @@ export default function Home() {
         <Grid container spacing={3}>
         <Grid item xs={12} md={4} lg={3}>
             <Paper className={fixedHeightPaper}>
-              <Deposits />
+              <WelcomeComp />
             </Paper>
           </Grid>
           <Grid item xs={12} md={8} lg={9}>

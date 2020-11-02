@@ -1,11 +1,10 @@
-import React, { Component } from 'react'
-import './Upload.css'
-import Title from '../../Title';
+import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import React from 'react';
+import Title from '../../Title';
+import './Upload.css';
 
 class TargetDB extends React.Component {
   constructor(props) {

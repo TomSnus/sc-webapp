@@ -1,5 +1,5 @@
-import React, { Component, PropTypes } from 'react';
-import CardBoard from './CardBoard'
+import React from 'react';
+import CardBoard from './CardBoard';
 
 class ImageBoard extends React.Component {
   state = { images: [] }

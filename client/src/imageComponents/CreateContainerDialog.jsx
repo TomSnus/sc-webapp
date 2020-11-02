@@ -5,18 +5,18 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import TextField from '@material-ui/core/TextField';
-import React, { useState} from 'react' 
+import React, { useState } from 'react';
 export default function CreateContainerDialog(props) {
 
-  const [open,  setOpen] = React.useState(false);
-  const [ severity,  setSeverity] = React.useState("success");
+  const [open, setOpen] = React.useState(false);
+  const [severity, setSeverity] = React.useState("success");
   const [name, setName] = useState('');
   const [hostname, setHostname] = useState('');
   const [domainname, setDomainname] = useState('');
   const [ports, setPorts] = useState('');
 
   const handleCreate = () => {
-    fetch('/operations/createContainer/'+ props.image.id+'/'+name+'/'+hostname+'/'+domainname+'/'+ports )
+    fetch('/operations/createContainer/' + props.image.id + '/' + name + '/' + hostname + '/' + domainname + '/' + ports)
     setSeverity("success");
     setOpen(true);
   };
@@ -25,12 +25,12 @@ export default function CreateContainerDialog(props) {
 
   return (
     <div>
-      <Dialog open={true} onClose={() =>{props.handleClose("info", "Container creation aborted") } } aria-labelledby="form-dialog-title">
+      <Dialog open={true} onClose={() => { props.handleClose("info", "Container creation aborted") }} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Create Container 🐳️</DialogTitle>
         <DialogContent>
           <DialogContentText>
-          Specify container 🔥️:
-          <br/>
+            Specify container 🔥️:
+          <br />
           </DialogContentText>
           <TextField
             autoFocus
@@ -52,7 +52,7 @@ export default function CreateContainerDialog(props) {
             onChange={(e) => setHostname(e.target.value)}
             fullWidth
           />
-           <TextField
+          <TextField
             margin="dense"
             id="Domainname"
             label="Domainname"

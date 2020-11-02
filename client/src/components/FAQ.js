@@ -1,8 +1,8 @@
-import React from "react";
 import { Container } from "@material-ui/core";
-import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Link from '@material-ui/core/Link';
+import Typography from '@material-ui/core/Typography';
+import React from "react";
 import GridLayout from 'react-grid-layout';
 
 function Copyright() {

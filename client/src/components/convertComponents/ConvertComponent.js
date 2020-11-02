@@ -1,7 +1,6 @@
-import React, { Component } from 'react'
-import './Upload.css'
-import Upload from './Upload'
-import TargetDB from './TargetDB';
+import React, { Component } from 'react';
+import Upload from './Upload';
+import './Upload.css';
 
 class ConvertComponent extends Component {
 

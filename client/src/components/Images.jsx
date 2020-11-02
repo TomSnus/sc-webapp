@@ -1,14 +1,12 @@
-import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
-import React from "react";
 import Paper from '@material-ui/core/Paper';
-import ImageList from '../imageComponents/ImageList'
+import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
-import Chart from '../Chart';
+import React from "react";
+import ImageBoard from '../imageComponents/ImageBoard';
+import ImageList from '../imageComponents/ImageList';
 import ImageOperation from '../imageComponents/ImageOperation';
-import ImageBoard from '../imageComponents/ImageBoard'
 
 const useStyles = makeStyles((theme) => ({
   container: {

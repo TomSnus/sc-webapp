@@ -14,7 +14,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Deposits() {
+export default function WelcomeComp() {
   const classes = useStyles();
   return (
     <React.Fragment>

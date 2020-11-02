@@ -1,11 +1,10 @@
 
 // import Card from './Card';
-import React, { PropTypes } from 'react'
-import equal from 'fast-deep-equal'
-import ImageCard from './Card'
-import Title from '../Title'
 import { withStyles } from '@material-ui/core/styles'
-import { makeStyles } from '@material-ui/core/styles';
+import equal from 'fast-deep-equal'
+import React from 'react'
+import Title from '../Title'
+import ImageCard from './Card'
 const useStyles = theme => ({
   image: {
     display: 'inline-block',

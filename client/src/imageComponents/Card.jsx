@@ -6,7 +6,6 @@ import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
 import CardHeader from '@material-ui/core/CardHeader'
 import Collapse from '@material-ui/core/Collapse'
-import { red } from '@material-ui/core/colors'
 import IconButton from '@material-ui/core/IconButton'
 import { withStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
@@ -17,9 +16,9 @@ import MoreVertIcon from '@material-ui/icons/MoreVert'
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline'
 import clsx from 'clsx'
 import React from 'react'
-import { confirmAlert } from 'react-confirm-alert';
+import { confirmAlert } from 'react-confirm-alert'
+import 'react-confirm-alert/src/react-confirm-alert.css'
 import { formatJSON } from '../util/StringFormatter.jsx'
-import 'react-confirm-alert/src/react-confirm-alert.css';
 import CreateContainerDialog from './CreateContainerDialog'
 
 const useStyles = theme => ({

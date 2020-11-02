@@ -1,9 +1,9 @@
 
 // import Card from './Card';
-import React, { PropTypes } from 'react'
 import equal from 'fast-deep-equal'
-import ImageCard from './Card'
+import React from 'react'
 import Title from './../Title'
+import ImageCard from './Card'
 class CardList extends React.Component {
     state = { cardsArray: [] }
 

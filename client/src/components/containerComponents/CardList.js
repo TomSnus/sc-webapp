@@ -1,7 +1,7 @@
 
 // import Card from './Card';
-import React, { PropTypes } from 'react'
 import equal from 'fast-deep-equal'
+import React from 'react'
 import ContainerCard from './Card.jsx'
 
 class CardList extends React.Component {

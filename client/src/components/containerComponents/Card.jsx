@@ -6,25 +6,21 @@ import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
 import CardHeader from '@material-ui/core/CardHeader'
 import Collapse from '@material-ui/core/Collapse'
-import { red } from '@material-ui/core/colors'
 import IconButton from '@material-ui/core/IconButton'
+import Snackbar from '@material-ui/core/Snackbar'
 import { withStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import FavoriteIcon from '@material-ui/icons/Favorite'
-import GraphicEqOutlinedIcon from '@material-ui/icons/GraphicEqOutlined';
+import GraphicEqOutlinedIcon from '@material-ui/icons/GraphicEqOutlined'
 import MoreVertIcon from '@material-ui/icons/MoreVert'
-import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline'
+import SaveOutlinedIcon from '@material-ui/icons/SaveOutlined'
 import clsx from 'clsx'
 import React from 'react'
-import {formatJSON}  from '../../util/StringFormatter.jsx'
-import { confirmAlert } from 'react-confirm-alert';
-import SaveOutlinedIcon from '@material-ui/icons/SaveOutlined';
-import 'react-confirm-alert/src/react-confirm-alert.css';
-import CommitDialog from './CommitDialog'
-import Button from '@material-ui/core/Button';
-import Snackbar from '@material-ui/core/Snackbar';
+import 'react-confirm-alert/src/react-confirm-alert.css'
 import SnackAlert from '../../util/SnackBarUtil'
+import { formatJSON } from '../../util/StringFormatter.jsx'
+import CommitDialog from './CommitDialog'
 
 const useStyles = theme => ({
   root: {

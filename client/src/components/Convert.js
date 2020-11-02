@@ -1,17 +1,7 @@
-import React from "react";
 import { Container } from "@material-ui/core";
-import Grid from '@material-ui/core/Grid';
-import { WidthProvider, Responsive } from "react-grid-layout";
-import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
-import clsx from 'clsx';
-import GridLayout from 'react-grid-layout';
-import Chart from '../Chart';
-import Deposits from '../Deposits';
-import Orders from '../Orders';
+import React from "react";
 import ConvertComponent from './convertComponents/ConvertComponent';
-import TargetDB from './convertComponents/TargetDB';
-import Upload from './convertComponents/Upload';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -37,7 +27,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Convert() {
   const classes = useStyles();
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   return (
     <main className={classes.content}>

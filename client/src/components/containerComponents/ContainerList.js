@@ -1,5 +1,5 @@
-import React, { Component, PropTypes } from 'react';
-import CardList from './CardList'
+import React from 'react';
+import CardList from './CardList';
 class ContainerList extends React.Component {
   state = { containers: [] }
 

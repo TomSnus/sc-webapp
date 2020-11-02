@@ -1,17 +1,15 @@
 import DashboardRoundedIcon from '@material-ui/icons/DashboardRounded';
 import ImageRoundedIcon from '@material-ui/icons/ImageRounded';
-import DraftsIcon from "@material-ui/icons/Drafts";
-import ErrorOutlineRoundedIcon from '@material-ui/icons/ErrorOutlineRounded';
 import ListAltRoundedIcon from '@material-ui/icons/ListAltRounded';
 import LiveHelpRoundedIcon from '@material-ui/icons/LiveHelpRounded';
-import DirectionsBikeIcon from '@material-ui/icons/DirectionsBike';
-
-import Home from "./components/Home";
-import Images from "./components/Images";
+import { BiErrorAlt } from 'react-icons/bi';
+import { SiConvertio } from 'react-icons/si';
 import Containers from "./components/Containers";
 import Convert from "./components/Convert";
 import FAQ from "./components/FAQ";
-import { colors } from '@material-ui/core';
+import Home from "./components/Home";
+import Images from "./components/Images";
+
 
 const pathIds = {
   home: "home",
@@ -56,7 +54,7 @@ const pageRoutes = {
   [pathIds.error404]: {
     path: pathRouting.convert,
     sidebarName: "Convert",
-    icon: DirectionsBikeIcon,
+    icon: BiErrorAlt,
     component: Convert,
     noRender: false,
     color: 'grey',
@@ -64,7 +62,7 @@ const pageRoutes = {
   [pathIds.convert]: {
     path: pathRouting.convert,
     sidebarName: "Page Not Found",
-    icon: ErrorOutlineRoundedIcon,
+    icon: SiConvertio,
     component: Convert,
     noRender: false,
     color: 'yellow',

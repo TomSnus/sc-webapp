@@ -1,4 +1,3 @@
-import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
@@ -7,8 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import clsx from 'clsx';
 import React from 'react';
-import Chart from '../Chart';
-import Deposits from '../Deposits';
+import Favorites from '../Favorites';
 import ContainerList from './containerComponents/ContainerList';
 import ContainerOperation from './containerComponents/ContainerOperation';
 const drawerWidth = 240;
@@ -115,7 +113,7 @@ export default function Containers() {
           container spacing={2}>
           <Grid item xs={12} lg={8}>
             <Paper className={fixedHeightPaper}>
-              <Chart />
+              <Favorites />
             </Paper>
           </Grid>
           <Grid alignItems="flex-start" item justify={'space-evenly'} xs={12} lg={4}>
