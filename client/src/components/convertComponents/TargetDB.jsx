@@ -1,10 +1,19 @@
-import FormControl from '@material-ui/core/FormControl';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import Select from '@material-ui/core/Select';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import TextField from '@material-ui/core/TextField';
 import React from 'react';
-import Title from '../../Title';
+import { RiDatabase2Fill } from 'react-icons/ri';
 import './Upload.css';
+
+const databases = [
+  {
+    value: 'MariaDB',
+    label: 'MariaDB',
+  },
+  {
+    value: 'MSSQL',
+    label: 'Microsoft SQL',
+  },
+];
 
 class TargetDB extends React.Component {
   constructor(props) {
@@ -21,19 +30,35 @@ class TargetDB extends React.Component {
 
   render() {
     return (
-      <div><Title>Target Database</Title>
-        <FormControl className="formControl">
-          <InputLabel id="targetdb-select-input-label">Database</InputLabel>
-          <Select
-            labelId="targetdb-select-label"
-            id="targetdb-select"
-            value={this.database}
-            onChange={this.handleChange}
-          >
-            <MenuItem value={10}>MariaDB</MenuItem>
-            <MenuItem value={20}>SQLServer</MenuItem>
-          </Select>
-        </FormControl></div>
+      <form noValidate autoComplete="off">
+        <div>
+          <TextField
+          id="outlined-select-database"
+          select
+          label="Select Database"
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <RiDatabase2Fill />
+              </InputAdornment>
+            ),
+          }}
+          value={this.database}
+          onChange={this.handleChange}
+          SelectProps={{
+            native: true,
+          }}
+          helperText="Please select your target Database"
+          variant="outlined"
+        >
+          {databases.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </TextField>
+        </div>
+      </form>
     )
   }
 }
