@@ -22,7 +22,7 @@ function Copyright() {
         </Link>{' '}
       {new Date().getFullYear()}
       <br></br>
-      For Support contact: Tom Stelzer
+      For Support contact: Dev Team
       {'.'}
     </Typography>
   );

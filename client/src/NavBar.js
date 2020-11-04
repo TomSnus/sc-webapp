@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function SimpleList({ routes }) {
+export default function NavBar({ routes }) {
   const classes = useStyles();
   const [selectedIndex, setSelectedIndex] = React.useState(1);
 

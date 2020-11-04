@@ -15,7 +15,7 @@ const pathIds = {
   home: "home",
   images: "images",
   containers: "containers",
-  error404: "error-404",
+  //error404: "error-404",
   faq: "faq"
 };
 
@@ -51,17 +51,17 @@ const pageRoutes = {
     component: Containers,
     color: 'yellow',
   },
-  [pathIds.error404]: {
-    path: pathRouting.convert,
-    sidebarName: "Convert",
-    icon: BiErrorAlt,
-    component: Convert,
-    noRender: false,
-    color: 'grey',
-  },
+  // [pathIds.error404]: {
+  //   path: pathRouting.convert,
+  //   sidebarName: "Page Not Found"",
+  //   icon: BiErrorAlt,
+  //   component: Convert,
+  //   noRender: false,
+  //   color: 'grey',
+  // },
   [pathIds.convert]: {
     path: pathRouting.convert,
-    sidebarName: "Page Not Found",
+    sidebarName: "Convert",
     icon: SiConvertio,
     component: Convert,
     noRender: false,

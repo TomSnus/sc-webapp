@@ -1,7 +1,7 @@
 .Dropzone {
     height: 200px;
     width: 200px;
-    border: 2px dashed rgb(187, 186, 186);
+    border: 2px dashed #8EDFAF;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -14,7 +14,7 @@
     opacity: 0.3;
     height: 64px;
     width: 64px;
-    filter: invert(63%) sepia(57%) saturate(530%) hue-rotate(8deg) brightness(220%) contrast(99%);    }
+    filter: invert(54%) sepia(71%) saturate(786%) hue-rotate(110deg) brightness(91%) contrast(101%);    }
   
   .FileInput {
     display: none;

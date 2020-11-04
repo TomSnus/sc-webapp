@@ -15,7 +15,7 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import clsx from 'clsx';
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Demo from "./demo";
+import NavBar from "./NavBar";
 import { secondaryListItems } from './listItems';
 import { pageRoutes } from "./routes";
 const routeArray = Object.values(pageRoutes);
@@ -171,7 +171,7 @@ export default function Dashboard() {
             </div>
             <Divider />
             <div>
-              <Demo routes={routeArray} />
+              <NavBar routes={routeArray} />
             </div>
             <Divider />
             <List>{secondaryListItems}</List>
