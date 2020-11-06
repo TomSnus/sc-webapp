@@ -190,6 +190,4 @@ class ContainerCard extends React.Component {
     )
   }
 }
-
-export default withStyles(useStyles)(ContainerCard
-)
+export default withStyles(useStyles)(ContainerCard)
