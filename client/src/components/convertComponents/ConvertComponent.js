@@ -45,7 +45,7 @@ class ConvertComponent extends Component {
     return (
       <div className='App'>
         <div className="Card">
-          <Upload runConvert={this.runConvert}/>
+          <Upload runConvert={this.runConvert} />
         </div>
       </div>
     )
