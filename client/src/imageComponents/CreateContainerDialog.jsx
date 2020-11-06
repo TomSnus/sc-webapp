@@ -43,7 +43,6 @@ export default function CreateContainerDialog(props) {
             fullWidth
           />
           <TextField
-            autoFocus
             margin="dense"
             id="Hostname"
             label="Hostname"

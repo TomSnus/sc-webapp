@@ -20,6 +20,7 @@ import { confirmAlert } from 'react-confirm-alert'
 import 'react-confirm-alert/src/react-confirm-alert.css'
 import { formatJSON } from '../util/StringFormatter.jsx'
 import CreateContainerDialog from './CreateContainerDialog'
+import CreateFeatureImageDialog from './CreateFeatureImageDialog'
 
 const useStyles = theme => ({
   root: {
@@ -42,18 +43,48 @@ const useStyles = theme => ({
   },
   avatar: {
     backgroundColor: theme.palette.secondary.main
+  },
+  menuItem: {
+    marginBottom: '5px',
+  },
+  menuButton: {
+    height: '30px',
   }
 })
 
 class ImageCard extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { hover: false }
+    this.state = {
+      hover: false,
+      showMenu: false,
+    }
     this.expanded = false
     this.handleMouseEnter = this.handleMouseEnter.bind(this)
     this.handleMouseLeave = this.handleMouseLeave.bind(this)
     this.onStartClick = this.onStartClick.bind(this);
     this.closeDialog = this.closeDialog.bind(this);
+    this.showMenu = this.showMenu.bind(this);
+    this.closeMenu = this.closeMenu.bind(this);
+    this.onCreateFeatureClick = this.onCreateFeatureClick.bind(this);
+  }
+
+  closeMenu(event) {
+    if (!this.dropdownMenu.contains(event.target)) {
+      console.log(event.target)
+      this.setState({ showMenu: false }, () => {
+        //document.removeEventListener('click', this.closeMenu);
+      });
+
+    }
+  }
+
+  showMenu(event) {
+    event.preventDefault();
+
+    this.setState({ showMenu: !this.state.showMenu }, () => {
+      //document.addEventListener('click', this.closeMenu);
+    });
   }
 
   handleMouseEnter() {
@@ -75,13 +106,20 @@ class ImageCard extends React.Component {
     });
   }
 
+  onCreateFeatureClick() {
+    this.setState({
+      showFeatureComponent: true,
+    });
+  }
+
   closeDialog = (severity, message) => {
     console.log(severity)
     this.setState({
       showComponent: false,
-      severity:severity,
-      open:true,
-      snackMessage:message,
+      showFeatureComponent: false,
+      severity: severity,
+      open: true,
+      snackMessage: message,
     });
   };
 
@@ -102,10 +140,11 @@ class ImageCard extends React.Component {
   }
 
   getIdFormatted(id) {
+    console.log(id)
     return id.substring(id.indexOf(':') + 1, id.indexOf(':') + 13)
   }
 
-    render() {
+  render() {
     const { classes } = this.props
     const handleExpandClick = () => {
       this.setState({
@@ -116,82 +155,112 @@ class ImageCard extends React.Component {
     var formattedDate = t.toISOString()
     return (
       <div>
-       <Card className={classes.root}>
-        <CardHeader
-          avatar={
-            <Avatar aria-label="recipe" className={classes.avatar}>
-              <ImageIcon />
-            </Avatar>
-          }
-          action={
-            <IconButton aria-label="settings">
-              <MoreVertIcon />
+        <Card className={classes.root}>
+          <CardHeader
+            avatar={
+              <Avatar aria-label="recipe" className={classes.avatar}>
+                <ImageIcon />
+              </Avatar>
+            }
+            action={
+              <div>
+                <IconButton onClick={this.showMenu} aria-label="settings">
+                  <MoreVertIcon />
+                </IconButton>
+                {
+                  this.state.showMenu
+                    ? (
+                      <div className="menu"
+                        ref={(element) => {
+                          this.dropdownMenu = element;
+                        }}><div>
+                          <div className={classes.menuItem}>
+                            <button className={classes.menuButton}> Remove </button>
+                          </div><div>
+                            <button onClick={this.onCreateFeatureClick} onClose={this.showSnack} className={classes.menuButton}> Create Feature Image </button>
+                            {this.closeMenu}
+                            {this.state.showFeatureComponent ?
+                
+                               <CreateFeatureImageDialog 
+                                image={this.props.repoTags}
+                                handleClose={this.closeDialog} />
+                              :
+                              null
+                            }
+                          </div></div>
+                      </div>
+                    )
+                    : (
+                      null
+                    )
+                }
+              </div>
+            }
+
+            title={this.getIdFormatted(this.props.id)}
+            subheader={formattedDate}
+          />
+          <CardContent>
+            <Typography variant="body2" color="textSecondary" component="p">
+              <b>RepoTags:</b> {this.props.repoTags}
+            </Typography>
+          </CardContent>
+          <CardActions disableSpacing>
+            <IconButton aria-label="add to favorites">
+              <FavoriteIcon />
             </IconButton>
-          }
-          title={this.getIdFormatted(this.props.id)}
-          subheader={formattedDate}
-        />
-        <CardContent>
-          <Typography variant="body2" color="textSecondary" component="p">
-            <b>RepoTags:</b> {this.props.repoTags}
-          </Typography>
-        </CardContent>
-        <CardActions disableSpacing>
-          <IconButton aria-label="add to favorites">
-            <FavoriteIcon />
-          </IconButton>
-          {/* <IconButton aria-label="share"
+            {/* <IconButton aria-label="share"
             onClick={() => this.runContainer(this.props)}
           >
             <PlayCircleOutlineIcon
             />
           </IconButton> */}
-          <div>
-            <IconButton onClick={this.onStartClick} onClose={this.showSnack} ><PlayCircleOutlineIcon /></IconButton>
-            {this.state.showComponent ?
-              <CreateContainerDialog
-                image={this.props}
-                handleClose={this.closeDialog} /> :
-              null
-            }
-          </div>
-          <IconButton
-            className={clsx(classes.expand, {
-              [classes.expandOpen]: true
-            })}
-            onClick={handleExpandClick}
-            aria-expanded={this.state.expanded}
-            aria-label="show more"
-          >
-            <ExpandMoreIcon />
-          </IconButton>
-        </CardActions>
-        <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
-          <CardContent>
-            <Typography paragraph>Additional Information:</Typography>
-            <Typography paragraph>
-              <Typography variant="body2" color="textSecondary" component="p">
-                <b>Parent Id:</b> {this.props.parentId}
+            <div>
+              <IconButton onClick={this.onStartClick} onClose={this.showSnack} ><PlayCircleOutlineIcon /></IconButton>
+              {this.state.showComponent ?
+                <CreateContainerDialog
+                  image={this.props}
+                  handleClose={this.closeDialog} /> :
+                null
+              }
+            </div>
+            <IconButton
+              className={clsx(classes.expand, {
+                [classes.expandOpen]: true
+              })}
+              onClick={handleExpandClick}
+              aria-expanded={this.state.expanded}
+              aria-label="show more"
+            >
+              <ExpandMoreIcon />
+            </IconButton>
+          </CardActions>
+          <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
+            <CardContent>
+              <Typography paragraph>Additional Information:</Typography>
+              <Typography paragraph>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  <b>Parent Id:</b> {this.props.parentId}
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  <b>Labels:</b>{formatJSON(this.props.labels)}
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  <b>Repo digests:</b> {this.props.repoDigests}
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  <b>Size:</b> {this.props.size}
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  <b>Virual size:</b> {this.props.virtualSize}
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  <b>Containers:</b> {this.props.containers}
+                </Typography>
               </Typography>
-              <Typography variant="body2" color="textSecondary" component="p">
-                <b>Labels:</b>{formatJSON(this.props.labels)}
-              </Typography>
-              <Typography variant="body2" color="textSecondary" component="p">
-                <b>Repo digests:</b> {this.props.repoDigests}
-              </Typography>
-              <Typography variant="body2" color="textSecondary" component="p">
-                <b>Size:</b> {this.props.size}
-              </Typography>
-              <Typography variant="body2" color="textSecondary" component="p">
-                <b>Virual size:</b> {this.props.virtualSize}
-              </Typography>
-              <Typography variant="body2" color="textSecondary" component="p">
-                <b>Containers:</b> {this.props.containers}
-              </Typography>
-            </Typography>
-          </CardContent>
-        </Collapse>
-      </Card>
+            </CardContent>
+          </Collapse>
+        </Card>
       </div>
     )
   }

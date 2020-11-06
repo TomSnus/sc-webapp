@@ -40,6 +40,15 @@ router.get('/createContainer/:id/:name/:domainname/:hostname/:ports', function (
          return auxContainer.start();
           });
 });
+router.get('/createImage/:id/:feature/', function (req, res, next) {
+    console.log('image id ' + req.params.id)
+    console.log('feature ' + req.params.feature)
+    var auxImage;
+    docker.createImage({fromImage: req.params.id, repo: req.params.feature, tag: req.params.feature}).then(function(image){
+        auxImage = image;
+        return auxImage;
+    });
+});
 
 router.get('/commit/:id/:repo/:tag/:comment/:author', function (req, res, next) {
     console.log('container id ' + req.params.id)
