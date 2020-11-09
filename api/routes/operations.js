@@ -20,21 +20,13 @@ router.get('/createContainer/:id/:name/:domainname/:hostname/:ports', function (
     console.log('hostname ' + req.params.hostname)
     console.log('ports ' + req.params.ports)
 
-    // var auxContainer;
-    //     docker.createContainer({
-    //     Image: req.query.id,
-    //     }).then(function(container) {
-    //     auxContainer = container;
-    //     return auxContainer.start();
-    //      });
-
     var auxContainer;
          docker.createContainer({
          Image: req.params.id,
          Name: req.params.name,
          Domainname: req.params.domainname,
          Hostname: req.params.hostname,
-         ExposedPorts: {"22/tcp": {} }
+         ExposedPorts: {"43306/tcp": {} }
          }).then(function(container) {
          auxContainer = container;
          return auxContainer.start();
