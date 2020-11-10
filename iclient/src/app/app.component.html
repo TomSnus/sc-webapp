@@ -1,1 +1,46 @@
-<app-header></app-header>
+<div>
+    <mat-toolbar color="primary">
+        <div class="navToggle">
+            <button mat-icon-button (click)="sidenav.toggle()">
+                <mat-icon>menu</mat-icon>
+            </button>
+        </div>
+
+        <span style="margin-right: 5px;">
+            <mat-icon>cloud</mat-icon>
+        </span>
+
+        <span>Time Control High Performance Cluster (Beta)</span>
+
+        <button mat-icon-button [mat-menu-trigger-for]="menu">
+            <mat-icon>more_vert</mat-icon>
+        </button>
+    </mat-toolbar>
+    <span>
+        <mat-menu x-position="before" #menu="matMenu">
+            <button mat-menu-item>Option 1</button>
+            <button mat-menu-item>Option 2</button>
+        </mat-menu>
+    </span>
+</div>
+
+<mat-sidenav-container class="example-container">
+    <mat-sidenav #sidenav mode="push">
+        <div>
+            <!-- <button mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button> -->
+        </div>
+        <div class="row contentContainer">
+            <div [routerLink]="'/images-component'" class="row rowItem">
+                <h4>Images</h4>
+            </div>
+            <div [routerLink]="'/containers-component'" class="row rowItem">
+                <h4>Container</h4>
+            </div>
+        </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

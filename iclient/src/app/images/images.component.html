@@ -1,0 +1,22 @@
+<mat-grid-list cols="4" rowHeight="2:1">
+    <!-- <mat-grid-tile *ngFor="let tile of tiles" [colspan]="tile.cols" [rowspan]="tile.rows"
+        
+        >
+        {{tile.text}}
+    </mat-grid-tile> -->
+    <mat-grid-tile [colspan]="3" [rowspan]="4">
+        test
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="4">
+        <div fxLayout="row" fxLayoutWrap>
+            <app-image *ngFor="let item of imageList" [image]=item></app-image>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="4">
+        test
+    </mat-grid-tile>
+</mat-grid-list>
+
+<ul>
+    <li *ngFor="let item of imageList">{{item.Id}}</li>
+</ul>

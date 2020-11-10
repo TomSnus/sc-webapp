@@ -1,0 +1,13 @@
+mat-grid-tile {
+    border: 1px solid white;
+}
+
+mat-grid-tile{
+    flex-grow: 1;
+    overflow: auto;
+}
+
+md-list.scrollable {
+    height: 600px; 
+    overflow-y: scroll;
+}

@@ -1,3 +1,4 @@
+@import "../styles.scss";
 body {
     margin: 0;
     font-family: Roboto, sans-serif;
@@ -19,4 +20,31 @@ body {
     right: 20px;
     color: white;
   }
+  .example-container {
+    position: absolute;
+    top: 60px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
   
+  .navToggle{
+    margin-right: 15px;
+  }
+
+  .rowItem{
+    background-color: mat-color($dark-primary);
+    height: 50px;
+    border: 1px solid white;
+  }
+
+  .contentContainer{
+    width:200px
+  }
+h4{
+  text-align: center;
+  vertical-align: middle;
+  margin-top:15px;
+  font-style: bold;
+  font-size: large;
+}
