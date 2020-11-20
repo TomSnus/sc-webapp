@@ -13,4 +13,8 @@ export class ImageComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getLabel(){
+    return this.image.Labels
+  }
+
 }

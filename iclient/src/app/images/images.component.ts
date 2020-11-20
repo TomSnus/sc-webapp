@@ -29,11 +29,4 @@ export class ImagesComponent implements OnInit {
       err => console.error(err), () => console.log('loaded images...')
     );
   }
-
-  tiles: Tile[] = [
-    {text: 'favorites', cols: 3, rows: 4},
-    {text: 'list', cols: 1, rows: 4},
-    {text: 'operations', cols: 4, rows: 1},
-  ];
-
 }
