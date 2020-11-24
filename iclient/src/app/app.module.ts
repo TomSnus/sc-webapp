@@ -22,6 +22,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { ImageComponent } from './images/image/image.component';
 import {MatListModule} from '@angular/material/list';
 import {ScrollingModule} from '@angular/cdk/scrolling';
+import { ImageRunDialogComponent } from './images/image/image-run-dialog/image-run-dialog.component';
+import { MatDialogModule } from "@angular/material/dialog";
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 const routes: Routes = [
   { path: 'images-component', component: ImagesComponent },
@@ -30,7 +33,7 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     ImagesComponent, 
-    ContainersComponent, ImageComponent,
+    ContainersComponent, ImageComponent, ImageRunDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,6 +52,8 @@ const routes: Routes = [
     HttpClientModule,
     MatListModule,
     ScrollingModule,
+    MatDialogModule,
+    MatFormFieldModule,
     RouterModule.forRoot(routes)
   ],
   providers: [HttpService],

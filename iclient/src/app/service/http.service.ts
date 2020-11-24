@@ -9,6 +9,22 @@ const httpOptions = {
 @Injectable({
     providedIn: 'root'
 })export class HttpService {
+
+
+    runContainer(id: any) {
+        const headers = new HttpHeaders({
+            'content-type' : 'application/json',
+            'Access-Control-Allow-Origin' : '*'
+          });
+          const options = {
+            headers: headers,
+            responseType: 'text'
+            };
+        this.http.post<any>('http://localhost:9000/operations/createContainer', {image: id})
+          .subscribe(data => {
+            console.log(data);
+          });
+    }
     
     constructor(private http:HttpClient) {}
 

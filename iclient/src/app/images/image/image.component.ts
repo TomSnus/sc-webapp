@@ -1,5 +1,7 @@
-import { Input } from '@angular/core';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { HttpService } from 'src/app/service/http.service';
+import { ImageRunDialogComponent } from './image-run-dialog/image-run-dialog.component';
 
 @Component({
   selector: 'app-image',
@@ -8,7 +10,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ImageComponent implements OnInit {
   @Input() image: any
-  constructor() { }
+
+  constructor(private httpService: HttpService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
@@ -17,4 +20,10 @@ export class ImageComponent implements OnInit {
     return this.image.Labels
   }
 
+  onRun(){
+    let dialogRef = this.dialog.open(ImageRunDialogComponent, {
+      data: { image: this.image },
+    });
+    //this.httpService.runContainer(this.image.Id);
+  }
 }

@@ -32,6 +32,11 @@ router.get('/createContainer/:id/:name/:domainname/:hostname/:ports', function (
          return auxContainer.start();
           });
 });
+
+router.post('/createContainer', function (req, res) {
+    res.send({'sucess':'Container ' + req.body.image +' started'});
+});
+
 router.get('/createImage/:id/:feature/', function (req, res, next) {
     console.log('image id ' + req.params.id)
     console.log('feature ' + req.params.feature)
