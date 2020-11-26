@@ -24,6 +24,5 @@ export class ImageComponent implements OnInit {
     let dialogRef = this.dialog.open(ImageRunDialogComponent, {
       data: { image: this.image },
     });
-    //this.httpService.runContainer(this.image.Id);
   }
 }

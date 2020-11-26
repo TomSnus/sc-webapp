@@ -30,10 +30,23 @@ router.get('/createContainer/:id/:name/:domainname/:hostname/:ports', function (
          }).then(function(container) {
          auxContainer = container;
          return auxContainer.start();
-          });
+    });
 });
 
 router.post('/createContainer', function (req, res) {
+    auxPort = req.body.port+"/tcp";
+    var auxContainer;
+         docker.createContainer({
+         Image: req.body.image,
+         name: req.body.name,
+         Domainname: 'atc.demodb',
+         Hostname: 'hostname',
+         ExposedPorts: { [auxPort]: {}}
+         }).then(function(container) {
+         auxContainer = container;
+         return auxContainer.start();
+    });
+
     res.send({'sucess':'Container ' + req.body.image +' started'});
 });
 

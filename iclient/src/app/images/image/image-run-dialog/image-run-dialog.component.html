@@ -1,11 +1,23 @@
 <h2 mat-dialog-title>Start Container</h2>
-<mat-dialog-content class="mat-typography">
-    <mat-form-field>
-        <mat-label>Name: </mat-label>
-        <input matInput [(ngModel)]="imagedata.name">
-      </mat-form-field>
-</mat-dialog-content>
-<mat-dialog-actions align="end">
+<form class="form">
+  <mat-dialog-content class="mat-typography">
+    <mat-form-field appearance = "fill">
+        <mat-label>Id:</mat-label>
+        <input [disabled]="true" name="id" [(ngModel)]="data.image.Id" matInput>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance = "fill">
+        <mat-label>Name:</mat-label>
+        <input name="name" [(ngModel)]="data.image.Name" matInput>
+     </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label>Port:</mat-label>
+      <input name="port" matInput [(ngModel)]="data.image.Port">
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
     <button mat-button mat-dialog-close>Cancel</button>
-    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Run</button>
-</mat-dialog-actions>
+    <button mat-button (click)="runContainer()" cdkFocusInitial>Run</button>
+  </mat-dialog-actions>
+</form>

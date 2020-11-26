@@ -17,6 +17,7 @@ export interface Tile {
 })
 export class ImagesComponent implements OnInit {
   imageList: Object;
+  imageFavList: any;
   constructor(private httpService: HttpService) { }
 
   ngOnInit(): void {
@@ -24,7 +25,11 @@ export class ImagesComponent implements OnInit {
   }
 
   getImages(): void {
-    this.httpService.getImages().subscribe(
+    this.httpService.getImages('demodb').subscribe(
+      data => {this.imageFavList = data},
+      err => console.error(err), () => console.log('loaded fav images...')
+    );
+    this.httpService.getImages('*').subscribe(
       data => {this.imageList = data},
       err => console.error(err), () => console.log('loaded images...')
     );

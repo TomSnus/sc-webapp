@@ -11,7 +11,7 @@ const httpOptions = {
 })export class HttpService {
 
 
-    runContainer(id: any) {
+    runContainer(data: any) {
         const headers = new HttpHeaders({
             'content-type' : 'application/json',
             'Access-Control-Allow-Origin' : '*'
@@ -20,7 +20,7 @@ const httpOptions = {
             headers: headers,
             responseType: 'text'
             };
-        this.http.post<any>('http://localhost:9000/operations/createContainer', {image: id})
+        this.http.post<any>('http://localhost:9000/operations/createContainer', {image: data.id, name: data.name, port: data.port})
           .subscribe(data => {
             console.log(data);
           });
@@ -28,8 +28,8 @@ const httpOptions = {
     
     constructor(private http:HttpClient) {}
 
-    getImages() {
-        return this.http.get('http://localhost:9000/listimages/*');
+    getImages(filter: string) {
+        return this.http.get('http://localhost:9000/listimages/'+filter);
             //.map(response => response.json());
     }
 }

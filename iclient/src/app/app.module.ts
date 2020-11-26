@@ -25,6 +25,7 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
 import { ImageRunDialogComponent } from './images/image/image-run-dialog/image-run-dialog.component';
 import { MatDialogModule } from "@angular/material/dialog";
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 
 const routes: Routes = [
   { path: 'images-component', component: ImagesComponent },
@@ -54,6 +55,7 @@ const routes: Routes = [
     ScrollingModule,
     MatDialogModule,
     MatFormFieldModule,
+    MatInputModule,
     RouterModule.forRoot(routes)
   ],
   providers: [HttpService],
