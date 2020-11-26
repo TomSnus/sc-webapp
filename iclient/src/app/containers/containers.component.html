@@ -1,1 +1,14 @@
-<p>containers works!</p>
+<mat-grid-list cols="4" rowHeight="400px">
+    <mat-grid-tile [colspan]="2" [rowspan]="2">
+        <div class="cardListFavorites" fxLayout="row" fxLayoutAlign="flex-start" fxFlexAlign="stretch">
+            <div class="title"><h2 class="titleText">Running Containers:</h2></div>
+            <app-container class="cardListItem" *ngFor="let item of imageFavList" [container]=item></app-container>
+        </div>   
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="2" [rowspan]="2">
+        <div class="cardList" fxLayout="row" fxFlexAlign="stretch">
+            <div class="title"><h2 class="titleText">Containers:</h2></div>
+            <app-container class="cardListItem" *ngFor="let item of imageList" [container]=item></app-container>
+        </div>
+    </mat-grid-tile>
+</mat-grid-list>

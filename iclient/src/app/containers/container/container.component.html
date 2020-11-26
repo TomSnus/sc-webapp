@@ -1,0 +1,19 @@
+<mat-card class="card">
+    <mat-card-header>
+      <div mat-card-avatar class="icon">
+        <mat-icon>flight_takeoff</mat-icon>
+      </div>
+      <mat-card-title>
+        <pre>{{container.RepoTags}}</pre>
+      </mat-card-title>
+      <mat-card-subtitle>
+        <b>Id:</b> {{container.Id | slice:7:19}}
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <pre margin="5px">{{container.Labels | json}}</pre>
+    </mat-card-content>
+    <mat-card-actions>
+      <button (click)="onRun()" mat-raised-button color="primary">Commit</button>
+    </mat-card-actions>
+  </mat-card>

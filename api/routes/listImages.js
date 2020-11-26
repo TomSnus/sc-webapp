@@ -20,7 +20,7 @@ var opts = {
 
 router.get('/:name', function (req, res, next) {
   console.log(req.params.name)
-  docker.listImages({"filters": '{"reference": ["'+req.params.name+'"]}'}).then(res.send.bind(res));
+  docker.listImages({"filters": '{"reference": ["*:'+req.params.name+'*"]}'}).then(res.send.bind(res));
 });
 
 module.exports = router;

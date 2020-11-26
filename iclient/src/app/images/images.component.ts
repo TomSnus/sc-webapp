@@ -1,14 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
 import { HttpService } from '../service/http.service';
-import { Images } from '../shared/images.model';
-
-export interface Tile {
- // color: string;
-  cols: number;
-  rows: number;
-  text: string;
-}
 
 @Component({
   selector: 'app-images',
@@ -25,7 +16,7 @@ export class ImagesComponent implements OnInit {
   }
 
   getImages(): void {
-    this.httpService.getImages('demodb').subscribe(
+    this.httpService.getImages('latest').subscribe(
       data => {this.imageFavList = data},
       err => console.error(err), () => console.log('loaded fav images...')
     );

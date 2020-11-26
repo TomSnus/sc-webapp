@@ -11,3 +11,48 @@ md-list.scrollable {
     height: 600px; 
     overflow-y: scroll;
 }
+
+.mat-grid-tile .mat-figure {
+    justify-content: flex-start !important ;
+    align-items: flex-start !important;
+ }
+
+ .favoritesTile{
+     justify-content: flex-start;
+ }
+
+ .cardList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .cardListFavorites {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .cardList > * {
+    box-sizing: border-box;
+  }
+  .cardList > *:not(:last-child) {
+    margin-left: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+
+  .cardListFavorites > * {
+    box-sizing: border-box;
+  }
+  .cardListFavorites > *:not(:last-child) {
+    margin-left: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+
+  .cardListItem {
+    flex: 0 1 calc(33.3% - 10px);
+  }

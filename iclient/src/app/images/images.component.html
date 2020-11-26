@@ -5,13 +5,13 @@
         {{tile.text}}
     </mat-grid-tile> -->
     <mat-grid-tile [colspan]="3" [rowspan]="4">
-        <div fxLayout="row wrap">
-            <app-image *ngFor="let item of imageList" [image]=item></app-image>
-        </div>
+        <div class="cardListFavorites" fxLayout="row wrap" fxLayoutAlign="flex-start" fxFlexAlign="stretch">
+            <app-image class="cardListItem" *ngFor="let item of imageFavList" [image]=item></app-image>
+        </div>   
     </mat-grid-tile>
     <mat-grid-tile [colspan]="1" [rowspan]="4">
-        <div fxLayout="row wrap">
-            <app-image *ngFor="let item of imageList" [image]=item></app-image>
+        <div class="cardList" fxLayout="column" fxFlexAlign="stretch">
+            <app-image class="cardListItem" *ngFor="let item of imageList" [image]=item></app-image>
         </div>
     </mat-grid-tile>
     <!-- <mat-grid-tile [colspan]="1" [rowspan]="4">

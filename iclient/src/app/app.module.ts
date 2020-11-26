@@ -26,6 +26,9 @@ import { ImageRunDialogComponent } from './images/image/image-run-dialog/image-r
 import { MatDialogModule } from "@angular/material/dialog";
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { ContainerComponent } from './containers/container/container.component';
+import { ContainerDialogComponent } from './containers/container/container-dialog/container-dialog.component';
 
 const routes: Routes = [
   { path: 'images-component', component: ImagesComponent },
@@ -34,7 +37,7 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     ImagesComponent, 
-    ContainersComponent, ImageComponent, ImageRunDialogComponent,
+    ContainersComponent, ImageComponent, ImageRunDialogComponent, ContainerComponent, ContainerDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,6 +59,7 @@ const routes: Routes = [
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
+    FlexLayoutModule,
     RouterModule.forRoot(routes)
   ],
   providers: [HttpService],

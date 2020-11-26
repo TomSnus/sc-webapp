@@ -1,19 +1,19 @@
-<h2 mat-dialog-title>Start Container</h2>
+<h2 mat-dialog-title>Commit Container</h2>
 <form class="form">
   <mat-dialog-content class="mat-typography">
     <mat-form-field appearance = "fill">
         <mat-label>Id:</mat-label>
-        <input [disabled]="true" name="id" [(ngModel)]="data.image.Id" matInput>
+        <input [disabled]="true" name="id" [(ngModel)]="data.container.Id" matInput>
     </mat-form-field>
     <br>
     <mat-form-field appearance = "fill">
         <mat-label>Name:</mat-label>
-        <input name="name" [(ngModel)]="data.image.Name" matInput>
+        <input name="name" [(ngModel)]="data.container.Name" matInput>
      </mat-form-field>
     <br>
     <mat-form-field appearance="fill">
       <mat-label>Port:</mat-label>
-      <input name="port" matInput [(ngModel)]="data.image.Port">
+      <input name="port" matInput [(ngModel)]="data.container.Port">
     </mat-form-field>
   </mat-dialog-content>
   <mat-dialog-actions align="end">

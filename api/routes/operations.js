@@ -7,7 +7,9 @@ var fs = require('fs');
 
 var socket = process.env.DOCKER_SOCKET || '/var/run/docker.sock';
 var stats = fs.statSync(socket);
-var docker = new Docker({ socketPath: socket });
+var docker = new Docker({
+    socketPath: socket
+});
 
 if (!stats.isSocket()) {
     throw new Error('Are you sure the docker is running?');
@@ -21,65 +23,86 @@ router.get('/createContainer/:id/:name/:domainname/:hostname/:ports', function (
     console.log('ports ' + req.params.ports)
 
     var auxContainer;
-         docker.createContainer({
-         Image: req.params.id,
-         Name: req.params.name,
-         Domainname: req.params.domainname,
-         Hostname: req.params.hostname,
-         ExposedPorts: {"43306/tcp": {} }
-         }).then(function(container) {
-         auxContainer = container;
-         return auxContainer.start();
+    docker.createContainer({
+        Image: req.params.id,
+        Name: req.params.name,
+        Domainname: req.params.domainname,
+        Hostname: req.params.hostname,
+        ExposedPorts: {
+            "43306/tcp": {}
+        }
+    }).then(function (container) {
+        auxContainer = container;
+        return auxContainer.start();
     });
 });
 
 router.post('/createContainer', function (req, res) {
-    auxPort = req.body.port+"/tcp";
+    auxPort = req.body.port + "/tcp";
     var auxContainer;
-         docker.createContainer({
-         Image: req.body.image,
-         name: req.body.name,
-         Domainname: 'atc.demodb',
-         Hostname: 'hostname',
-         ExposedPorts: { [auxPort]: {}}
-         }).then(function(container) {
-         auxContainer = container;
-         return auxContainer.start();
+    docker.createContainer({
+        Image: req.body.image,
+        name: req.body.name,
+        Domainname: 'atc.demodb',
+        Hostname: 'hostname',
+        ExposedPorts: {
+            [auxPort]: {}
+        }
+    }).then(function (container) {
+        auxContainer = container;
+        return auxContainer.start();
     });
 
-    res.send({'sucess':'Container ' + req.body.image +' started'});
+    res.send({
+        'sucess': 'Container ' + req.body.image + ' started'
+    });
 });
 
 router.get('/createImage/:id/:feature/', function (req, res, next) {
     console.log('image id ' + req.params.id)
     console.log('feature ' + req.params.feature)
     var auxImage;
-    docker.createImage({fromImage: req.params.id, repo: req.params.feature, tag: req.params.feature}).then(function(image){
+    docker.createImage({
+        fromImage: req.params.id,
+        repo: req.params.feature,
+        tag: req.params.feature
+    }).then(function (image) {
         auxImage = image;
         return auxImage;
     });
 });
 
 router.get('/commit/:id/:repo/:tag/:comment/:author', function (req, res, next) {
-    console.log('container id ' + req.params.id)
-    console.log('container tag ' + req.params.repo)
+    console.log('container id: ' + req.params.id)
+    console.log('container tag: ' + req.params.repo)
 
-   // docker.container.start(req.query.id);
-    // docker.createContainer({ Image: req.query.id, Cmd: ['/bin/bash'], name: req.query.id }, function (err, container) {
-    //     container.start(function (err, data) {
-    //         //...
-    //     });
-    // });
     var auxContainer;
-        docker.getContainer(req.params.id).commit({
+    docker.getContainer(req.params.id).commit({
         container: req.params.id,
         repo: req.params.repo,
         tag: req.params.tag,
         comment: req.params.comment,
         author: req.params.author
-        }).then(function(data) {
-            console.log('Image created');
-        });
+    }).then(function (data) {
+        console.log('Image created');
+    });
+});
+
+router.post('/commit', function (req, res, next) {
+    console.log('container id ' + req.body.id)
+    console.log(req.body)
+    if (tag === undefined)
+        return;
+    var auxContainer;
+    docker.getContainer(req.body.id).commit({
+        container: req.body.id,
+        repo: req.body.repo,
+        tag: req.body.tag,
+        comment: req.body.comment,
+        author: 'timecontrol'
+    }).then(function (data) {
+        console.log('Image created');
+    });
 });
 
 module.exports = router;

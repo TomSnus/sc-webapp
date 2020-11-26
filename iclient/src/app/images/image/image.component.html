@@ -1,25 +1,19 @@
-
-<div class="row">
-  <mat-card class="card">
-    <mat-card-header>
-      <div mat-card-avatar class="icon"><mat-icon>image</mat-icon>
-      </div> 
-      <mat-card-title>
-          <pre>{{image.RepoTags}}</pre>
-      </mat-card-title>
-      <mat-card-subtitle>
-          <b>Id:</b> {{image.Id | slice:7:19}}
-        </mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-        <pre>{{image.Labels | json}}</pre>
-    </mat-card-content>
-    <mat-card-footer>
-      test - footer
-    </mat-card-footer>
-    <mat-card-actions>
-      <button (click)="onRun()" mat-raised-button color="primary">RUN</button>
-    </mat-card-actions>
-  </mat-card>
-  <hr>
-</div>
+<mat-card class="card">
+  <mat-card-header>
+    <div mat-card-avatar class="icon">
+      <mat-icon>image</mat-icon>
+    </div>
+    <mat-card-title>
+      <pre>{{image.RepoTags}}</pre>
+    </mat-card-title>
+    <mat-card-subtitle>
+      <b>Id:</b> {{image.Id | slice:7:19}}
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <pre margin="5px">{{image.Labels | json}}</pre>
+  </mat-card-content>
+  <mat-card-actions>
+    <button (click)="onRun()" mat-raised-button color="primary">Run</button>
+  </mat-card-actions>
+</mat-card>

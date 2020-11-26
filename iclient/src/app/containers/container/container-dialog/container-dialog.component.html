@@ -1,0 +1,37 @@
+<h2 mat-dialog-title>Start Container</h2>
+<form class="form">
+  <mat-dialog-content class="mat-typography">
+    <mat-form-field appearance = "fill">
+        <mat-label>Id:</mat-label>
+        <input [disabled]="true" name="id" [(ngModel)]="data.container.Id" matInput>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance = "fill">
+        <mat-label>Repo:</mat-label>
+        <input name="repo" [(ngModel)]="data.container.Repo" matInput>
+        <button mat-button *ngIf="data.container.Repo" matSuffix mat-icon-button aria-label="Clear" (click)="data.container.Repo=''">
+            <mat-icon>close</mat-icon>
+          </button>
+     </mat-form-field>
+    <br>
+    <mat-form-field appearance = "fill">
+        <mat-label>Tag:</mat-label>
+        <input name="tag" [(ngModel)]="data.container.Tag" matInput>
+        <button mat-button *ngIf="data.container.Tag" matSuffix mat-icon-button aria-label="Clear" (click)="data.container.Tag=''">
+            <mat-icon>close</mat-icon>
+          </button>
+     </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label>Comment:</mat-label>
+      <input name="comment" matInput [(ngModel)]="data.container.Comment">
+      <button mat-button *ngIf="data.container.Comment" matSuffix mat-icon-button aria-label="Clear" (click)="data.container.Comment=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button (click)="commitContainer()" cdkFocusInitial>Commit</button>
+  </mat-dialog-actions>
+</form>
