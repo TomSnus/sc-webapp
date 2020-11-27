@@ -20,24 +20,29 @@ import { HttpService } from './service/http.service';
 import { ApiService } from './api.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ImageComponent } from './images/image/image.component';
-import {MatListModule} from '@angular/material/list';
-import {ScrollingModule} from '@angular/cdk/scrolling';
+import { MatListModule } from '@angular/material/list';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 import { ImageRunDialogComponent } from './images/image/image-run-dialog/image-run-dialog.component';
 import { MatDialogModule } from "@angular/material/dialog";
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ContainerComponent } from './containers/container/container.component';
 import { ContainerDialogComponent } from './containers/container/container-dialog/container-dialog.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { HomeComponent } from "./home/home.component";
 
 const routes: Routes = [
   { path: 'images-component', component: ImagesComponent },
   { path: 'containers-component', component: ContainersComponent },
+  { path: 'home', component: HomeComponent },
+  { path: '', redirectTo: '/home', pathMatch: 'full'},
 ]; @NgModule({
   declarations: [
     AppComponent,
-    ImagesComponent, 
-    ContainersComponent, ImageComponent, ImageRunDialogComponent, ContainerComponent, ContainerDialogComponent,
+    ImagesComponent,
+    ContainersComponent, ImageComponent, ImageRunDialogComponent, ContainerComponent, ContainerDialogComponent, HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -60,6 +65,8 @@ const routes: Routes = [
     MatFormFieldModule,
     MatInputModule,
     FlexLayoutModule,
+    MatSlideToggleModule,
+    MatSnackBarModule,
     RouterModule.forRoot(routes)
   ],
   providers: [HttpService],

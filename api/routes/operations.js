@@ -91,8 +91,6 @@ router.get('/commit/:id/:repo/:tag/:comment/:author', function (req, res, next) 
 router.post('/commit', function (req, res, next) {
     console.log('container id ' + req.body.id)
     console.log(req.body)
-    if (tag === undefined)
-        return;
     var auxContainer;
     docker.getContainer(req.body.id).commit({
         container: req.body.id,
@@ -101,8 +99,9 @@ router.post('/commit', function (req, res, next) {
         comment: req.body.comment,
         author: 'timecontrol'
     }).then(function (data) {
-        console.log('Image created');
+        console.log('Container commited');
     });
+    res.send('Container commited');
 });
 
 module.exports = router;

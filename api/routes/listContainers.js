@@ -17,11 +17,12 @@ var docker = new Docker({
 });
 
 router.get('/', function (req, res, next) {
-  let allContainers = false
-  if (req.query.filter === '*')
-    allContainers = true;
+  let allContainers = true
+  if (req.query.showRunning === 'true')
+    allContainers = false;
   docker.listContainers({
-    all: allContainers
+    all: allContainers,
+    filters: {name: [req.query.filter]}
   }).then(res.send.bind(res));
 });
 

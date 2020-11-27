@@ -7,8 +7,9 @@ import { HttpService } from '../service/http.service';
   styleUrls: ['./images.component.scss']
 })
 export class ImagesComponent implements OnInit {
-  imageList: Object;
+  imageList: any;
   imageFavList: any;
+  filter = 'latest'
   constructor(private httpService: HttpService) { }
 
   ngOnInit(): void {
@@ -16,7 +17,7 @@ export class ImagesComponent implements OnInit {
   }
 
   getImages(): void {
-    this.httpService.getImages('latest').subscribe(
+    this.httpService.getImages(this.filter).subscribe(
       data => {this.imageFavList = data},
       err => console.error(err), () => console.log('loaded fav images...')
     );
@@ -24,5 +25,9 @@ export class ImagesComponent implements OnInit {
       data => {this.imageList = data},
       err => console.error(err), () => console.log('loaded images...')
     );
+  }
+
+  onFilter(){
+    this.getImages();
   }
 }

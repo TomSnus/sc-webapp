@@ -1,7 +1,7 @@
 @import "../../../styles.scss";
 
 .card {
-  max-width: 400px;
+  max-width: 250px;
   height: 350px;
   border: 1px solid white;
 }
@@ -18,4 +18,5 @@
 
 pre {
   white-space: pre-line;
+  word-break: break-word;
 }

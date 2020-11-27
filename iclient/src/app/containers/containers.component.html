@@ -1,14 +1,21 @@
-<mat-grid-list cols="4" rowHeight="400px">
-    <mat-grid-tile [colspan]="2" [rowspan]="2">
-        <div class="cardListFavorites" fxLayout="row" fxLayoutAlign="flex-start" fxFlexAlign="stretch">
-            <div class="title"><h2 class="titleText">Running Containers:</h2></div>
-            <app-container class="cardListItem" *ngFor="let item of imageFavList" [container]=item></app-container>
-        </div>   
-    </mat-grid-tile>
-    <mat-grid-tile [colspan]="2" [rowspan]="2">
-        <div class="cardList" fxLayout="row" fxFlexAlign="stretch">
-            <div class="title"><h2 class="titleText">Containers:</h2></div>
-            <app-container class="cardListItem" *ngFor="let item of imageList" [container]=item></app-container>
-        </div>
-    </mat-grid-tile>
-</mat-grid-list>
+<div class="row">
+  <div class="col">
+    <div class="headerbar">
+      <mat-toolbar color="primary">
+        <span style="margin-right: 10px;">Filter</span>
+        <span>
+          <mat-form-field style="margin-top: 12px;">
+            <input matInput (keydown.enter)="onFilter()" [(ngModel)]="filter" (click)="filter=''">
+          </mat-form-field>
+        </span>
+        <button mat-icon-button (click)="onFilter()">
+          <mat-icon class="filtericon">filter_list</mat-icon>
+        </button>
+        <mat-slide-toggle [checked]="toggleState" (change)="toggleContainers($event)">Show only Running Containers</mat-slide-toggle>
+      </mat-toolbar>
+    </div>
+    <div class="cardList" fxLayout="row wrap" fxLayoutAlign="flex-start" fxFlexAlign="stretch">
+      <app-container class="cardListItem" *ngFor="let item of imageList" [container]=item></app-container>
+    </div>
+  </div>
+</div>

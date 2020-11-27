@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpService } from 'src/app/service/http.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { HttpService } from 'src/app/service/http.service';
 })
 export class ContainerDialogComponent implements OnInit {
 
-  constructor(public httpService: HttpService, public dialogRef: MatDialogRef<ContainerDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {
+  constructor(public httpService: HttpService, public dialogRef: MatDialogRef<ContainerDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private snackBar: MatSnackBar) {
     dialogRef.afterClosed().subscribe(result => {
 
     });
@@ -25,7 +26,14 @@ export class ContainerDialogComponent implements OnInit {
   }
 
   commitContainer() {
-    this.httpService.commitContainer({ id: this.data.container.Id, port: this.data.container.Port, repo: this.data.container.Repo, comment: this.data.container.Comment });
+    this.httpService.commitContainer({
+      id: this.data.container.Id,
+      repo: this.data.container.Repo,
+      tag: this.data.container.Tag,
+      comment: this.data.container.Comment });
     this.closeDialog();
+    this.snackBar.open("Container commited 🐳️", "close", {
+      duration: 2000,
+    });
   }
 }

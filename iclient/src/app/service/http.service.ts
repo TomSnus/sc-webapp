@@ -12,16 +12,17 @@ const httpOptions = {
 
 
     commitContainer(data: any) {
-        this.http.post<any>('http://localhost:9000/operations/commit', { id: data.id, tag: data.tag, repo: data.repo, port: data.comment })
+        this.http.post<any>('http://localhost:9000/operations/commit', { id: data.id, tag: data.tag, repo: data.repo, comment: data.comment })
             .subscribe(data => {
                 console.log(data);
         });
     }
 
-    getContainers(filter: string) {
-        const params = new HttpParams()
-            .set('filter', filter)
-        return this.http.get('http://localhost:9000/listcontainers/', { params });
+    getContainers(data: any) {
+        const parameters = new HttpParams()
+            .set('showRunning', data.showRunning)
+            .set('filter', data.filter)
+        return this.http.get('http://localhost:9000/listcontainers/', {params: parameters});
     }
 
 

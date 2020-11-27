@@ -1,3 +1,5 @@
+@import "../../styles.scss";
+
 mat-grid-tile {
     border: 1px solid white;
 }
@@ -15,6 +17,7 @@ md-list.scrollable {
 .mat-grid-tile .mat-figure {
     justify-content: flex-start !important ;
     align-items: flex-start !important;
+    display: block !important;
  }
 
  .favoritesTile{
@@ -26,6 +29,7 @@ md-list.scrollable {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
+    margin-top: 10px;
   }
 
   .cardListFavorites {
@@ -33,6 +37,9 @@ md-list.scrollable {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
+    margin-top: 10px;
+    margin-left: 10px;
+
   }
 
   .cardList > * {
@@ -41,18 +48,42 @@ md-list.scrollable {
   .cardList > *:not(:last-child) {
     margin-left: 10px;
     margin-bottom: 10px;
-    margin-top: 10px;
   }
 
   .cardListFavorites > * {
     box-sizing: border-box;
   }
   .cardListFavorites > *:not(:last-child) {
-    margin-left: 10px;
     margin-bottom: 10px;
-    margin-top: 10px;
   }
 
   .cardListItem {
     flex: 0 1 calc(33.3% - 10px);
+  }
+
+  .headerbar {
+    width: 100%;
+    height: max-content;
+    margin-right: 10px;
+    text-align: center;
+    align-items: center;
+    background-color: mat-color($dark-primary);
+    border: 1px solid white;
+  }
+
+  .row {
+    display: flex; /* equal height of the children */
+  }
+  
+  .col {
+    flex: 1; /* additionally, equal width */
+    
+    padding: 1em;
+    border: solid;
+  }
+  .filtericon{
+    background-color: mat-color($dark-accent);
+    color: mat-color($dark-primary);
+    border-radius: 50%;
+    border: 1px solid mat-color($dark-primary);
   }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { HttpService } from '../service/http.service';
 
 @Component({
@@ -10,21 +11,30 @@ import { HttpService } from '../service/http.service';
 export class ContainersComponent implements OnInit {
   imageList: Object;
   imageFavList: any;
+  filter: string = '';
+  toggleState = false;
+
   constructor(private httpService: HttpService) { }
 
   ngOnInit(): void {
-    this.getImages();
+    this.getContainers();
   }
 
-  getImages(): void {
-    this.httpService.getContainers('').subscribe(
-      data => {this.imageFavList = data},
-      err => console.error(err), () => console.log('loaded running containers...')
-    );
-    this.httpService.getContainers('*').subscribe(
+  getContainers(): void {
+    this.httpService.getContainers({showRunning: this.toggleState, filter: this.filter}).subscribe(
       data => {this.imageList = data},
       err => console.error(err), () => console.log('loaded all containers...')
     );
+  }
+
+  onFilter(){
+    this.getContainers();
+  }
+
+  toggleContainers(event: MatSlideToggleChange){
+    console.log('toggle', event.checked);
+    this.toggleState = event.checked 
+    this.getContainers();
   }
 }
 

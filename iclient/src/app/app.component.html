@@ -25,13 +25,13 @@
 </div>
 
 <mat-sidenav-container class="example-container">
-    <mat-sidenav #sidenav mode="push">
+    <mat-sidenav #sidenav mode="push" (click)="sidenav.toggle()">
         <div>
-            <!-- <button mat-icon-button (click)="sidenav.toggle()">
-          <mat-icon>menu</mat-icon>
-        </button> -->
         </div>
         <div class="row contentContainer">
+            <div [routerLink]="'/home'" class="row rowItem">
+                <h4>Home</h4>
+            </div>
             <div [routerLink]="'/images-component'" class="row rowItem">
                 <h4>Images</h4>
             </div>

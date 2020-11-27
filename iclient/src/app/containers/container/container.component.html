@@ -4,10 +4,12 @@
         <mat-icon>flight_takeoff</mat-icon>
       </div>
       <mat-card-title>
-        <pre>{{container.RepoTags}}</pre>
+        <pre>{{container.Names}}</pre>
       </mat-card-title>
       <mat-card-subtitle>
-        <b>Id:</b> {{container.Id | slice:7:19}}
+        <span class="wrap"><b class="subtitle">Id:</b>{{container.Id}} </span>
+        <br>
+        <b class="subtitle">Image:</b> {{container.Image | slice:7:19}}
       </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>

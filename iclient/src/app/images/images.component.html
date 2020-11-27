@@ -1,24 +1,27 @@
-<mat-grid-list cols="4" rowHeight="2:1">
-    <!-- <mat-grid-tile *ngFor="let tile of tiles" [colspan]="tile.cols" [rowspan]="tile.rows"
-        
-        >
-        {{tile.text}}
-    </mat-grid-tile> -->
-    <mat-grid-tile [colspan]="3" [rowspan]="4">
-        <div class="cardListFavorites" fxLayout="row wrap" fxLayoutAlign="flex-start" fxFlexAlign="stretch">
-            <app-image class="cardListItem" *ngFor="let item of imageFavList" [image]=item></app-image>
-        </div>   
-    </mat-grid-tile>
-    <mat-grid-tile [colspan]="1" [rowspan]="4">
-        <div class="cardList" fxLayout="column" fxFlexAlign="stretch">
-            <app-image class="cardListItem" *ngFor="let item of imageList" [image]=item></app-image>
-        </div>
-    </mat-grid-tile>
-    <!-- <mat-grid-tile [colspan]="1" [rowspan]="4">
-        test
-    </mat-grid-tile> -->
-</mat-grid-list>
+        <div class="row">
+          <div class="col">
+            <div class="headerbar">
+              <mat-toolbar color="primary">
+                <span style="margin-right: 10px;">Filter</span>
+                <span>
+                  <mat-form-field style="margin-top: 12px;">
+                    <input matInput (keydown.enter)="onFilter()" [(ngModel)]="filter" (click)="filter=''">
+                  </mat-form-field>
+                </span>
+                <button mat-icon-button (click)="onFilter()">
+                  <mat-icon class="filtericon">filter_list</mat-icon>
+                </button>
+              </mat-toolbar>
+            </div>
+            <div class="cardListFavorites" fxLayout="row wrap" fxLayoutAlign="flex-start" fxFlexAlign="stretch">
+              <app-image class="cardListItem" *ngFor="let item of imageFavList" [image]=item></app-image>
+            </div>
+          </div>
 
-<!-- <ul>
-    <li *ngFor="let item of imageList">{{item.Id}}</li>
-</ul> -->
+
+          <div class="col">
+            <div class="cardList">
+              <app-image class="cardListItem" *ngFor="let item of imageList" [image]=item></app-image>
+            </div>
+          </div>
+        </div>
