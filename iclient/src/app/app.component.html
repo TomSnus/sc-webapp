@@ -7,7 +7,7 @@
         </div>
 
         <span style="margin-right: 5px;">
-            <mat-icon>cloud</mat-icon>
+            <mat-icon [routerLink]="'/home'">cloud</mat-icon>
         </span>
 
         <span>Time Control High Performance Cluster (Beta)</span>
@@ -29,7 +29,7 @@
         <div>
         </div>
         <div class="row contentContainer">
-            <div [routerLink]="'/home'" class="row rowItem">
+            <div style="margin-bottom: 15px" [routerLink]="'/home'" class="row rowItem">
                 <h4>Home</h4>
             </div>
             <div [routerLink]="'/images-component'" class="row rowItem">
@@ -37,6 +37,12 @@
             </div>
             <div [routerLink]="'/containers-component'" class="row rowItem">
                 <h4>Container</h4>
+            </div>
+            <div style="margin-bottom: 15px" [routerLink]="'/convert-component'" class="row rowItem">
+                <h4>Convert</h4>
+            </div>
+            <div style="margin-bottom: 15px" [routerLink]="'/faq-component'" class="row rowItem">
+                <h4>FAQ</h4>
             </div>
         </div>
     </mat-sidenav>

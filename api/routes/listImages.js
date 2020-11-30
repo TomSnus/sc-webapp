@@ -14,10 +14,6 @@ if (!stats.isSocket()) {
   throw new Error('Are you sure the docker is running?');
 }
 
-var opts = {
-  "filters": '{"reference": ["*:*10.4*"]}'
-};
-
 router.get('/:name', function (req, res, next) {
   console.log(req.params.name)
   docker.listImages({"filters": '{"reference": ["*:'+req.params.name+'*"]}'}).then(res.send.bind(res));

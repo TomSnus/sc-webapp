@@ -3,7 +3,7 @@
 .card {
   max-width: 400px;
   height: 350px;
-  border: 1px solid white;
+  border-radius: 10px;
 }
 
 .icon {
@@ -18,13 +18,13 @@
 
 pre {
   white-space: pre-line;
- word-wrap: break-word;
+  word-wrap: break-word;
 }
 
-.wrap{
+.wrap {
   word-break: break-word;
 }
 
-.subtitle{
+.subtitle {
   color: mat-color($dark-accent);
 }

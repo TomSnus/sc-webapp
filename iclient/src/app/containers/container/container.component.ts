@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { HttpService } from 'src/app/service/http.service';
 import { ContainerDialogComponent } from './container-dialog/container-dialog.component';
+import { ContainerInspectComponent } from './container-inspect/container-inspect.component';
 
 @Component({
   selector: 'app-container',
@@ -22,6 +23,12 @@ export class ContainerComponent implements OnInit {
 
   onRun(){
     let dialogRef = this.dialog.open(ContainerDialogComponent, {
+      data: { container: this.container },
+    });
+  }
+
+  onInspect(){
+    let dialogRef = this.dialog.open(ContainerInspectComponent, {
       data: { container: this.container },
     });
   }

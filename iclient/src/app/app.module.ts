@@ -32,17 +32,22 @@ import { ContainerDialogComponent } from './containers/container/container-dialo
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HomeComponent } from "./home/home.component";
+import { ConvertComponent } from './convert/convert.component';
+import { FaqComponent } from './faq/faq.component';
+import { ContainerInspectComponent } from './containers/container/container-inspect/container-inspect.component';
 
 const routes: Routes = [
   { path: 'images-component', component: ImagesComponent },
   { path: 'containers-component', component: ContainersComponent },
   { path: 'home', component: HomeComponent },
+  { path: 'convert-component', component: ConvertComponent },
+  { path: 'faq-component', component: FaqComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full'},
 ]; @NgModule({
   declarations: [
     AppComponent,
     ImagesComponent,
-    ContainersComponent, ImageComponent, ImageRunDialogComponent, ContainerComponent, ContainerDialogComponent, HomeComponent
+    ContainersComponent, ImageComponent, ImageRunDialogComponent, ContainerComponent, ContainerDialogComponent, HomeComponent, ConvertComponent, FaqComponent, ContainerInspectComponent
   ],
   imports: [
     BrowserModule,

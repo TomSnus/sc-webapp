@@ -104,4 +104,17 @@ router.post('/commit', function (req, res, next) {
     res.send('Container commited');
 });
 
+router.get('/container/inspect', function (req, res, next) {
+    var containerId = req.query.id;
+    var tmpContainer = docker.getContainer(containerId);
+    // tmpContainer.inspect().then(res.send(res)).catch(function (err) {
+    //     console.log(err);
+    // });
+    tmpContainer.inspect().then(res.send.bind(res));
+});
+
+router.get('/info', function (req, res, next) {
+    docker.info().then(res.send.bind(res));
+});
+
 module.exports = router;
