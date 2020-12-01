@@ -1,0 +1,16 @@
+<mat-card class="card mat-elevation-z24">
+    <mat-card-header>
+      <div mat-card-avatar class="icon">
+        <mat-icon>image</mat-icon>
+      </div>
+      <mat-card-title>
+          <span>{{image.RepoTags}} </span>
+      </mat-card-title>
+      <mat-card-subtitle>
+        <b>Id:</b> {{image.Id | slice:7:19}}
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-actions align="end">
+      <button (click)="onRun()" mat-raised-button color="primary">Run</button>
+    </mat-card-actions>
+</mat-card>

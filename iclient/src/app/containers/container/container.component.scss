@@ -2,7 +2,8 @@
 
 .card {
   max-width: 400px;
-  height: 350px;
+  min-height: 282px;
+  height: fit-content;
   border-radius: 10px;
 }
 
@@ -27,4 +28,8 @@ pre {
 
 .subtitle {
   color: mat-color($dark-accent);
+}
+
+.mat-card-actions, .mat-card-subtitle, .mat-card-content {
+  margin-bottom: 0px; 
 }

@@ -22,7 +22,7 @@ router.get('/', function (req, res, next) {
     allContainers = false;
   docker.listContainers({
     all: allContainers,
-    filters: {name: [req.query.filter]}
+    filters: {name: [req.query.filter]},
   }).then(res.send.bind(res));
 });
 

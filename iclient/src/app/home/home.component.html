@@ -16,7 +16,7 @@
 
             </mat-card-content>
             <mat-card-actions>
-              <button mat-stroked-button (click)="gotoRoute('images-component')">GOTO</button>
+              <button mat-stroked-button (click)="gotoRoute('/images-component')">GOTO</button>
             </mat-card-actions>
           </mat-card>
         </div>
@@ -58,9 +58,49 @@
         </div>
 
       </div>
-      <div class="card">
+      <div class="info">
         <mat-card class="mat-elevation-z8">
-          Test
+          <h1 style="text-align: center;">Info Dashboard</h1>
+          <hr>
+          <div class="first">
+            <h1 style="text-align: center;">Images</h1>
+            <div class="row">
+              <div style="justify-content: flex-start;" class="iconHolder">
+                <mat-icon class="infoIcon">apps</mat-icon>
+                <span style="vertical-align: middle;">Amount: {{info.Images}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="second">
+            <h1 style="text-align: center;">Containers</h1>
+            <div class="infoWrapper">
+              <div class="iconHolder">
+                <mat-icon class="infoIcon">apps</mat-icon>
+                <span style="vertical-align: middle;">Amount: {{info.Containers}}</span>
+              </div>
+              <div class="container">
+                <div class="iconHolder">
+                  <mat-icon class="infoIcon">speed</mat-icon>
+                  <span style="vertical-align: middle;"> Running: {{info.ContainersRunning}}</span>
+                </div>
+
+              </div>
+              <div class="row">
+                <div class="iconHolder">
+                  <mat-icon class="infoIcon">pause_circle_filled</mat-icon>
+                  <span style="vertical-align: middle;">Paused: {{info.ContainersPaused}}</span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="iconHolder">
+                  <mat-icon class="infoIcon">highlight_off</mat-icon>
+                  <span style="vertical-align: middle;">Stopped: {{info.ContainersStopped}} </span>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
         </mat-card>
       </div>
     </div>

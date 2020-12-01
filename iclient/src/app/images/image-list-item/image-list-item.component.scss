@@ -1,9 +1,13 @@
 @import "../../../styles.scss";
 
+mat-list-item-content{
+    border: 1px solid white;
+}
+
 .card {
-  max-width: 250px;
-  height: 282px;
+  height: fit-content;
   border-radius: 10px;
+  margin-top: 5px;
 }
 
 .icon {
@@ -22,5 +26,5 @@ pre {
 }
 
 .mat-card-actions, .mat-card-subtitle, .mat-card-content {
-  margin-bottom: 0px; 
+    margin-bottom: 0px; 
 }

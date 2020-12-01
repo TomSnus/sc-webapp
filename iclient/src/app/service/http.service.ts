@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import { map } from 'rxjs/operators';
 
 const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -55,6 +56,8 @@ const httpOptions = {
     }
 
     getImages(filter: string) {
-        return this.http.get('http://localhost:9000/listimages/' + filter);
+        return this.http.get<any>('http://localhost:9000/listimages/' + filter).pipe(
+            map(results => results.sort((a, b) => (a.RepoTags < b.RepoTags))
+        ));
     }
 }

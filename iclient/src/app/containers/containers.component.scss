@@ -64,8 +64,7 @@ md-list.scrollable {
   border: solid;
 }
 .filtericon{
-  background-color: mat-color($dark-accent);
-  color: mat-color($dark-primary);
+  color: mat-color($dark-accent);
   border-radius: 50%;
-  border: 1px solid mat-color($dark-primary);
+  border: 2px solid mat-color($dark-accent);
 }

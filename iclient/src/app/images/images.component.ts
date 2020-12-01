@@ -7,6 +7,7 @@ import { HttpService } from '../service/http.service';
   styleUrls: ['./images.component.scss']
 })
 export class ImagesComponent implements OnInit {
+  isCardView = true;
   imageList: any;
   imageFavList: any;
   filter = 'latest'
@@ -29,5 +30,9 @@ export class ImagesComponent implements OnInit {
 
   onFilter(){
     this.getImages();
+  }
+
+  setCardView(value: boolean){
+    this.isCardView = value;
   }
 }

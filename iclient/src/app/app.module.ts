@@ -35,6 +35,7 @@ import { HomeComponent } from "./home/home.component";
 import { ConvertComponent } from './convert/convert.component';
 import { FaqComponent } from './faq/faq.component';
 import { ContainerInspectComponent } from './containers/container/container-inspect/container-inspect.component';
+import { ImageListItemComponent } from './images/image-list-item/image-list-item.component';
 
 const routes: Routes = [
   { path: 'images-component', component: ImagesComponent },
@@ -47,7 +48,7 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     ImagesComponent,
-    ContainersComponent, ImageComponent, ImageRunDialogComponent, ContainerComponent, ContainerDialogComponent, HomeComponent, ConvertComponent, FaqComponent, ContainerInspectComponent
+    ContainersComponent, ImageComponent, ImageRunDialogComponent, ContainerComponent, ContainerDialogComponent, HomeComponent, ConvertComponent, FaqComponent, ContainerInspectComponent, ImageListItemComponent
   ],
   imports: [
     BrowserModule,
