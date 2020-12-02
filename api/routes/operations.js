@@ -30,11 +30,20 @@ router.get('/createContainer/:id/:name/:domainname/:hostname/:ports', function (
         Hostname: req.params.hostname,
         ExposedPorts: {
             "43306/tcp": {}
-        }
+        }, 
+        PortBindings: { "3306/tcp": { "localhost": "33060" }}
+        
     }).then(function (container) {
         auxContainer = container;
         return auxContainer.start();
     });
+});
+
+router.post('/startContainer', function(req, res){
+    console.log('container id to start: ' + req.query.id)
+    var container = docker.getContainer(req.query.id);
+
+    container.start()
 });
 
 router.post('/createContainer', function (req, res) {
@@ -44,10 +53,12 @@ router.post('/createContainer', function (req, res) {
         Image: req.body.image,
         name: req.body.name,
         Domainname: 'atc.demodb',
-        Hostname: 'hostname',
-        // ExposedPorts: {
-        //     [auxPort]: {}
-        // }
+        Hostname: 'localhost',
+        ExposedPorts: {
+            [auxPort]: {}
+        },
+        PortBindings: { "3306/tcp": [{ "HostPort": req.body.port }]}
+
     }).then(function (container) {
         auxContainer = container;
         return auxContainer.start();
