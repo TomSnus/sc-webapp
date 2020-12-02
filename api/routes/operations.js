@@ -45,9 +45,9 @@ router.post('/createContainer', function (req, res) {
         name: req.body.name,
         Domainname: 'atc.demodb',
         Hostname: 'hostname',
-        ExposedPorts: {
-            [auxPort]: {}
-        }
+        // ExposedPorts: {
+        //     [auxPort]: {}
+        // }
     }).then(function (container) {
         auxContainer = container;
         return auxContainer.start();

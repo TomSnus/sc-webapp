@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { jsonpFactory } from '@angular/http/src/http_module';
 import { MatDialog } from '@angular/material/dialog';
 import { HttpService } from 'src/app/service/http.service';
 import { ContainerDialogComponent } from './container-dialog/container-dialog.component';
@@ -17,19 +18,27 @@ export class ContainerComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getLabel(){
+  getLabel() {
     return this.container.Labels
   }
 
-  onRun(){
+  onRun() {
     let dialogRef = this.dialog.open(ContainerDialogComponent, {
       data: { container: this.container },
     });
   }
 
-  onInspect(){
+  onInspect() {
     let dialogRef = this.dialog.open(ContainerInspectComponent, {
       data: { container: this.container },
     });
+  }
+
+  getPorts() {
+    let ports: string[] = []
+    this.container.Ports.forEach(element => {
+      ports.push(element.PrivatePort)
+    });
+    return ports;
   }
 }

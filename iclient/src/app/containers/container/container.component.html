@@ -13,7 +13,9 @@
       </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-      <pre margin="5px">{{container.Labels | json}}</pre>
+      <span margin="5px"> <b class="subtitle">Ports: </b>{{getPorts()}}</span>
+      <br>
+      <span margin="5px"> <b class="subtitle">Created: </b>{{+container.Created *1000 | date: 'dd.MM.yyyy hh:mm'}}</span>
     </mat-card-content>
     <mat-card-actions>
       <button (click)="onRun()" mat-raised-button color="primary">Commit</button>
