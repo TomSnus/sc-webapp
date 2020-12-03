@@ -13,7 +13,7 @@ const httpOptions = {
 
     constructor(private http: HttpClient) { }
 
-    getInfo(){
+    getInfo() {
         return this.http.get('http://localhost:9000/operations/info');
     }
 
@@ -58,24 +58,32 @@ const httpOptions = {
     getImages(filter: string) {
         return this.http.get<any>('http://localhost:9000/listimages/' + filter).pipe(
             map(results => results.sort((a, b) => (a.RepoTags < b.RepoTags))
-        ));
+            ));
     }
 
     stopContainer(id: string) {
-        return this.http.post<any>('http://localhost:9000/operations/container/stop/', {id: id} ) .subscribe(data => {
-                console.log(data);
-            });
-    } 
+        const parameters = new HttpParams()
+            .set('id', id)
+        return this.http.get('http://localhost:9000/operations/container/stop/', { params: parameters });
+    }
 
     startContainer(id: string) {
-        return this.http.post<any>('http://localhost:9000/operations/container/start/', {id: id} ) .subscribe(data => {
-                console.log(data);
-            });
-    } 
+        const parameters = new HttpParams()
+            .set('id', id)
+        return this.http.get('http://localhost:9000/operations/container/start/', { params: parameters });
+    }
 
     removeContainer(id: string) {
-        return this.http.post<any>('http://localhost:9000/operations/container/remove/', {id: id} ) .subscribe(data => {
-                console.log(data);
+        const parameters = new HttpParams()
+            .set('id', id)
+        return this.http.get('http://localhost:9000/operations/container/remove/', { params: parameters });
+    }
+
+    getContainer(id: string) {
+        const parameters = new HttpParams()
+            .set('id', id)
+        return this.http.get('http://localhost:9000/listContainers/get/', { params: parameters }).subscribe(data => {
+            console.log(data);
         });
-    } 
+    }
 }

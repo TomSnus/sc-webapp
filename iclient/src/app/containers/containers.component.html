@@ -15,7 +15,7 @@
       </mat-toolbar>
     </div>
     <div class="cardList" fxLayout="row wrap" fxLayoutAlign="flex-start" fxFlexAlign="stretch">
-      <app-container class="cardListItem" *ngFor="let item of imageList" [container]=item></app-container>
+      <app-container (refreshEvent)="refreshList()" class="cardListItem" *ngFor="let item of imageList" [container]=item></app-container>
     </div>
   </div>
 </div>

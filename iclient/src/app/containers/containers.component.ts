@@ -36,5 +36,9 @@ export class ContainersComponent implements OnInit {
     this.toggleState = event.checked 
     this.getContainers();
   }
+
+  refreshList(){
+    this.getContainers();
+  }
 }
 

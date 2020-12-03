@@ -10,6 +10,8 @@
         <span class="wrap"><b class="subtitle">Id:</b>{{container.Id}} </span>
         <br>
         <b class="subtitle">Image:</b> {{container.Image | slice:7:19}}
+        <br>
+        <b class="subtitle">State:</b> {{state}}
       </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
@@ -20,8 +22,15 @@
     <mat-card-actions>
       <button (click)="onRun()" mat-raised-button color="primary">Commit</button>
       <button (click)="onInspect()" mat-raised-button color="primary">Inspect</button>
-      <button (click)="onStart()" mat-raised-button color="primary">Start</button>
-      <button (click)="onStop()" mat-raised-button color="primary">Stop</button>
-      <button (click)="onRemove()" mat-raised-button color="primary">Remove</button>
+      <ng-container
+        *ngIf="isRunning(); then running; else exited">
+    </ng-container>
+    <ng-template #exited>
+          <button (click)="onStart()" mat-raised-button color="primary">Start</button>
+    </ng-template>
+      <ng-template #running>
+        <button  (click)="onStop()" mat-raised-button color="primary">Stop</button>
+        <button (click)="onRemove()" mat-raised-button color="primary">Remove</button>
+      </ng-template>
     </mat-card-actions>
   </mat-card>

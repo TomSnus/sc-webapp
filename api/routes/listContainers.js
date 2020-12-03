@@ -26,4 +26,11 @@ router.get('/', function (req, res, next) {
   }).then(res.send.bind(res));
 });
 
+router.get('/get/', function(req, res) {
+  console.log('Container id: '+ req.query.id);
+    docker.getContainer(req.query.id).then(function(data){
+      res.send.bind(res);
+    });
+});
+
 module.exports = router;
