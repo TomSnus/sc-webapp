@@ -41,4 +41,16 @@ export class ContainerComponent implements OnInit {
     });
     return ports;
   }
+
+  onStop(){
+    this.httpService.stopContainer(this.container.Id);
+  }
+
+  onStart(){
+    this.httpService.startContainer(this.container.Id);
+  }
+
+  onRemove(){
+    this.httpService.removeContainer(this.container.Id);
+  }
 }

@@ -47,25 +47,59 @@ router.post('/startContainer', function(req, res){
 });
 
 router.post('/createContainer', function (req, res) {
-    auxPort = req.body.port + "/tcp";
-    var auxContainer;
-    docker.createContainer({
-        Image: req.body.image,
-        name: req.body.name,
-        Domainname: 'atc.demodb',
-        Hostname: 'localhost',
-        ExposedPorts: {
-            [auxPort]: {}
-        },
-        PortBindings: { "3306/tcp": [{ "HostPort": req.body.port }]}
+    image = docker.getImage(req.body.image);
+    var expPort;
+    image.inspect().then(function(data){
+        console.log(    Object.keys(data.ContainerConfig.ExposedPorts)[0]);
+        expPort = Object.keys(data.ContainerConfig.ExposedPorts)[0];
+        console.log('Exposed port: '+ expPort);
 
-    }).then(function (container) {
-        auxContainer = container;
-        return auxContainer.start();
+            console.log('Exposed port 123: '+ expPort);
+            auxPort = req.body.port + "/tcp";
+            var auxContainer;
+
+            docker.createContainer({
+                Image: req.body.image,
+                name: req.body.name,
+                Domainname: 'atc.demodb',
+                Hostname: 'localhost',
+                ExposedPorts: {
+                    [auxPort]: {}
+                },
+                PortBindings: { [expPort]: [{ "HostPort": req.body.port, "HostIp":"127.0.0.1"  }]}
+
+            }).then(function (container) {
+                auxContainer = container;
+                return auxContainer.start();
+            });
+
+            res.send({
+                'sucess': 'Container ' + req.body.image + ' started'
+            });
+            });
+
+});
+
+router.post('/container/stop/', function(req, res){
+    console.log(req.body.id);
+    var container = docker.getContainer(req.body.id);
+    container.stop(function (err, data) {
+    console.log('stopped container: ' + req.body.id);
+     });
+});
+
+router.post('/container/start/', function(req, res){
+    var container = docker.getContainer(req.body.id);
+    container.start(function (err, data) {
+    console.log('started container: ' + req.body.id);
     });
+});
 
-    res.send({
-        'sucess': 'Container ' + req.body.image + ' started'
+router.post('/container/remove/', function(req, res){
+    console.log(req.body.id);
+    var container = docker.getContainer(req.body.id);
+    container.remove(function (err, data) {
+    console.log('removed container: ' + req.body.id);
     });
 });
 

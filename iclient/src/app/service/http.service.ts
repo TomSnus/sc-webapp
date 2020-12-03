@@ -60,4 +60,22 @@ const httpOptions = {
             map(results => results.sort((a, b) => (a.RepoTags < b.RepoTags))
         ));
     }
+
+    stopContainer(id: string) {
+        return this.http.post<any>('http://localhost:9000/operations/container/stop/', {id: id} ) .subscribe(data => {
+                console.log(data);
+            });
+    } 
+
+    startContainer(id: string) {
+        return this.http.post<any>('http://localhost:9000/operations/container/start/', {id: id} ) .subscribe(data => {
+                console.log(data);
+            });
+    } 
+
+    removeContainer(id: string) {
+        return this.http.post<any>('http://localhost:9000/operations/container/remove/', {id: id} ) .subscribe(data => {
+                console.log(data);
+        });
+    } 
 }
