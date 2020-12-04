@@ -1,0 +1,26 @@
+<div style="border-radius: 15px;"><h2 mat-dialog-title>Remove Image</h2>
+<form class="form">
+  <mat-dialog-content class="mat-typography">
+    <div class="row item">
+      <h3 class="toggleTitle">Force</h3>
+      <mat-card-subtitle>
+        <p>Remove the image even if it is being used by stopped containers or has other tags</p>
+      </mat-card-subtitle>
+      
+      <mat-slide-toggle [checked]="forceState">force</mat-slide-toggle>
+    </div>
+    <div class="row item">
+      <h3 class="toggleTitle">Noprune</h3>
+      <mat-card-subtitle>
+        <p>Do not delete untagged parent images</p>
+    </mat-card-subtitle>
+      <mat-slide-toggle [checked]="pruneState">noprune</mat-slide-toggle>
+    </div>
+
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button (click)="removeImage()" cdkFocusInitial>Remove</button>
+  </mat-dialog-actions>
+</form></div>
+

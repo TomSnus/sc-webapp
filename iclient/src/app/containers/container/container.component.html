@@ -1,36 +1,41 @@
 <mat-card class="card mat-elevation-z24">
-    <mat-card-header>
-      <div mat-card-avatar class="icon">
-        <mat-icon>flight_takeoff</mat-icon>
-      </div>
-      <mat-card-title>
-        <pre>{{container.Names}}</pre>
-      </mat-card-title>
-      <mat-card-subtitle>
-        <span class="wrap"><b class="subtitle">Id:</b>{{container.Id}} </span>
-        <br>
-        <b class="subtitle">Image:</b> {{container.Image | slice:7:19}}
-        <br>
-        <b class="subtitle">State:</b> {{state}}
-      </mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <span margin="5px"> <b class="subtitle">Ports: </b>{{getPorts()}}</span>
+  <mat-card-header>
+    <div mat-card-avatar class="icon">
+      <mat-icon>flight_takeoff</mat-icon>
+    </div>
+    <div *ngIf="loading">
+      <mat-spinner color="accent"></mat-spinner>
+    </div>
+    <mat-card-title>
+      <pre>{{container.Names}}</pre>
+    </mat-card-title>
+    <mat-card-subtitle>
+      <span class="wrap"><b class="subtitle">Id:</b>{{container.Id}} </span>
       <br>
-      <span margin="5px"> <b class="subtitle">Created: </b>{{+container.Created *1000 | date: 'dd.MM.yyyy hh:mm'}}</span>
-    </mat-card-content>
-    <mat-card-actions>
-      <button (click)="onRun()" mat-raised-button color="primary">Commit</button>
-      <button (click)="onInspect()" mat-raised-button color="primary">Inspect</button>
-      <ng-container
-        *ngIf="isRunning(); then running; else exited">
+      <b class="subtitle">Image:</b> {{container.Image | slice:7:19}}
+      <br>
+      <b class="subtitle">State:</b> {{state}}
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <span margin="5px"> <b class="subtitle">Ports: </b>{{getPorts()}}</span>
+    <br>
+    <span margin="5px"> <b class="subtitle">Created: </b>{{+container.Created *1000 | date: 'dd.MM.yyyy hh:mm'}}</span>
+  </mat-card-content>
+  <mat-card-actions>
+    <button (click)="onRun()" mat-raised-button color="primary">Commit</button>
+    <button class="actionButton" (click)="onInspect()" mat-raised-button color="primary">Inspect</button>
+    <ng-container *ngIf="isRunning(); then running; else exited">
     </ng-container>
     <ng-template #exited>
-          <button (click)="onStart()" mat-raised-button color="primary">Start</button>
+      <button class="actionButton" (click)="onStart()" mat-raised-button color="primary">Start</button>
+      <button class="actionButton" (click)="onRemove()" mat-raised-button color="primary">Remove</button>
     </ng-template>
-      <ng-template #running>
-        <button  (click)="onStop()" mat-raised-button color="primary">Stop</button>
-        <button (click)="onRemove()" mat-raised-button color="primary">Remove</button>
-      </ng-template>
-    </mat-card-actions>
-  </mat-card>
+    <ng-template #running>
+      <button class="actionButton" (click)="onStop()" mat-raised-button color="primary">Stop</button>
+    </ng-template>
+  </mat-card-actions>
+</mat-card>
+<!-- *ngIf="loading" -->
+
+

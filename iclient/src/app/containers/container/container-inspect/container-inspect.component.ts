@@ -19,15 +19,14 @@ export class ContainerInspectComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getContainers();
+    this.getContainerData();
     console.log(this.containerData);
   }
 
-  getContainers(): void {
+  getContainerData(): void {
     this.httpService.inspectContainer({id: this.data.container.Id}).subscribe(
       data => {this.containerData = data},
-      err => console.error(err), () => console.log('loaded all containers...')
+      err => console.error(err), () => console.log('inspect container..')
     );
   }
-
 }

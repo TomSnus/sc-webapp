@@ -101,10 +101,22 @@ router.get('/container/start/', function (req, res) {
     container.start().then(res.send.bind(res));
 });
 
-router.post('/container/remove/', function (req, res) {
+router.get('/container/remove/', function (req, res) {
     console.log(req.query.id);
     var container = docker.getContainer(req.query.id);
     container.remove().then(res.send.bind(res));
+});
+
+router.get('/image/remove/', function (req, res) {
+    var isForce = req.query.force === "1";
+    var isNoPrune = req.query.prune === "1";
+
+    var image = docker.getImage(req.query.id);
+    image.remove({
+        name: req.query.id,
+        force: isForce,
+        noprune: isNoPrune
+    }).then(res.send.bind(res));
 });
 
 router.get('/createImage/:id/:feature/', function (req, res, next) {
@@ -156,9 +168,12 @@ router.post('/commit', function (req, res, next) {
 router.get('/container/inspect', function (req, res, next) {
     var containerId = req.query.id;
     var tmpContainer = docker.getContainer(containerId);
-    // tmpContainer.inspect().then(res.send(res)).catch(function (err) {
-    //     console.log(err);
-    // });
+    tmpContainer.inspect().then(res.send.bind(res));
+});
+
+router.get('/image/inspect', function (req, res, next) {
+    var containerId = req.query.id;
+    var tmpContainer = docker.getImage(containerId);
     tmpContainer.inspect().then(res.send.bind(res));
 });
 

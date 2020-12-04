@@ -7,14 +7,16 @@
       <pre>{{image.RepoTags}}</pre>
     </mat-card-title>
     <mat-card-subtitle>
-      <b>Id:</b> {{image.Id | slice:7:19}}
+      <b class="subtitle">Id:</b> {{image.Id | slice:7:19}}
     </mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <pre margin="5px">{{image.Labels | json}}</pre>
+    <span margin="5px"> <b class="subtitle">Created: </b>{{+image.Created *1000 | date: 'dd.MM.yyyy hh:mm'}}</span>
   </mat-card-content>
   <mat-card-actions>
     <button (click)="onRun()" mat-raised-button color="primary">Run</button>
+    <button class="actionButton" (click)="onInspect()" mat-raised-button color="primary">Inspect</button>
+    <button class="actionButton" (click)="onRemove()" mat-raised-button color="primary">Remove</button>
   </mat-card-actions>
 </mat-card>
 

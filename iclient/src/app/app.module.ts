@@ -36,6 +36,9 @@ import { ConvertComponent } from './convert/convert.component';
 import { FaqComponent } from './faq/faq.component';
 import { ContainerInspectComponent } from './containers/container/container-inspect/container-inspect.component';
 import { ImageListItemComponent } from './images/image-list-item/image-list-item.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { ImageInspectComponent } from './images/image/image-inspect/image-inspect.component';
+import { ImageRemoveComponent } from './images/image/image-remove/image-remove.component';
 
 const routes: Routes = [
   { path: 'images-component', component: ImagesComponent },
@@ -48,7 +51,7 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     ImagesComponent,
-    ContainersComponent, ImageComponent, ImageRunDialogComponent, ContainerComponent, ContainerDialogComponent, HomeComponent, ConvertComponent, FaqComponent, ContainerInspectComponent, ImageListItemComponent
+    ContainersComponent, ImageComponent, ImageRunDialogComponent, ContainerComponent, ContainerDialogComponent, HomeComponent, ConvertComponent, FaqComponent, ContainerInspectComponent, ImageListItemComponent, ImageInspectComponent, ImageRemoveComponent
   ],
   imports: [
     BrowserModule,
@@ -73,6 +76,7 @@ const routes: Routes = [
     FlexLayoutModule,
     MatSlideToggleModule,
     MatSnackBarModule,
+    MatProgressSpinnerModule,
     RouterModule.forRoot(routes)
   ],
   providers: [HttpService],

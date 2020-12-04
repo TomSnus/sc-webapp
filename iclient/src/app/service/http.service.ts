@@ -10,7 +10,6 @@ const httpOptions = {
 @Injectable({
     providedIn: 'root'
 }) export class HttpService {
-
     constructor(private http: HttpClient) { }
 
     getInfo() {
@@ -22,6 +21,14 @@ const httpOptions = {
         const parameters = new HttpParams()
             .set('id', data.id)
         return this.http.get('http://localhost:9000/operations/container/inspect/', { params: parameters });
+    }
+
+
+    inspectImage(data: { id: any; }) {
+        console.log(data.id);
+        const parameters = new HttpParams()
+            .set('id', data.id)
+        return this.http.get('http://localhost:9000/operations/image/inspect/', { params: parameters });
     }
 
 
@@ -39,6 +46,13 @@ const httpOptions = {
         return this.http.get('http://localhost:9000/listcontainers/', { params: parameters });
     }
 
+    removeImage(data: { id: any; force: boolean; prune: boolean; }) {
+        const parameters = new HttpParams()
+            .set('id', data.id)
+            .set('force', data.force === true ? "1" : "0")
+            .set('prune', data.prune === true ? "1" : "0")
+        return this.http.get('http://localhost:9000/operations/image/remove/', { params: parameters });
+    }
 
     runContainer(data: any) {
         const headers = new HttpHeaders({

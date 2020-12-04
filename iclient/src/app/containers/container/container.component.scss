@@ -33,3 +33,16 @@ pre {
 .mat-card-actions, .mat-card-subtitle, .mat-card-content {
   margin-bottom: 0px; 
 }
+
+.progressspinner{
+ color: "accent";
+ position: relative;
+}
+
+.mat-progress-spinner circle, .mat-spinner circle {
+  stroke: #3fb53f;
+}
+
+.actionButton{
+  margin-right: 0px !important;
+}

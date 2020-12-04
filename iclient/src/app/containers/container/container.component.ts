@@ -15,6 +15,7 @@ export class ContainerComponent implements OnInit {
   @Output() refreshEvent = new EventEmitter<void>();
   test:any;
   state: string;
+  loading = false;
   constructor(private httpService: HttpService, public dialog: MatDialog, private cdRef: ChangeDetectorRef) { }
 
   ngOnInit(): void {
@@ -53,28 +54,33 @@ export class ContainerComponent implements OnInit {
 
   //on container start/stop/remove the container data is reloaded
   onStop() {
+    this.loading = true;
     this.httpService.stopContainer(this.container.Id).subscribe(
-      data => {this.test = data},
-      err => console.error(err), () => this.refreshEvent.emit()
+      err => console.error(err), () => this.refresh()
     );
   }
 
   onStart() {
+    this.loading = true;
     this.httpService.startContainer(this.container.Id).subscribe(
-      data => {this.test = data},
-      err => console.error(err), () => this.refreshEvent.emit()
+      err => console.error(err), () => this.refresh()
     );
   }
 
   onRemove() {
+    this.loading = true;
     this.httpService.removeContainer(this.container.Id).subscribe(
-      data => {this.test = data},
-      err => console.error(err), () => this.refreshEvent.emit()
+      err => console.error(err), () => this.refresh()
     );
   }
 
   refreshContainer(data: any) {
     console.log(data);
     this.container = this.httpService.getContainer(this.container.Id);
+  }
+
+  refresh() {
+    this.refreshEvent.emit();
+    this.loading = false;
   }
 }
