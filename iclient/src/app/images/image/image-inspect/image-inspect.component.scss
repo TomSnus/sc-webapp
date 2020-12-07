@@ -1,26 +1,26 @@
 @import "../../../../styles.scss";
 
-.wrapper{ 
-    width:750px; 
-    overflow-y:scroll; 
-    position:relative;
-    height: 500px;
+.wrapper {
+  width: 750px;
+  overflow-y: scroll;
+  position: relative;
+  height: 500px;
 }
 
 ::-webkit-scrollbar {
-    width: 20px;
+  width: 20px;
 }
 
 ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px grey; 
-    border-radius: 10px;
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: mat-color($dark-primary); 
-    border-radius: 10px;
+  background: mat-color($dark-primary);
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: mat-color($dark-primary); 
+  background: mat-color($dark-primary);
 }

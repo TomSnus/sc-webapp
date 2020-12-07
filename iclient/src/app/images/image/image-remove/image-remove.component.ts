@@ -14,8 +14,8 @@ export class ImageRemoveComponent implements OnInit {
   pruneState = false;
 
   constructor(private snackBar: MatSnackBar, public httpService: HttpService,
-    public dialogRef: MatDialogRef<ImageRemoveComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) {
+              public dialogRef: MatDialogRef<ImageRemoveComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: any) {
     dialogRef.afterClosed().subscribe(result => {
 
     });
@@ -24,14 +24,14 @@ export class ImageRemoveComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  closeDialog() {
-    this.snackBar.open("Image removed", "close", {
+  closeDialog(): void {
+    this.snackBar.open('Image removed', 'close', {
       duration: 2000,
     });
     this.dialogRef.close('!');
   }
 
-  removeImage() {
+  removeImage(): void {
     this.httpService.removeImage({ id: this.data.image.Id, force: this.forceState, prune: this.pruneState }).subscribe(
       err => console.error(err)
     );

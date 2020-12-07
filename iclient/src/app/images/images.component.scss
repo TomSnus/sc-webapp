@@ -1,88 +1,93 @@
 @import "../../styles.scss";
 
 mat-grid-tile {
-    border: 1px solid white;
+  border: 1px solid white;
 }
 
-mat-grid-tile{
-    flex-grow: 1;
-    overflow: auto;
+mat-grid-tile {
+  flex-grow: 1;
+  overflow: auto;
 }
 
 md-list.scrollable {
-    height: 600px; 
-    overflow-y: scroll;
+  height: 600px;
+  overflow-y: scroll;
 }
 
 .mat-grid-tile .mat-figure {
-    justify-content: flex-start !important ;
-    align-items: flex-start !important;
-    display: block !important;
- }
+  justify-content: flex-start !important;
+  align-items: flex-start !important;
+  display: block !important;
+}
 
- .favoritesTile{
-     justify-content: flex-start;
- }
+.favoritesTile {
+  justify-content: flex-start;
+}
 
- .cardList {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    margin-top: 10px;
-  }
+.cardList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-top: 10px;
+  margin-left: 10px;
+}
 
-  .cardListFavorites {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    margin-top: 10px;
-    margin-left: 10px;
+.cardListFavorites {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-top: 10px;
+  margin-left: 10px;
 
-  }
+}
 
-  .cardList > * {
-    box-sizing: border-box;
-  }
-  .cardList > *:not(:last-child) {
-    margin-left: 10px;
-    margin-bottom: 10px;
-  }
+.cardList>* {
+  box-sizing: border-box;
+}
 
-  .cardListFavorites > * {
-    box-sizing: border-box;
-  }
-  .cardListFavorites > *:not(:last-child) {
-    margin-bottom: 10px;
-  }
+.cardList>*:not(:last-child) {
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
 
-  .cardListItem {
-    flex: 0 1 calc(33.3% - 10px);
-  }
+.cardListFavorites>* {
+  box-sizing: border-box;
+}
 
-  .headerbar {
-    width: 100%;
-    height: max-content;
-    margin-right: 10px;
-    text-align: center;
-    align-items: center;
-    background-color: mat-color($dark-primary);
-  }
+.cardListFavorites>*:not(:last-child) {
+  margin-bottom: 10px;
+}
 
-  .row {
-    display: flex; /* equal height of the children */
-  }
-  
-  .col {
-    flex: 1; /* additionally, equal width */
-    
-    padding: 1em;
-    border: solid;
-  }
-  
-  .filtericon{
-    color: mat-color($dark-accent);
-    border-radius: 50%;
-    border: 2px solid mat-color($dark-accent);
-  }
+.cardListItem {
+  flex: 0 1 calc(33.3% - 10px);
+}
+
+.headerbar {
+  width: 100%;
+  height: max-content;
+  margin-right: 10px;
+  text-align: center;
+  align-items: center;
+  background-color: mat-color($dark-primary);
+}
+
+.row {
+  display: flex;
+  /* equal height of the children */
+}
+
+.col {
+  flex: 1;
+  /* additionally, equal width */
+
+  padding: 1em;
+  border: solid;
+}
+
+.filtericon {
+  color: mat-color($dark-accent);
+  border-radius: 50%;
+  border: 2px solid mat-color($dark-accent);
+}

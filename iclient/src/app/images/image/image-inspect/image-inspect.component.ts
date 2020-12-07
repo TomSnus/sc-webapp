@@ -11,8 +11,8 @@ export class ImageInspectComponent implements OnInit {
   imageData: any;
 
   constructor(public httpService: HttpService,
-    public dialogRef: MatDialogRef<ImageInspectComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) {
+              public dialogRef: MatDialogRef<ImageInspectComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: any) {
     dialogRef.afterClosed().subscribe(result => {
 
     });
@@ -24,7 +24,7 @@ export class ImageInspectComponent implements OnInit {
 
   getImageData(): void {
     this.httpService.inspectImage({ id: this.data.image.Id }).subscribe(
-      data => { this.imageData = data },
+      data => { this.imageData = data; },
       err => console.error(err), () => console.log('inspect image...')
     );
   }

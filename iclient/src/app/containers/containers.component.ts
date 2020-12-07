@@ -10,9 +10,9 @@ import { HttpService } from '../service/http.service';
 })
 
 export class ContainersComponent implements OnInit {
-  imageList: Object;
+  imageList: object;
   imageFavList: any;
-  filter: string = '';
+  filter = '';
   toggleState = false;
 
   constructor(private route: ActivatedRoute, private httpService: HttpService) { }
@@ -20,7 +20,7 @@ export class ContainersComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe(
       (params: Params) => {
-        this.toggleState = params['running'] === '1' ? true : false;
+        this.toggleState = params.running === '1' ? true : false;
       }
     );
     this.getContainers();
@@ -28,22 +28,22 @@ export class ContainersComponent implements OnInit {
 
   getContainers(): void {
     this.httpService.getContainers({ showRunning: this.toggleState, filter: this.filter }).subscribe(
-      data => { this.imageList = data },
+      data => { this.imageList = data; },
       err => console.error(err), () => console.log('loaded all containers...')
     );
   }
 
-  onFilter() {
+  onFilter(): void {
     this.getContainers();
   }
 
-  toggleContainers(event: MatSlideToggleChange) {
+  toggleContainers(event: MatSlideToggleChange): void {
     console.log('toggle', event.checked);
-    this.toggleState = event.checked
+    this.toggleState = event.checked;
     this.getContainers();
   }
 
-  refreshList() {
+  refreshList(): void {
     this.getContainers();
   }
 }

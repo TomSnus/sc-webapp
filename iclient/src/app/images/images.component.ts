@@ -10,7 +10,7 @@ export class ImagesComponent implements OnInit {
   isCardView = true;
   imageList: any;
   imageFavList: any;
-  filter = 'latest'
+  filter = 'latest';
   constructor(private httpService: HttpService) { }
 
   ngOnInit(): void {
@@ -19,20 +19,20 @@ export class ImagesComponent implements OnInit {
 
   getImages(): void {
     this.httpService.getImages(this.filter).subscribe(
-      data => {this.imageFavList = data},
+      data => {this.imageFavList = data; },
       err => console.error(err), () => console.log('loaded fav images...')
     );
     this.httpService.getImages('*').subscribe(
-      data => {this.imageList = data},
+      data => {this.imageList = data; },
       err => console.error(err), () => console.log('loaded images...')
     );
   }
 
-  onFilter(){
+  onFilter(): void{
     this.getImages();
   }
 
-  setCardView(value: boolean){
+  setCardView(value: boolean): void{
     this.isCardView = value;
   }
 }

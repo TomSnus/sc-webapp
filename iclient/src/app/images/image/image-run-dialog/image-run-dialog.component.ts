@@ -11,11 +11,15 @@ import { HttpService } from 'src/app/service/http.service';
 })
 export class ImageRunDialogComponent implements OnInit {
 
-  
-  constructor(private router: Router, public httpService: HttpService, public dialogRef: MatDialogRef<ImageRunDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private snackBar: MatSnackBar) {
+
+  constructor(private router: Router,
+              public httpService: HttpService,
+              public dialogRef: MatDialogRef<ImageRunDialogComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: any,
+              private snackBar: MatSnackBar) {
     dialogRef.afterClosed().subscribe(result => {
-      
-      });
+
+    });
   }
 
   ngOnInit(): void {
@@ -23,21 +27,21 @@ export class ImageRunDialogComponent implements OnInit {
     console.log(this.data.image.Id);
   }
 
-  closeDialog() {
+  closeDialog(): void {
     this.dialogRef.close('!');
-    this.snackBar.open("Container started 🐳️", "close", {
+    this.snackBar.open('Container started 🐳️', 'close', {
       duration: 2000,
     });
   }
 
-  runContainer(){
-    this.httpService.runContainer({id: this.data.image.Id, name: this.data.image.Name, port: this.data.image.Port});
+  runContainer(): void {
+    this.httpService.runContainer({ id: this.data.image.Id, name: this.data.image.Name, port: this.data.image.Port });
     this.closeDialog();
-    let snack = this.snackBar.open("Container started 🐳️", "go to", {
+    const snack = this.snackBar.open('Container started 🐳️', 'go to', {
       duration: 2000,
     });
     snack.onAction().subscribe(() => {
-      this.router.navigate(['containers-component'], {queryParams: {running:1}});
+      this.router.navigate(['containers-component'], { queryParams: { running: 1 } });
     });
   }
 }

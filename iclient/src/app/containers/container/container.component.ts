@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { HttpService } from 'src/app/service/http.service';
 import { ContainerDialogComponent } from './container-dialog/container-dialog.component';
 import { ContainerInspectComponent } from './container-inspect/container-inspect.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-container',
@@ -11,76 +12,83 @@ import { ContainerInspectComponent } from './container-inspect/container-inspect
   styleUrls: ['./container.component.scss']
 })
 export class ContainerComponent implements OnInit {
-  @Input() container: any
+  @Input() container: any;
   @Output() refreshEvent = new EventEmitter<void>();
-  test:any;
+  test: any;
   state: string;
   loading = false;
-  constructor(private httpService: HttpService, public dialog: MatDialog, private cdRef: ChangeDetectorRef) { }
+  constructor(private snackBar: MatSnackBar,
+              private httpService: HttpService,
+              public dialog: MatDialog, private cdRef: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.state = this.container.State;
   }
 
-  getLabel() {
-    return this.container.Labels
+  getLabel(): void {
+    return this.container.Labels;
   }
 
-  onRun() {
-    let dialogRef = this.dialog.open(ContainerDialogComponent, {
+  onRun(): void {
+    this.dialog.open(ContainerDialogComponent, {
       data: { container: this.container },
     });
   }
 
-  onInspect() {
-    let dialogRef = this.dialog.open(ContainerInspectComponent, {
+  onInspect(): void {
+    this.dialog.open(ContainerInspectComponent, {
       data: { container: this.container },
     });
   }
 
-  getPorts() {
-    let ports: string[] = [];
-    if (this.container.Ports === undefined)
+  getPorts(): string[] {
+    const ports: string[] = [];
+    if (this.container.Ports === undefined) {
       return ports;
+    }
     this.container.Ports.forEach(element => {
-      ports.push(element.PrivatePort)
+      ports.push(element.PrivatePort);
     });
     return ports;
   }
 
-  isRunning() {
+  isRunning(): boolean {
     return this.container.State === 'running';
   }
 
-  //on container start/stop/remove the container data is reloaded
-  onStop() {
+  // on container start/stop/remove the container data is reloaded
+  onStop(): void {
     this.loading = true;
     this.httpService.stopContainer(this.container.Id).subscribe(
-      err => console.error(err), () => this.refresh()
+      msg => this.refresh('Container stopped')
     );
   }
 
-  onStart() {
+  onStart(): void {
     this.loading = true;
-    this.httpService.startContainer(this.container.Id).subscribe(
-      err => console.error(err), () => this.refresh()
+    const stopObs = this.httpService.startContainer(this.container.Id);
+    stopObs.subscribe(
+      msg => this.refresh('Container started')
     );
   }
 
-  onRemove() {
+  onRemove(): void {
     this.loading = true;
     this.httpService.removeContainer(this.container.Id).subscribe(
-      err => console.error(err), () => this.refresh()
+      msg => this.refresh('Container removed')
     );
   }
 
-  refreshContainer(data: any) {
+  refreshContainer(data: any): void {
     console.log(data);
     this.container = this.httpService.getContainer(this.container.Id);
   }
 
-  refresh() {
+  refresh(msg: string): void {
     this.refreshEvent.emit();
     this.loading = false;
+    this.snackBar.open(msg, 'close', {
+      duration: 2000,
+    });
   }
 }
