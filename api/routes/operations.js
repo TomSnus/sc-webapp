@@ -89,16 +89,20 @@ router.post('/createContainer', function (req, res) {
 
 });
 
+router.get('/container/restart/', function (req, res) {
+    console.log(req.query.id);
+    var container = docker.getContainer(req.query.id);
+    container.restart().then(res.send.bind(res));
+});
+
 router.get('/container/stop/', function (req, res) {
     console.log(req.query.id);
-    res.set({ param: "stop"});
     var container = docker.getContainer(req.query.id);
     container.stop().then(res.send.bind(res));
 });
 
 router.get('/container/start/', function (req, res) {
     console.log(req.query.id);
-    res.set({ param: "start"});
     var container = docker.getContainer(req.query.id);
     container.start().then(res.send.bind(res));
 });

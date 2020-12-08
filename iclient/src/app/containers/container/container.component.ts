@@ -91,4 +91,18 @@ export class ContainerComponent implements OnInit {
       duration: 2000,
     });
   }
+
+  onRestart(): void {
+    this.loading = true;
+    this.httpService.restartContainer(this.container.Id).subscribe(
+      msg => this.refresh('Container restarted')
+    );
+  }
+
+  onLogs(): void {
+    this.loading = true;
+    this.httpService.containerLogs(this.container.Id).subscribe(
+      msg => this.refresh('Container restarted')
+    );
+  }
 }

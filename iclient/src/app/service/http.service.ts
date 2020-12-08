@@ -86,6 +86,18 @@ const httpOptions = {
     return this.http.get('http://localhost:9000/operations/container/remove/', { params: parameters });
   }
 
+  restartContainer(id: string): Observable<any> {
+    const parameters = new HttpParams()
+      .set('id', id);
+    return this.http.get('http://localhost:9000/operations/container/restart/', { params: parameters });
+  }
+
+  containerLogs(id: string): Observable<any> {
+    const parameters = new HttpParams()
+      .set('id', id);
+    return this.http.get('http://localhost:9000/operations/container/logs/', { params: parameters });
+  }
+
   getContainer(id: string) {
     const parameters = new HttpParams()
       .set('id', id);

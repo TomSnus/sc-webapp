@@ -16,7 +16,16 @@
       <br>
       <b class="subtitle">State:</b> {{state}}
     </mat-card-subtitle>
+    <button mat-icon-button [mat-menu-trigger-for]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
   </mat-card-header>
+  <span>
+    <mat-menu x-position="before" #menu="matMenu">
+        <button mat-menu-item (click)="onLogs()">Logs</button>
+        <button mat-menu-item>Logs</button>
+    </mat-menu>
+</span>
   <mat-card-content>
     <span margin="5px"> <b class="subtitle">Ports: </b>{{getPorts()}}</span>
     <br>
@@ -33,6 +42,7 @@
     </ng-template>
     <ng-template #running>
       <button class="actionButton" (click)="onStop()" mat-raised-button color="primary">Stop</button>
+      <button class="actionButton" (click)="onRestart()" mat-raised-button color="primary">Restart</button>
     </ng-template>
   </mat-card-actions>
 </mat-card>
